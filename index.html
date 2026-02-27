@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git on Canvas — Visual Git Repository Explorer</title>
+    <meta name="description" content="Explore git repositories on an infinite canvas. See every file, every diff, every connection — all at once. Open source, built with Bun.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ─── Navigation ──────────────────────────────────── -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">◈</span>
+                <span class="logo-text">Git on Canvas</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#stack">Stack</a>
+                <a href="https://github.com/7flash/galaxy-canvas" class="nav-cta" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ─── Hero Section ────────────────────────────────── -->
+    <section id="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-glow"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Open Source · Built with Bun
+            </div>
+            <h1>
+                See your entire repo.<br>
+                <span class="hero-accent">On one canvas.</span>
+            </h1>
+            <p class="hero-sub">
+                Every file, every diff, every connection — laid out on an infinite canvas.
+                Navigate commits visually. Click lines to create connections.
+                Git, the way you think about code.
+            </p>
+            <div class="hero-actions">
+                <a href="https://github.com/7flash/galaxy-canvas" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+                <a href="#how-it-works" class="btn btn-ghost">
+                    See How It Works
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">∞</span>
+                    <span class="stat-label">Infinite Canvas</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">0ms</span>
+                    <span class="stat-label">Lag with Bun</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">1-click</span>
+                    <span class="stat-label">Line Connections</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image-wrap">
+            <div class="hero-image-glow"></div>
+            <img src="hero.png" alt="Git on Canvas — repository visualization on an infinite canvas" class="hero-image" loading="eager">
+            <div class="hero-image-border"></div>
+        </div>
+    </section>
+
+    <!-- ─── Features Section ────────────────────────────── -->
+    <section id="features">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2>Everything you need to <span class="text-gradient">understand code</span></h2>
+                <p>Built for developers who think visually. No more tab-switching between files.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card feature-card--large">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Infinite Canvas</h3>
+                    <p>Pan, zoom, and arrange every file in your repo on a smooth infinite canvas. Drag cards freely, arrange in grids, or let the auto-layout do its thing.</p>
+                    <div class="feature-keys">
+                        <kbd>Space</kbd> Pan
+                        <kbd>Ctrl+Scroll</kbd> Zoom
+                        <kbd>G</kbd> Grid
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Inline Diffs</h3>
+                    <p>See additions in green, deletions in red — right inside each file card. Scrollbar markers show you where changes are at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Line-to-Line Connections</h3>
+                    <p>Click any line in one file, then click a line in another — instant visual connection. See dependencies as bezier curves across the canvas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Commit Timeline</h3>
+                    <p>Navigate commits with arrow keys. See exactly which files changed and how many lines were added or deleted. Each commit is one click away.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📌</div>
+                    <h3>Persistent Layout</h3>
+                    <p>Drag files where you want them — positions are saved automatically. Switch commits, refresh the page, your layout persists.</p>
+                </div>
+                <div class="feature-card feature-card--large">
+                    <div class="feature-icon">⌨️</div>
+                    <h3>Keyboard First</h3>
+                    <p>Every action has a shortcut. Navigate commits with ←→, search files with Ctrl+F, toggle expand with F, select all with Ctrl+A. Power-user friendly.</p>
+                    <div class="feature-keys">
+                        <kbd>←</kbd><kbd>→</kbd> Commits
+                        <kbd>Ctrl+F</kbd> Search
+                        <kbd>F</kbd> Expand
+                        <kbd>H</kbd><kbd>V</kbd> Arrange
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── How It Works ────────────────────────────────── -->
+    <section id="how-it-works">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">How It Works</span>
+                <h2>From <span class="text-gradient">git log</span> to visual overview</h2>
+                <p>Three steps to see your entire repository at once.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Point to your repo</h3>
+                        <p>Paste or type any local git repository path. Works with any repo — small or large, any language.</p>
+                        <div class="step-code">
+                            <code>C:\Code\my-project</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Browse commits visually</h3>
+                        <p>Every commit in the timeline shows changed files as file cards on the canvas. Green lines = additions, red = deletions.</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Connect the dots</h3>
+                        <p>Click a line in one file, click a line in another — a connection appears. Map out dependencies, data flow, or just mark related code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Tech Stack ──────────────────────────────────── -->
+    <section id="stack">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Built With</span>
+                <h2>Modern stack, <span class="text-gradient">zero bloat</span></h2>
+            </div>
+            <div class="stack-grid">
+                <div class="stack-item">
+                    <div class="stack-icon">🥟</div>
+                    <h4>Bun</h4>
+                    <p>Runtime + package manager. Fast everything.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">🦊</div>
+                    <h4>Melina.js</h4>
+                    <p>Bun-native web framework with file routing.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">🗄️</div>
+                    <h4>SQLite + Zod</h4>
+                    <p>Type-safe ORM for positions and connections.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">📊</div>
+                    <h4>simple-git</h4>
+                    <p>Git operations without shell overhead.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">📏</div>
+                    <h4>measure-fn</h4>
+                    <p>Hierarchical performance instrumentation.</p>
+                </div>
+                <div class="stack-item">
+                    <div class="stack-icon">🎨</div>
+                    <h4>Pure CSS</h4>
+                    <p>No Tailwind. Custom design system with variables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CTA Section ─────────────────────────────────── -->
+    <section id="cta">
+        <div class="section-inner">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <h2>Ready to see your code differently?</h2>
+                <p>Clone the repo, install with Bun, and open any git project on the canvas.</p>
+                <div class="cta-install">
+                    <div class="install-step">
+                        <code>git clone https://github.com/7flash/galaxy-canvas</code>
+                    </div>
+                    <div class="install-step">
+                        <code>cd galaxy-canvas && bun install && bun run dev</code>
+                    </div>
+                </div>
+                <a href="https://github.com/7flash/galaxy-canvas" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    Star on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ──────────────────────────────────────── -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <span class="logo-icon">◈</span>
+                <span>Git on Canvas</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/7flash/galaxy-canvas" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://github.com/7flash/galaxy-canvas/issues" target="_blank" rel="noopener">Issues</a>
+                <a href="https://github.com/7flash" target="_blank" rel="noopener">@7flash</a>
+            </div>
+            <p class="footer-copy">Open source under MIT License</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
