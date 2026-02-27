@@ -1,28 +1,28 @@
 // ─── Nav scroll effect ──────────────────────────────────
 const navbar = document.getElementById('navbar');
-let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    navbar.classList.toggle('scrolled', scrollY > 60);
-    lastScroll = scrollY;
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
 // ─── Scroll-reveal for sections ─────────────────────────
 const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.12,
+    rootMargin: '0px 0px -30px 0px',
 };
 
 const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            // Stagger animations within a group
-            const parent = entry.target.closest('.features-grid, .stack-grid, .steps');
+            // Stagger animations within grid groups
+            const parent = entry.target.closest('.features-grid, .stack-grid, .manifesto-pillars, .usecase-grid, .connections-explain');
             if (parent) {
-                const siblings = Array.from(parent.querySelectorAll('.feature-card, .stack-item, .step'));
+                const selector = '.feature-card, .stack-item, .pillar, .usecase, .conn-step';
+                const siblings = Array.from(parent.querySelectorAll(selector));
                 const idx = siblings.indexOf(entry.target);
-                entry.target.style.transitionDelay = `${idx * 0.08}s`;
+                if (idx >= 0) {
+                    entry.target.style.transitionDelay = `${idx * 0.08}s`;
+                }
             }
             entry.target.classList.add('visible');
             revealObserver.unobserve(entry.target);
@@ -30,7 +30,24 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.section-header, .feature-card, .step, .stack-item, .cta-card').forEach(el => {
+const revealSelectors = [
+    '.section-header',
+    '.feature-card',
+    '.pillar',
+    '.stack-item',
+    '.cta-card',
+    '.manifesto-quote',
+    '.manifesto-body',
+    '.manifesto-pillars',
+    '.philosophy-card',
+    '.connections-demo',
+    '.connections-explain',
+    '.connections-usecases',
+    '.conn-step',
+    '.usecase',
+].join(', ');
+
+document.querySelectorAll(revealSelectors).forEach(el => {
     revealObserver.observe(el);
 });
 

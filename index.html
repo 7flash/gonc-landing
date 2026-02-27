@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git on Canvas — Visual Git Repository Explorer</title>
-    <meta name="description" content="Explore git repositories on an infinite canvas. See every file, every diff, every connection — all at once. Open source, built with Bun.">
+    <title>Git on Canvas — Everything is Deeply Intertwingled</title>
+    <meta name="description"
+        content="Your code is not a tree of files. It's a web of connections. Git on Canvas lets you see the intertwingularity — every file, every dependency, every relationship — on one infinite canvas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- ─── Navigation ──────────────────────────────────── -->
     <nav id="navbar">
@@ -19,11 +24,14 @@
                 <span class="logo-text">Git on Canvas</span>
             </a>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#stack">Stack</a>
+                <a href="#manifesto">Why</a>
+                <a href="#canvas">Canvas</a>
+                <a href="#connections">Connections</a>
                 <a href="https://github.com/7flash/galaxy-canvas" class="nav-cta" target="_blank" rel="noopener">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
                     GitHub
                 </a>
             </div>
@@ -43,135 +51,292 @@
                 Open Source · Built with Bun
             </div>
             <h1>
-                See your entire repo.<br>
-                <span class="hero-accent">On one canvas.</span>
+                Everything is deeply<br>
+                <span class="hero-accent">intertwingled.</span>
             </h1>
             <p class="hero-sub">
-                Every file, every diff, every connection — laid out on an infinite canvas.
-                Navigate commits visually. Click lines to create connections.
-                Git, the way you think about code.
+                Your code is not a tree of files — it's a web of connections.<br>
+                See the relationships that your file system hides from you.
             </p>
             <div class="hero-actions">
-                <a href="https://github.com/7flash/galaxy-canvas" class="btn btn-primary" target="_blank" rel="noopener">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <a href="https://github.com/7flash/galaxy-canvas" class="btn btn-primary" target="_blank"
+                    rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
                     View on GitHub
                 </a>
-                <a href="#how-it-works" class="btn btn-ghost">
-                    See How It Works
+                <a href="#manifesto" class="btn btn-ghost">
+                    Read the manifesto
                     <span class="btn-arrow">→</span>
                 </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-value">∞</span>
-                    <span class="stat-label">Infinite Canvas</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-value">0ms</span>
-                    <span class="stat-label">Lag with Bun</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-value">1-click</span>
-                    <span class="stat-label">Line Connections</span>
-                </div>
             </div>
         </div>
         <div class="hero-image-wrap">
             <div class="hero-image-glow"></div>
-            <img src="hero.png" alt="Git on Canvas — repository visualization on an infinite canvas" class="hero-image" loading="eager">
+            <img src="hero.png" alt="Git on Canvas — repository visualization on an infinite canvas" class="hero-image"
+                loading="eager">
             <div class="hero-image-border"></div>
         </div>
     </section>
 
-    <!-- ─── Features Section ────────────────────────────── -->
-    <section id="features">
+    <!-- ─── Manifesto Section ───────────────────────────── -->
+    <section id="manifesto">
+        <div class="section-inner manifesto-inner">
+            <div class="manifesto-quote">
+                <blockquote>
+                    "Intertwingularity is not generally acknowledged — people keep pretending they can make things
+                    deeply hierarchical, categorizable and sequential when they can't."
+                </blockquote>
+                <cite>— Ted Nelson, <em>Computer Lib/Dream Machines</em>, 1974</cite>
+            </div>
+
+            <div class="manifesto-body">
+                <h2>The file system lied to you.</h2>
+                <p>
+                    We organize code into directories and files because that's what computers demand.
+                    But knowledge doesn't live in trees. <strong>Ideas connect sideways</strong> — across files,
+                    across modules, across the neat little folders we construct.
+                </p>
+                <p>
+                    A function in <code>auth.ts</code> is deeply connected to a validation rule in
+                    <code>schema.ts</code>,
+                    which shapes a form in <code>signup.tsx</code>, which triggers an email defined in
+                    <code>mailer.ts</code>.
+                    These relationships are <em>the actual architecture</em> — but your editor shows you one file at a
+                    time.
+                </p>
+                <p>
+                    <strong>Git on Canvas</strong> breaks the file hierarchy open. Every file becomes a card on an
+                    infinite
+                    canvas. You draw connections between lines. You see the web that was always there —
+                    the intertwingularity your file system was hiding.
+                </p>
+            </div>
+
+            <div class="manifesto-pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg>
+                    </div>
+                    <h3>Not files. A web.</h3>
+                    <p>Code is a network of dependencies, data flows, and shared concepts. The canvas reveals this
+                        topology.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg>
+                    </div>
+                    <h3>Not diffs. Evolution.</h3>
+                    <p>Commits aren't patches — they're snapshots of how thinking evolves. Navigate them like a timeline
+                        of ideas.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        </svg>
+                    </div>
+                    <h3>Not tabs. Connections.</h3>
+                    <p>Click a line, click another line. The connection is the knowledge — the invisible thread your IDE
+                        never showed you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Canvas Section ──────────────────────────────── -->
+    <section id="canvas">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">Features</span>
-                <h2>Everything you need to <span class="text-gradient">understand code</span></h2>
-                <p>Built for developers who think visually. No more tab-switching between files.</p>
+                <span class="section-tag">The Canvas</span>
+                <h2>Every file. All at once.</h2>
+                <p>No more "Open File" → read → close → repeat. See the whole picture.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card feature-card--large">
                     <div class="feature-icon">🗺️</div>
                     <h3>Infinite Canvas</h3>
-                    <p>Pan, zoom, and arrange every file in your repo on a smooth infinite canvas. Drag cards freely, arrange in grids, or let the auto-layout do its thing.</p>
+                    <p>Pan, zoom, drag — arrange your codebase the way <em>you</em> think about it, not the way the file
+                        system forces you to. Your layout persists across sessions.</p>
                     <div class="feature-keys">
                         <kbd>Space</kbd> Pan
-                        <kbd>Ctrl+Scroll</kbd> Zoom
+                        <kbd>Scroll</kbd> Zoom
                         <kbd>G</kbd> Grid
+                        <kbd>F</kbd> Expand
                     </div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Inline Diffs</h3>
-                    <p>See additions in green, deletions in red — right inside each file card. Scrollbar markers show you where changes are at a glance.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔗</div>
-                    <h3>Line-to-Line Connections</h3>
-                    <p>Click any line in one file, then click a line in another — instant visual connection. See dependencies as bezier curves across the canvas.</p>
+                    <p>Green additions, red deletions — right inside each card. Scrollbar markers show <em>where</em>
+                        changes are. Click to jump.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⏱️</div>
                     <h3>Commit Timeline</h3>
-                    <p>Navigate commits with arrow keys. See exactly which files changed and how many lines were added or deleted. Each commit is one click away.</p>
+                    <p>Arrow keys through history. Each commit shows exactly which files changed, how many lines moved.
+                        Navigate thinking over time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📌</div>
                     <h3>Persistent Layout</h3>
-                    <p>Drag files where you want them — positions are saved automatically. Switch commits, refresh the page, your layout persists.</p>
+                    <p>Drag files where they belong in <em>your</em> mental model. Switch commits, refresh — your
+                        arrangement stays exactly as you left it.</p>
                 </div>
                 <div class="feature-card feature-card--large">
                     <div class="feature-icon">⌨️</div>
                     <h3>Keyboard First</h3>
-                    <p>Every action has a shortcut. Navigate commits with ←→, search files with Ctrl+F, toggle expand with F, select all with Ctrl+A. Power-user friendly.</p>
+                    <p>Every action has a shortcut. Navigate commits, search files, expand cards, select and arrange —
+                        all without touching the mouse.</p>
                     <div class="feature-keys">
                         <kbd>←</kbd><kbd>→</kbd> Commits
                         <kbd>Ctrl+F</kbd> Search
-                        <kbd>F</kbd> Expand
-                        <kbd>H</kbd><kbd>V</kbd> Arrange
+                        <kbd>H</kbd> Row
+                        <kbd>V</kbd> Column
+                        <kbd>Ctrl+A</kbd> Select all
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ─── How It Works ────────────────────────────────── -->
-    <section id="how-it-works">
+    <!-- ─── Connections Section ──────────────────────────── -->
+    <section id="connections">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">How It Works</span>
-                <h2>From <span class="text-gradient">git log</span> to visual overview</h2>
-                <p>Three steps to see your entire repository at once.</p>
+                <span class="section-tag">Connections</span>
+                <h2>The invisible threads <span class="text-gradient">made visible</span></h2>
+                <p>Knowledge lives in relationships. Make them explicit.</p>
             </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <h3>Point to your repo</h3>
-                        <p>Paste or type any local git repository path. Works with any repo — small or large, any language.</p>
-                        <div class="step-code">
-                            <code>C:\Code\my-project</code>
+
+            <div class="connections-demo">
+                <div class="conn-demo-card">
+                    <div class="conn-demo-header">auth.ts</div>
+                    <div class="conn-demo-lines">
+                        <div class="conn-demo-line">export function validateToken(token: string) {</div>
+                        <div class="conn-demo-line conn-demo-line--source"> const decoded = jwt.verify(token, SECRET);
                         </div>
+                        <div class="conn-demo-line"> return decoded.userId;</div>
+                        <div class="conn-demo-line">}</div>
                     </div>
                 </div>
-                <div class="step-connector"></div>
-                <div class="step">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <h3>Browse commits visually</h3>
-                        <p>Every commit in the timeline shows changed files as file cards on the canvas. Green lines = additions, red = deletions.</p>
+                <svg class="conn-demo-curve" viewBox="0 0 200 80" preserveAspectRatio="none">
+                    <path d="M 0 40 C 60 40, 60 10, 100 10 S 140 40, 200 40" fill="none" stroke="url(#connGradient)"
+                        stroke-width="2" stroke-dasharray="6 4">
+                        <animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite" />
+                    </path>
+                    <defs>
+                        <linearGradient id="connGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#a78bfa" />
+                            <stop offset="100%" stop-color="#60a5fa" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="conn-demo-card">
+                    <div class="conn-demo-header">middleware.ts</div>
+                    <div class="conn-demo-lines">
+                        <div class="conn-demo-line">export function authGuard(req, res, next) {</div>
+                        <div class="conn-demo-line conn-demo-line--target"> const user =
+                            validateToken(req.headers.auth);</div>
+                        <div class="conn-demo-line"> if (!user) return res.status(401);</div>
+                        <div class="conn-demo-line">}</div>
                     </div>
                 </div>
-                <div class="step-connector"></div>
-                <div class="step">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <h3>Connect the dots</h3>
-                        <p>Click a line in one file, click a line in another — a connection appears. Map out dependencies, data flow, or just mark related code.</p>
+            </div>
+
+            <div class="connections-explain">
+                <div class="conn-step">
+                    <span class="conn-step-num">1</span>
+                    <p>Click any line in any file card</p>
+                </div>
+                <div class="conn-step-arrow">→</div>
+                <div class="conn-step">
+                    <span class="conn-step-num">2</span>
+                    <p>Click a related line in another file</p>
+                </div>
+                <div class="conn-step-arrow">→</div>
+                <div class="conn-step">
+                    <span class="conn-step-num">3</span>
+                    <p>A visual connection appears — saved permanently</p>
+                </div>
+            </div>
+
+            <div class="connections-usecases">
+                <h3>Map anything</h3>
+                <div class="usecase-grid">
+                    <div class="usecase">
+                        <span class="usecase-icon">🔀</span>
+                        <strong>Data flow</strong>
+                        <p>Trace how data transforms from API → service → database</p>
+                    </div>
+                    <div class="usecase">
+                        <span class="usecase-icon">🧩</span>
+                        <strong>Dependencies</strong>
+                        <p>Which functions call which? Which modules depend on what?</p>
+                    </div>
+                    <div class="usecase">
+                        <span class="usecase-icon">🐛</span>
+                        <strong>Bug hunting</strong>
+                        <p>Mark the path from symptom → cause across the codebase</p>
+                    </div>
+                    <div class="usecase">
+                        <span class="usecase-icon">🧠</span>
+                        <strong>Onboarding</strong>
+                        <p>Leave annotated connections for the next developer joining the project</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Philosophy Section ──────────────────────────── -->
+    <section id="philosophy">
+        <div class="section-inner">
+            <div class="philosophy-card">
+                <div class="philosophy-left">
+                    <h2>Code is knowledge.<br>Knowledge is a web.</h2>
+                    <p>
+                        Since the 1960s, Ted Nelson imagined a world where information is linked — not filed.
+                        Where every idea connects to every related idea, and the connections themselves carry meaning.
+                    </p>
+                    <p>
+                        We inherited the file system from an era of punch cards and disk platters.
+                        But your code's <em>actual</em> structure — the one in your head — is a graph
+                        of relationships, not a tree of directories.
+                    </p>
+                    <p>
+                        <strong>Git on Canvas</strong> is a step toward Nelson's vision. Not a full hypertext system —
+                        just a practical tool that lets you <em>see</em> and <em>draw</em> the connections
+                        that your IDE flattens into a tab bar.
+                    </p>
+                </div>
+                <div class="philosophy-right">
+                    <div class="philosophy-quote-stack">
+                        <div class="pq">
+                            <span class="pq-mark">"</span>
+                            There are no 'subjects' at all; there is only all knowledge, since the cross-connections
+                            among the myriad topics of this world simply cannot be divided up neatly.
+                            <span class="pq-attr">— Ted Nelson</span>
+                        </div>
+                        <div class="pq pq--secondary">
+                            <span class="pq-mark">"</span>
+                            Hierarchical and sequential structures, especially popular since Gutenberg, are usually
+                            forced and artificial.
+                            <span class="pq-attr">— Ted Nelson</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,7 +390,7 @@
         <div class="section-inner">
             <div class="cta-card">
                 <div class="cta-glow"></div>
-                <h2>Ready to see your code differently?</h2>
+                <h2>Stop flattening your knowledge.<br>Start connecting it.</h2>
                 <p>Clone the repo, install with Bun, and open any git project on the canvas.</p>
                 <div class="cta-install">
                     <div class="install-step">
@@ -235,8 +400,12 @@
                         <code>cd galaxy-canvas && bun install && bun run dev</code>
                     </div>
                 </div>
-                <a href="https://github.com/7flash/galaxy-canvas" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <a href="https://github.com/7flash/galaxy-canvas" class="btn btn-primary btn-lg" target="_blank"
+                    rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
                     Star on GitHub
                 </a>
             </div>
@@ -255,10 +424,11 @@
                 <a href="https://github.com/7flash/galaxy-canvas/issues" target="_blank" rel="noopener">Issues</a>
                 <a href="https://github.com/7flash" target="_blank" rel="noopener">@7flash</a>
             </div>
-            <p class="footer-copy">Open source under MIT License</p>
+            <p class="footer-copy">Inspired by Ted Nelson's vision. Open source under MIT.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>

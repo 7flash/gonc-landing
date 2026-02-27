@@ -11,6 +11,7 @@
     --accent-light: #a78bfa;
     --accent-glow: rgba(124, 58, 237, 0.3);
     --accent-secondary: #3b82f6;
+    --accent-blue: #60a5fa;
     --green: #22c55e;
     --red: #ef4444;
     --border: rgba(128, 128, 180, 0.12);
@@ -20,6 +21,7 @@
     --radius-lg: 20px;
     --radius-xl: 28px;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -310,7 +312,11 @@ img {
 }
 
 .hero-accent {
-    background: linear-gradient(135deg, var(--accent-light), var(--accent-secondary));
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.15em;
+    background: linear-gradient(135deg, var(--accent-light), var(--accent-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -329,45 +335,6 @@ img {
     gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 40px;
-}
-
-.hero-stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-}
-
-.stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-}
-
-.stat-value {
-    font-size: 1.3rem;
-    font-weight: 800;
-    font-family: var(--font-mono);
-    background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.stat-label {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-}
-
-.stat-divider {
-    width: 1px;
-    height: 32px;
-    background: var(--border);
 }
 
 /* ─── Hero Image ──────────────────────────────────────── */
@@ -444,7 +411,7 @@ section {
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, var(--accent-light), var(--accent-secondary));
+    background: linear-gradient(135deg, var(--accent-light), var(--accent-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -455,6 +422,154 @@ section {
     color: var(--text-secondary);
     max-width: 500px;
     margin: 0 auto;
+}
+
+/* ─── Manifesto ───────────────────────────────────────── */
+#manifesto {
+    background: var(--bg-secondary);
+    padding: 120px 32px;
+}
+
+.manifesto-inner {
+    max-width: 900px;
+}
+
+.manifesto-quote {
+    margin-bottom: 64px;
+    text-align: center;
+}
+
+.manifesto-quote blockquote {
+    font-family: var(--font-serif);
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-primary);
+    opacity: 0.9;
+    max-width: 720px;
+    margin: 0 auto 16px;
+    position: relative;
+}
+
+.manifesto-quote blockquote::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-light), var(--accent-blue));
+    margin: 0 auto 24px;
+    border-radius: 2px;
+}
+
+.manifesto-quote cite {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.manifesto-quote cite em {
+    color: var(--accent-light);
+    font-style: italic;
+}
+
+.manifesto-body {
+    margin-bottom: 72px;
+}
+
+.manifesto-body h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.manifesto-body p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.manifesto-body strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.manifesto-body em {
+    color: var(--accent-light);
+    font-style: italic;
+}
+
+.manifesto-body code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    color: var(--accent-light);
+    background: rgba(124, 58, 237, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* ─── Pillars ─────────────────────────────────────────── */
+.manifesto-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.pillar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pillar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pillar:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pillar:hover::after {
+    opacity: 1;
+}
+
+.pillar-icon {
+    color: var(--accent-light);
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+.pillar h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.pillar p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
 }
 
 /* ─── Features Grid ───────────────────────────────────── */
@@ -520,6 +635,11 @@ section {
     z-index: 1;
 }
 
+.feature-card em {
+    color: var(--accent-light);
+    font-style: italic;
+}
+
 .feature-keys {
     display: flex;
     flex-wrap: wrap;
@@ -532,7 +652,6 @@ section {
     z-index: 1;
 }
 
-.feature-keys kbd,
 kbd {
     display: inline-flex;
     align-items: center;
@@ -548,67 +667,259 @@ kbd {
     min-width: 24px;
 }
 
-/* ─── How It Works ────────────────────────────────────── */
-#how-it-works {
+/* ─── Connections Section ─────────────────────────────── */
+#connections {
     background: var(--bg-secondary);
 }
 
-.steps {
+.connections-demo {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 0;
-    max-width: 640px;
+    max-width: 800px;
+    margin: 0 auto 48px;
+}
+
+.conn-demo-card {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.conn-demo-card:hover {
+    border-color: var(--border-hover);
+}
+
+.conn-demo-header {
+    padding: 8px 14px;
+    background: rgba(124, 58, 237, 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-light);
+    border-bottom: 1px solid var(--border);
+}
+
+.conn-demo-lines {
+    padding: 12px 0;
+}
+
+.conn-demo-line {
+    padding: 3px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    transition: background 0.2s ease;
+}
+
+.conn-demo-line--source {
+    background: rgba(167, 139, 250, 0.15);
+    border-left: 3px solid var(--accent-light);
+    color: var(--text-primary);
+}
+
+.conn-demo-line--target {
+    background: rgba(96, 165, 250, 0.15);
+    border-left: 3px solid var(--accent-blue);
+    color: var(--text-primary);
+}
+
+.conn-demo-curve {
+    width: 200px;
+    height: 80px;
+    flex-shrink: 0;
+    margin: 0 -20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ─── Connection Steps ────────────────────────────────── */
+.connections-explain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+}
+
+.conn-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.conn-step-num {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.conn-step p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.conn-step-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+/* ─── Use Cases ───────────────────────────────────────── */
+.connections-usecases {
+    max-width: 800px;
     margin: 0 auto;
 }
 
-.step {
-    display: flex;
-    gap: 24px;
-    padding: 32px 0;
+.connections-usecases h3 {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 24px;
 }
 
-.step-number {
-    font-family: var(--font-mono);
-    font-size: 2.5rem;
+.usecase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.usecase {
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.usecase:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+.usecase-icon {
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.usecase strong {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.usecase p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    line-height: 1.5;
+}
+
+/* ─── Philosophy Section ──────────────────────────────── */
+#philosophy {
+    padding: 120px 32px;
+}
+
+.philosophy-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.philosophy-left h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 800;
-    color: rgba(124, 58, 237, 0.2);
-    flex-shrink: 0;
-    width: 60px;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.philosophy-left p {
+    font-size: 0.98rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.philosophy-left strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.philosophy-left em {
+    color: var(--accent-light);
+    font-style: italic;
+}
+
+.philosophy-quote-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pq {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 28px 20px;
+    position: relative;
+    transition: all 0.3s ease;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.pq:hover {
+    border-color: var(--border-hover);
+}
+
+.pq-mark {
+    font-size: 3rem;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    color: var(--accent-light);
+    opacity: 0.3;
+    font-family: var(--font-serif);
     line-height: 1;
 }
 
-.step-content h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.step-content p {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-.step-code {
+.pq-attr {
+    display: block;
     margin-top: 12px;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
-.step-code code {
-    display: inline-block;
-    padding: 8px 16px;
-    background: rgba(124, 58, 237, 0.08);
-    border: 1px solid rgba(124, 58, 237, 0.15);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    color: var(--accent-light);
+.pq--secondary {
+    opacity: 0.7;
+    transform: scale(0.97);
 }
 
-.step-connector {
-    width: 1px;
-    height: 32px;
-    background: linear-gradient(to bottom, var(--border), rgba(124, 58, 237, 0.2), var(--border));
-    margin-left: 30px;
+.pq--secondary:hover {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* ─── Tech Stack ──────────────────────────────────────── */
@@ -677,14 +988,15 @@ kbd {
 }
 
 .cta-card h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
     margin-bottom: 12px;
     position: relative;
     z-index: 1;
+    line-height: 1.3;
 }
 
-.cta-card p {
+.cta-card>p {
     color: var(--text-secondary);
     font-size: 1rem;
     margin-bottom: 28px;
@@ -783,9 +1095,18 @@ footer {
 /* Section reveal on scroll */
 .section-header,
 .feature-card,
-.step,
+.pillar,
 .stack-item,
-.cta-card {
+.cta-card,
+.manifesto-quote,
+.manifesto-body,
+.manifesto-pillars,
+.philosophy-card,
+.connections-demo,
+.connections-explain,
+.connections-usecases,
+.conn-step,
+.usecase {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
@@ -793,14 +1114,30 @@ footer {
 
 .section-header.visible,
 .feature-card.visible,
-.step.visible,
+.pillar.visible,
 .stack-item.visible,
-.cta-card.visible {
+.cta-card.visible,
+.manifesto-quote.visible,
+.manifesto-body.visible,
+.manifesto-pillars.visible,
+.philosophy-card.visible,
+.connections-demo.visible,
+.connections-explain.visible,
+.connections-usecases.visible,
+.conn-step.visible,
+.usecase.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 900px) {
+    .philosophy-card {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
 @media (max-width: 768px) {
     .features-grid {
         grid-template-columns: 1fr;
@@ -810,18 +1147,35 @@ footer {
         grid-column: span 1;
     }
 
+    .manifesto-pillars {
+        grid-template-columns: 1fr;
+    }
+
     .stack-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .hero-stats {
-        flex-direction: column;
-        gap: 12px;
+    .usecase-grid {
+        grid-template-columns: 1fr;
     }
 
-    .stat-divider {
-        width: 40px;
-        height: 1px;
+    .connections-demo {
+        flex-direction: column;
+    }
+
+    .conn-demo-curve {
+        transform: rotate(90deg);
+        width: 80px;
+        height: 60px;
+        margin: -10px 0;
+    }
+
+    .connections-explain {
+        flex-direction: column;
+    }
+
+    .conn-step-arrow {
+        transform: rotate(90deg);
     }
 
     .nav-links a:not(.nav-cta) {
