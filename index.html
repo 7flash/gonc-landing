@@ -26,6 +26,7 @@
             <div class="nav-links">
                 <a href="#manifesto">Why</a>
                 <a href="#canvas">Canvas</a>
+                <a href="#layers">Layers</a>
                 <a href="#connections">Connections</a>
                 <a href="https://github.com/7flash/git-on-canvas" class="nav-cta" target="_blank" rel="noopener">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -75,8 +76,11 @@
         </div>
         <div class="hero-image-wrap">
             <div class="hero-image-glow"></div>
-            <img src="hero.png" alt="Git on Canvas — repository visualization on an infinite canvas" class="hero-image"
-                loading="eager">
+            <video autoplay loop muted playsinline class="hero-image" poster="hero.png">
+                <source src="hero-demo.webp" type="video/webp">
+                <img src="hero.png" alt="Git on Canvas — repository visualization on an infinite canvas"
+                    loading="eager">
+            </video>
             <div class="hero-image-border"></div>
         </div>
     </section>
@@ -213,6 +217,55 @@
         </div>
     </section>
 
+    <!-- ─── Layers Section ─────────────────────────────────── -->
+    <section id="layers">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Layers</span>
+                <h2>Focus on <span class="text-gradient">what matters</span></h2>
+                <p>Large commits touch dozens of files. Layers let you isolate the ones that belong together.</p>
+            </div>
+            <div class="layers-demo">
+                <div class="layers-visual">
+                    <div class="layer-tab layer-tab--active">
+                        <span class="layer-dot"></span>
+                        Auth Flow
+                        <span class="layer-badge">4</span>
+                    </div>
+                    <div class="layer-tab">
+                        <span class="layer-dot layer-dot--blue"></span>
+                        Database
+                        <span class="layer-badge">6</span>
+                    </div>
+                    <div class="layer-tab">
+                        <span class="layer-dot layer-dot--green"></span>
+                        UI Components
+                        <span class="layer-badge">3</span>
+                    </div>
+                    <div class="layer-tab layer-tab--add">+ New Layer</div>
+                </div>
+                <div class="layers-explain-grid">
+                    <div class="layer-explain">
+                        <div class="layer-explain-icon">📂</div>
+                        <h4>Group related files</h4>
+                        <p>Right-click any card → add to a layer. Build focused views of your codebase.</p>
+                    </div>
+                    <div class="layer-explain">
+                        <div class="layer-explain-icon">🔄</div>
+                        <h4>Switch context instantly</h4>
+                        <p>Click a layer tab to show only its files. Each layer remembers its own viewport position.</p>
+                    </div>
+                    <div class="layer-explain">
+                        <div class="layer-explain-icon">🎯</div>
+                        <h4>Review with precision</h4>
+                        <p>Changed Files panel filters to the active layer. No noise — only the files that belong
+                            together.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ─── Connections Section ──────────────────────────── -->
     <section id="connections">
         <div class="section-inner">
@@ -260,17 +313,17 @@
             <div class="connections-explain">
                 <div class="conn-step">
                     <span class="conn-step-num">1</span>
-                    <p>Click any line in any file card</p>
+                    <p><kbd>Alt</kbd>+click a line in any file</p>
                 </div>
                 <div class="conn-step-arrow">→</div>
                 <div class="conn-step">
                     <span class="conn-step-num">2</span>
-                    <p>Click a related line in another file</p>
+                    <p>Pick the target file from the search overlay</p>
                 </div>
                 <div class="conn-step-arrow">→</div>
                 <div class="conn-step">
                     <span class="conn-step-num">3</span>
-                    <p>A visual connection appears — saved permanently</p>
+                    <p>Click a line in the target — connection saved permanently</p>
                 </div>
             </div>
 
