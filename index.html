@@ -90,6 +90,10 @@
                 <h2>Every file. All at once.</h2>
                 <p>No more Open File → read → close → repeat.</p>
             </div>
+            <div class="product-screenshot">
+                <img src="img-canvas.png" alt="Galaxy Canvas showing multiple file cards arranged on an infinite canvas"
+                    loading="lazy">
+            </div>
             <div class="features-grid">
                 <div class="feature-card feature-card--large">
                     <div class="feature-icon">🗺️</div>
@@ -117,6 +121,12 @@
                     <h3>Persistent Layout</h3>
                     <p>Drag files where you want them. Switch commits, refresh — arrangement stays.</p>
                 </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Chat</h3>
+                    <p>Press <kbd>I</kbd> to open AI sidebar. Ask questions about the commit, get explanations of
+                        changes.</p>
+                </div>
                 <div class="feature-card feature-card--large">
                     <div class="feature-icon">⌨️</div>
                     <h3>Keyboard First</h3>
@@ -129,6 +139,13 @@
                         <kbd>Ctrl+A</kbd> Select all
                     </div>
                 </div>
+            </div>
+            <div class="product-screenshot product-screenshot--detail">
+                <img src="img-detail.png"
+                    alt="Zoomed-in file card showing inline diff with green additions, hunk navigation, and line numbers"
+                    loading="lazy">
+                <p class="screenshot-caption">Inline diff with hunk navigation — green markers on the scrollbar show
+                    exactly where changes are</p>
             </div>
         </div>
     </section>
@@ -191,37 +208,10 @@
             </div>
 
             <div class="connections-demo">
-                <div class="conn-demo-card">
-                    <div class="conn-demo-header">auth.ts</div>
-                    <div class="conn-demo-lines">
-                        <div class="conn-demo-line">export function validateToken(token: string) {</div>
-                        <div class="conn-demo-line conn-demo-line--source"> const decoded = jwt.verify(token, SECRET);
-                        </div>
-                        <div class="conn-demo-line"> return decoded.userId;</div>
-                        <div class="conn-demo-line">}</div>
-                    </div>
-                </div>
-                <svg class="conn-demo-curve" viewBox="0 0 200 80" preserveAspectRatio="none">
-                    <path d="M 0 40 C 60 40, 60 10, 100 10 S 140 40, 200 40" fill="none" stroke="url(#connGradient)"
-                        stroke-width="2" stroke-dasharray="6 4">
-                        <animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite" />
-                    </path>
-                    <defs>
-                        <linearGradient id="connGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#a78bfa" />
-                            <stop offset="100%" stop-color="#60a5fa" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <div class="conn-demo-card">
-                    <div class="conn-demo-header">middleware.ts</div>
-                    <div class="conn-demo-lines">
-                        <div class="conn-demo-line">export function authGuard(req, res, next) {</div>
-                        <div class="conn-demo-line conn-demo-line--target"> const user =
-                            validateToken(req.headers.auth);</div>
-                        <div class="conn-demo-line"> if (!user) return res.status(401);</div>
-                        <div class="conn-demo-line">}</div>
-                    </div>
+                <div class="product-screenshot">
+                    <img src="img-connections.png"
+                        alt="Connection file picker overlay showing how to link lines across files" loading="lazy">
+                    <p class="screenshot-caption">Alt+click a line → pick a target file → click to connect</p>
                 </div>
             </div>
 

@@ -42,6 +42,7 @@ const revealSelectors = [
     '.usecase',
     '.layers-visual',
     '.layer-explain',
+    '.product-screenshot',
 ].join(', ');
 
 document.querySelectorAll(revealSelectors).forEach(el => {
