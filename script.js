@@ -15,9 +15,9 @@ const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             // Stagger animations within grid groups
-            const parent = entry.target.closest('.features-grid, .stack-grid, .manifesto-pillars, .usecase-grid, .connections-explain, .layers-explain-grid');
+            const parent = entry.target.closest('.features-grid, .stack-grid, .usecase-grid, .connections-explain, .layers-explain-grid');
             if (parent) {
-                const selector = '.feature-card, .stack-item, .pillar, .usecase, .conn-step, .layer-explain';
+                const selector = '.feature-card, .stack-item, .usecase, .conn-step, .layer-explain';
                 const siblings = Array.from(parent.querySelectorAll(selector));
                 const idx = siblings.indexOf(entry.target);
                 if (idx >= 0) {
@@ -33,13 +33,8 @@ const revealObserver = new IntersectionObserver((entries) => {
 const revealSelectors = [
     '.section-header',
     '.feature-card',
-    '.pillar',
     '.stack-item',
     '.cta-card',
-    '.manifesto-quote',
-    '.manifesto-body',
-    '.manifesto-pillars',
-    '.philosophy-card',
     '.connections-demo',
     '.connections-explain',
     '.connections-usecases',

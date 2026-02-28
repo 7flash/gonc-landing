@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git on Canvas — Everything is Deeply Intertwingled</title>
+    <title>Git on Canvas — Visual Git Explorer</title>
     <meta name="description"
-        content="Your code is not a tree of files. It's a web of connections. Git on Canvas lets you see the intertwingularity — every file, every dependency, every relationship — on one infinite canvas.">
+        content="See all changed files at once on an infinite canvas. Draw connections between lines across files. Navigate commits with arrow keys. Built with Bun.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -24,7 +24,6 @@
                 <span class="logo-text">Git on Canvas</span>
             </a>
             <div class="nav-links">
-                <a href="#manifesto">Why</a>
                 <a href="#canvas">Canvas</a>
                 <a href="#layers">Layers</a>
                 <a href="#connections">Connections</a>
@@ -52,12 +51,12 @@
                 Open Source · Built with Bun
             </div>
             <h1>
-                Everything is deeply<br>
-                <span class="hero-accent">intertwingled.</span>
+                All your files.<br>
+                <span class="hero-accent">One canvas.</span>
             </h1>
             <p class="hero-sub">
-                Your code is not a tree of files — it's a web of connections.<br>
-                See the relationships that your file system hides from you.
+                Open a git repo. See every changed file at once.<br>
+                Drag them around. Draw connections between lines. Navigate commits with arrow keys.
             </p>
             <div class="hero-actions">
                 <a href="https://github.com/7flash/git-on-canvas" class="btn btn-primary" target="_blank"
@@ -68,96 +67,18 @@
                     </svg>
                     View on GitHub
                 </a>
-                <a href="#manifesto" class="btn btn-ghost">
-                    Read the manifesto
+                <a href="#canvas" class="btn btn-ghost">
+                    See how it works
                     <span class="btn-arrow">→</span>
                 </a>
             </div>
         </div>
         <div class="hero-image-wrap">
             <div class="hero-image-glow"></div>
-            <video autoplay loop muted playsinline class="hero-image" poster="hero.png">
-                <source src="hero-demo.webp" type="video/webp">
-                <img src="hero.png" alt="Git on Canvas — repository visualization on an infinite canvas"
-                    loading="eager">
-            </video>
+            <img src="hero-demo.webp"
+                alt="Git on Canvas — files laid out on an infinite canvas with inline diffs and connections"
+                class="hero-image" loading="eager">
             <div class="hero-image-border"></div>
-        </div>
-    </section>
-
-    <!-- ─── Manifesto Section ───────────────────────────── -->
-    <section id="manifesto">
-        <div class="section-inner manifesto-inner">
-            <div class="manifesto-quote">
-                <blockquote>
-                    "Intertwingularity is not generally acknowledged — people keep pretending they can make things
-                    deeply hierarchical, categorizable and sequential when they can't."
-                </blockquote>
-                <cite>— Ted Nelson, <em>Computer Lib/Dream Machines</em>, 1974</cite>
-            </div>
-
-            <div class="manifesto-body">
-                <h2>The file system lied to you.</h2>
-                <p>
-                    We organize code into directories and files because that's what computers demand.
-                    But knowledge doesn't live in trees. <strong>Ideas connect sideways</strong> — across files,
-                    across modules, across the neat little folders we construct.
-                </p>
-                <p>
-                    A function in <code>auth.ts</code> is deeply connected to a validation rule in
-                    <code>schema.ts</code>,
-                    which shapes a form in <code>signup.tsx</code>, which triggers an email defined in
-                    <code>mailer.ts</code>.
-                    These relationships are <em>the actual architecture</em> — but your editor shows you one file at a
-                    time.
-                </p>
-                <p>
-                    <strong>Git on Canvas</strong> breaks the file hierarchy open. Every file becomes a card on an
-                    infinite
-                    canvas. You draw connections between lines. You see the web that was always there —
-                    the intertwingularity your file system was hiding.
-                </p>
-            </div>
-
-            <div class="manifesto-pillars">
-                <div class="pillar">
-                    <div class="pillar-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="2" y1="12" x2="22" y2="12" />
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                        </svg>
-                    </div>
-                    <h3>Not files. A web.</h3>
-                    <p>Code is a network of dependencies, data flows, and shared concepts. The canvas reveals this
-                        topology.</p>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                        </svg>
-                    </div>
-                    <h3>Not diffs. Evolution.</h3>
-                    <p>Commits aren't patches — they're snapshots of how thinking evolves. Navigate them like a timeline
-                        of ideas.</p>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                        </svg>
-                    </div>
-                    <h3>Not tabs. Connections.</h3>
-                    <p>Click a line, click another line. The connection is the knowledge — the invisible thread your IDE
-                        never showed you.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -167,14 +88,13 @@
             <div class="section-header">
                 <span class="section-tag">The Canvas</span>
                 <h2>Every file. All at once.</h2>
-                <p>No more "Open File" → read → close → repeat. See the whole picture.</p>
+                <p>No more Open File → read → close → repeat.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card feature-card--large">
                     <div class="feature-icon">🗺️</div>
                     <h3>Infinite Canvas</h3>
-                    <p>Pan, zoom, drag — arrange your codebase the way <em>you</em> think about it, not the way the file
-                        system forces you to. Your layout persists across sessions.</p>
+                    <p>Pan, zoom, drag — arrange files the way you think about them. Layout saves automatically.</p>
                     <div class="feature-keys">
                         <kbd>Space</kbd> Pan
                         <kbd>Scroll</kbd> Zoom
@@ -185,26 +105,22 @@
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Inline Diffs</h3>
-                    <p>Green additions, red deletions — right inside each card. Scrollbar markers show <em>where</em>
-                        changes are. Click to jump.</p>
+                    <p>Green additions, red deletions inside each card. Scrollbar markers show where changes are.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⏱️</div>
                     <h3>Commit Timeline</h3>
-                    <p>Arrow keys through history. Each commit shows exactly which files changed, how many lines moved.
-                        Navigate thinking over time.</p>
+                    <p>Arrow keys to navigate commits. See which files changed and how many lines moved.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📌</div>
                     <h3>Persistent Layout</h3>
-                    <p>Drag files where they belong in <em>your</em> mental model. Switch commits, refresh — your
-                        arrangement stays exactly as you left it.</p>
+                    <p>Drag files where you want them. Switch commits, refresh — arrangement stays.</p>
                 </div>
                 <div class="feature-card feature-card--large">
                     <div class="feature-icon">⌨️</div>
                     <h3>Keyboard First</h3>
-                    <p>Every action has a shortcut. Navigate commits, search files, expand cards, select and arrange —
-                        all without touching the mouse.</p>
+                    <p>Navigate commits, search files, expand cards, arrange and select — no mouse needed.</p>
                     <div class="feature-keys">
                         <kbd>←</kbd><kbd>→</kbd> Commits
                         <kbd>Ctrl+F</kbd> Search
@@ -223,7 +139,7 @@
             <div class="section-header">
                 <span class="section-tag">Layers</span>
                 <h2>Focus on <span class="text-gradient">what matters</span></h2>
-                <p>Large commits touch dozens of files. Layers let you isolate the ones that belong together.</p>
+                <p>Large commits touch dozens of files. Layers let you group the ones that belong together.</p>
             </div>
             <div class="layers-demo">
                 <div class="layers-visual">
@@ -248,18 +164,17 @@
                     <div class="layer-explain">
                         <div class="layer-explain-icon">📂</div>
                         <h4>Group related files</h4>
-                        <p>Right-click any card → add to a layer. Build focused views of your codebase.</p>
+                        <p>Right-click any card → add to a layer. Build focused views of a large commit.</p>
                     </div>
                     <div class="layer-explain">
                         <div class="layer-explain-icon">🔄</div>
                         <h4>Switch context instantly</h4>
-                        <p>Click a layer tab to show only its files. Each layer remembers its own viewport position.</p>
+                        <p>Click a layer tab to show only its files. Each layer remembers its viewport.</p>
                     </div>
                     <div class="layer-explain">
                         <div class="layer-explain-icon">🎯</div>
-                        <h4>Review with precision</h4>
-                        <p>Changed Files panel filters to the active layer. No noise — only the files that belong
-                            together.</p>
+                        <h4>Filtered changed files</h4>
+                        <p>Changed Files panel filters to the active layer. Only the files that matter.</p>
                     </div>
                 </div>
             </div>
@@ -271,8 +186,8 @@
         <div class="section-inner">
             <div class="section-header">
                 <span class="section-tag">Connections</span>
-                <h2>The invisible threads <span class="text-gradient">made visible</span></h2>
-                <p>Knowledge lives in relationships. Make them explicit.</p>
+                <h2>Link lines <span class="text-gradient">across files</span></h2>
+                <p>Draw connections between related code. Click a bubble to jump there instantly.</p>
             </div>
 
             <div class="connections-demo">
@@ -323,17 +238,17 @@
                 <div class="conn-step-arrow">→</div>
                 <div class="conn-step">
                     <span class="conn-step-num">3</span>
-                    <p>Click a line in the target — connection saved permanently</p>
+                    <p>Click a line in the target — connection saved</p>
                 </div>
             </div>
 
             <div class="connections-usecases">
-                <h3>Map anything</h3>
+                <h3>Works for</h3>
                 <div class="usecase-grid">
                     <div class="usecase">
                         <span class="usecase-icon">🔀</span>
                         <strong>Data flow</strong>
-                        <p>Trace how data transforms from API → service → database</p>
+                        <p>Trace how data moves from API → service → database</p>
                     </div>
                     <div class="usecase">
                         <span class="usecase-icon">🧩</span>
@@ -343,53 +258,12 @@
                     <div class="usecase">
                         <span class="usecase-icon">🐛</span>
                         <strong>Bug hunting</strong>
-                        <p>Mark the path from symptom → cause across the codebase</p>
+                        <p>Mark the path from symptom → cause across files</p>
                     </div>
                     <div class="usecase">
                         <span class="usecase-icon">🧠</span>
                         <strong>Onboarding</strong>
-                        <p>Leave annotated connections for the next developer joining the project</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ─── Philosophy Section ──────────────────────────── -->
-    <section id="philosophy">
-        <div class="section-inner">
-            <div class="philosophy-card">
-                <div class="philosophy-left">
-                    <h2>Code is knowledge.<br>Knowledge is a web.</h2>
-                    <p>
-                        Since the 1960s, Ted Nelson imagined a world where information is linked — not filed.
-                        Where every idea connects to every related idea, and the connections themselves carry meaning.
-                    </p>
-                    <p>
-                        We inherited the file system from an era of punch cards and disk platters.
-                        But your code's <em>actual</em> structure — the one in your head — is a graph
-                        of relationships, not a tree of directories.
-                    </p>
-                    <p>
-                        <strong>Git on Canvas</strong> is a step toward Nelson's vision. Not a full hypertext system —
-                        just a practical tool that lets you <em>see</em> and <em>draw</em> the connections
-                        that your IDE flattens into a tab bar.
-                    </p>
-                </div>
-                <div class="philosophy-right">
-                    <div class="philosophy-quote-stack">
-                        <div class="pq">
-                            <span class="pq-mark">"</span>
-                            There are no 'subjects' at all; there is only all knowledge, since the cross-connections
-                            among the myriad topics of this world simply cannot be divided up neatly.
-                            <span class="pq-attr">— Ted Nelson</span>
-                        </div>
-                        <div class="pq pq--secondary">
-                            <span class="pq-mark">"</span>
-                            Hierarchical and sequential structures, especially popular since Gutenberg, are usually
-                            forced and artificial.
-                            <span class="pq-attr">— Ted Nelson</span>
-                        </div>
+                        <p>Leave annotated connections for new team members</p>
                     </div>
                 </div>
             </div>
@@ -401,38 +275,38 @@
         <div class="section-inner">
             <div class="section-header">
                 <span class="section-tag">Built With</span>
-                <h2>Modern stack, <span class="text-gradient">zero bloat</span></h2>
+                <h2>The stack</h2>
             </div>
             <div class="stack-grid">
                 <div class="stack-item">
                     <div class="stack-icon">🥟</div>
                     <h4>Bun</h4>
-                    <p>Runtime + package manager. Fast everything.</p>
+                    <p>Runtime + bundler + package manager</p>
                 </div>
                 <div class="stack-item">
                     <div class="stack-icon">🦊</div>
                     <h4>Melina.js</h4>
-                    <p>Bun-native web framework with file routing.</p>
+                    <p>Bun-native web framework with file routing</p>
                 </div>
                 <div class="stack-item">
                     <div class="stack-icon">🗄️</div>
                     <h4>SQLite + Zod</h4>
-                    <p>Type-safe ORM for positions and connections.</p>
+                    <p>Type-safe ORM for positions and connections</p>
                 </div>
                 <div class="stack-item">
                     <div class="stack-icon">📊</div>
                     <h4>simple-git</h4>
-                    <p>Git operations without shell overhead.</p>
+                    <p>Git operations without shelling out</p>
                 </div>
                 <div class="stack-item">
                     <div class="stack-icon">📏</div>
                     <h4>measure-fn</h4>
-                    <p>Hierarchical performance instrumentation.</p>
+                    <p>Hierarchical performance instrumentation</p>
                 </div>
                 <div class="stack-item">
                     <div class="stack-icon">🎨</div>
                     <h4>Pure CSS</h4>
-                    <p>No Tailwind. Custom design system with variables.</p>
+                    <p>Custom design system, no frameworks</p>
                 </div>
             </div>
         </div>
@@ -443,8 +317,8 @@
         <div class="section-inner">
             <div class="cta-card">
                 <div class="cta-glow"></div>
-                <h2>Stop flattening your knowledge.<br>Start connecting it.</h2>
-                <p>Clone the repo, install with Bun, and open any git project on the canvas.</p>
+                <h2>Try it</h2>
+                <p>Clone, install, open any git repo on the canvas.</p>
                 <div class="cta-install">
                     <div class="install-step">
                         <code>git clone https://github.com/7flash/git-on-canvas</code>
@@ -477,7 +351,7 @@
                 <a href="https://github.com/7flash/git-on-canvas/issues" target="_blank" rel="noopener">Issues</a>
                 <a href="https://github.com/7flash" target="_blank" rel="noopener">@7flash</a>
             </div>
-            <p class="footer-copy">Inspired by Ted Nelson's vision. Open source under MIT.</p>
+            <p class="footer-copy">Open source under ISC license.</p>
         </div>
     </footer>
 
