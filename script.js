@@ -15,9 +15,9 @@ const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             // Stagger animations within grid groups
-            const parent = entry.target.closest('.features-grid, .stack-grid, .usecase-grid, .connections-explain, .layers-explain-grid');
+            const parent = entry.target.closest('.features-grid, .dimensions-grid, .connections-explain');
             if (parent) {
-                const selector = '.feature-card, .stack-item, .usecase, .conn-step, .layer-explain';
+                const selector = '.feature-card, .dimension-card, .conn-step';
                 const siblings = Array.from(parent.querySelectorAll(selector));
                 const idx = siblings.indexOf(entry.target);
                 if (idx >= 0) {
@@ -32,16 +32,12 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 const revealSelectors = [
     '.section-header',
+    '.nelson-quote',
+    '.dimension-card',
     '.feature-card',
-    '.stack-item',
     '.cta-card',
-    '.connections-demo',
     '.connections-explain',
-    '.connections-usecases',
     '.conn-step',
-    '.usecase',
-    '.layers-visual',
-    '.layer-explain',
     '.product-screenshot',
 ].join(', ');
 

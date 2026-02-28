@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git on Canvas — Visual Git Explorer</title>
+    <title>Git on Canvas — Everything is Deeply Intertwingled</title>
     <meta name="description"
-        content="See all changed files at once on an infinite canvas. Draw connections between lines across files. Navigate commits with arrow keys. Built with Bun.">
+        content="Your code is not a tree of files. It's a web of connections. Git on Canvas renders every file on an infinite canvas — with connections, layers, and time.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -24,9 +24,9 @@
                 <span class="logo-text">Git on Canvas</span>
             </a>
             <div class="nav-links">
-                <a href="#canvas">Canvas</a>
-                <a href="#layers">Layers</a>
+                <a href="#dimensions">Dimensions</a>
                 <a href="#connections">Connections</a>
+                <a href="#canvas">Canvas</a>
                 <a href="https://github.com/7flash/git-on-canvas" class="nav-cta" target="_blank" rel="noopener">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path
@@ -51,12 +51,12 @@
                 Open Source · Built with Bun
             </div>
             <h1>
-                All your files.<br>
-                <span class="hero-accent">One canvas.</span>
+                Everything is deeply<br>
+                <span class="hero-accent">intertwingled.</span>
             </h1>
             <p class="hero-sub">
-                Open a git repo. See every changed file at once.<br>
-                Drag them around. Draw connections between lines. Navigate commits with arrow keys.
+                Multiple files on one canvas. Connections between lines.<br>
+                Time as a dimension you navigate. Layers to filter the noise.
             </p>
             <div class="hero-actions">
                 <a href="https://github.com/7flash/git-on-canvas" class="btn btn-primary" target="_blank"
@@ -67,8 +67,8 @@
                     </svg>
                     View on GitHub
                 </a>
-                <a href="#canvas" class="btn btn-ghost">
-                    See how it works
+                <a href="#dimensions" class="btn btn-ghost">
+                    The four dimensions
                     <span class="btn-arrow">→</span>
                 </a>
             </div>
@@ -82,139 +82,101 @@
         </div>
     </section>
 
-    <!-- ─── Canvas Section ──────────────────────────────── -->
-    <section id="canvas">
+    <!-- ─── Ted Nelson ────────────────────────────────────── -->
+    <section id="nelson">
+        <div class="section-inner nelson-inner">
+            <div class="nelson-quotes">
+                <blockquote class="nelson-quote">
+                    <span class="quote-mark">"</span>
+                    Intertwingularity is not generally acknowledged — people keep pretending they can make things
+                    deeply hierarchical, categorizable and sequential when they can't.
+                    <cite>— Ted Nelson, <em>Computer Lib/Dream Machines</em>, 1974</cite>
+                </blockquote>
+                <blockquote class="nelson-quote nelson-quote--secondary">
+                    <span class="quote-mark">"</span>
+                    There are no 'subjects' at all; there is only all knowledge, since the cross-connections
+                    among the myriad topics of this world simply cannot be divided up neatly.
+                    <cite>— Ted Nelson</cite>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Four Dimensions ──────────────────────────────── -->
+    <section id="dimensions">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">The Canvas</span>
-                <h2>Every file. All at once.</h2>
-                <p>No more Open File → read → close → repeat.</p>
+                <span class="section-tag">The Idea</span>
+                <h2>Four dimensions of code</h2>
+                <p>Your file system gives you one dimension — a tree. Here are four.</p>
             </div>
-            <div class="product-screenshot">
-                <img src="img-canvas.png" alt="Galaxy Canvas showing multiple file cards arranged on an infinite canvas"
-                    loading="lazy">
-            </div>
-            <div class="features-grid">
-                <div class="feature-card feature-card--large">
-                    <div class="feature-icon">🗺️</div>
-                    <h3>Infinite Canvas</h3>
-                    <p>Pan, zoom, drag — arrange files the way you think about them. Layout saves automatically.</p>
-                    <div class="feature-keys">
+            <div class="dimensions-grid">
+                <div class="dimension-card">
+                    <div class="dimension-label">X · Y</div>
+                    <h3>Spatial canvas</h3>
+                    <p>
+                        Every file is a card you can place anywhere on an infinite canvas.
+                        Multiple files visible at once — <strong>transclusion</strong>, not tabs.
+                        Arrange them the way you think, not the way the filesystem dictates.
+                    </p>
+                    <div class="dimension-keys">
                         <kbd>Space</kbd> Pan
                         <kbd>Scroll</kbd> Zoom
                         <kbd>G</kbd> Grid
-                        <kbd>F</kbd> Expand
                     </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Inline Diffs</h3>
-                    <p>Green additions, red deletions inside each card. Scrollbar markers show where changes are.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⏱️</div>
-                    <h3>Commit Timeline</h3>
-                    <p>Arrow keys to navigate commits. See which files changed and how many lines moved.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📌</div>
-                    <h3>Persistent Layout</h3>
-                    <p>Drag files where you want them. Switch commits, refresh — arrangement stays.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI Chat</h3>
-                    <p>Press <kbd>I</kbd> to open AI sidebar. Ask questions about the commit, get explanations of
-                        changes.</p>
-                </div>
-                <div class="feature-card feature-card--large">
-                    <div class="feature-icon">⌨️</div>
-                    <h3>Keyboard First</h3>
-                    <p>Navigate commits, search files, expand cards, arrange and select — no mouse needed.</p>
-                    <div class="feature-keys">
-                        <kbd>←</kbd><kbd>→</kbd> Commits
-                        <kbd>Ctrl+F</kbd> Search
-                        <kbd>H</kbd> Row
-                        <kbd>V</kbd> Column
-                        <kbd>Ctrl+A</kbd> Select all
+                <div class="dimension-card">
+                    <div class="dimension-label">Z</div>
+                    <h3>Time</h3>
+                    <p>
+                        Git commits are snapshots in time. Navigate them with arrow keys
+                        like frames in a film. See how code evolves, not just where it is now.
+                        Inline diffs show what changed — green additions, red deletions.
+                    </p>
+                    <div class="dimension-keys">
+                        <kbd>←</kbd><kbd>→</kbd> Navigate commits
                     </div>
                 </div>
-            </div>
-            <div class="product-screenshot product-screenshot--detail">
-                <img src="img-detail.png"
-                    alt="Zoomed-in file card showing inline diff with green additions, hunk navigation, and line numbers"
-                    loading="lazy">
-                <p class="screenshot-caption">Inline diff with hunk navigation — green markers on the scrollbar show
-                    exactly where changes are</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ─── Layers Section ─────────────────────────────────── -->
-    <section id="layers">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-tag">Layers</span>
-                <h2>Focus on <span class="text-gradient">what matters</span></h2>
-                <p>Large commits touch dozens of files. Layers let you group the ones that belong together.</p>
-            </div>
-            <div class="layers-demo">
-                <div class="layers-visual">
-                    <div class="layer-tab layer-tab--active">
-                        <span class="layer-dot"></span>
-                        Auth Flow
-                        <span class="layer-badge">4</span>
+                <div class="dimension-card">
+                    <div class="dimension-label">W</div>
+                    <h3>Layers</h3>
+                    <p>
+                        A commit touches 30 files but you're only reviewing the auth flow.
+                        Create a layer, add the 4 files that matter, switch to it.
+                        Each layer is a filtered view with its own viewport position.
+                    </p>
+                    <div class="dimension-keys">
+                        Right-click → Add to layer
                     </div>
-                    <div class="layer-tab">
-                        <span class="layer-dot layer-dot--blue"></span>
-                        Database
-                        <span class="layer-badge">6</span>
-                    </div>
-                    <div class="layer-tab">
-                        <span class="layer-dot layer-dot--green"></span>
-                        UI Components
-                        <span class="layer-badge">3</span>
-                    </div>
-                    <div class="layer-tab layer-tab--add">+ New Layer</div>
                 </div>
-                <div class="layers-explain-grid">
-                    <div class="layer-explain">
-                        <div class="layer-explain-icon">📂</div>
-                        <h4>Group related files</h4>
-                        <p>Right-click any card → add to a layer. Build focused views of a large commit.</p>
-                    </div>
-                    <div class="layer-explain">
-                        <div class="layer-explain-icon">🔄</div>
-                        <h4>Switch context instantly</h4>
-                        <p>Click a layer tab to show only its files. Each layer remembers its viewport.</p>
-                    </div>
-                    <div class="layer-explain">
-                        <div class="layer-explain-icon">🎯</div>
-                        <h4>Filtered changed files</h4>
-                        <p>Changed Files panel filters to the active layer. Only the files that matter.</p>
-                    </div>
+                <div class="dimension-card dimension-card--wide">
+                    <div class="dimension-label">∞</div>
+                    <h3>Connections</h3>
+                    <p>
+                        <kbd>Alt</kbd>+click a line. Pick a target file. Click a target line.
+                        Now there's a permanent, visible link between those two points.
+                        This is intertwingularity — the cross-connections your file tree hides.
+                        Navigate between connected points with <kbd>◀</kbd> <kbd>▶</kbd> buttons in the file header.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ─── Connections Section ──────────────────────────── -->
+    <!-- ─── Connections Screenshot ──────────────────────── -->
     <section id="connections">
         <div class="section-inner">
             <div class="section-header">
                 <span class="section-tag">Connections</span>
-                <h2>Link lines <span class="text-gradient">across files</span></h2>
-                <p>Draw connections between related code. Click a bubble to jump there instantly.</p>
+                <h2>The cross-connections <span class="text-gradient">made visible</span></h2>
+                <p>A function calls another function in another file. That relationship is knowledge. Make it explicit.
+                </p>
             </div>
-
-            <div class="connections-demo">
-                <div class="product-screenshot">
-                    <img src="img-connections.png"
-                        alt="Connection file picker overlay showing how to link lines across files" loading="lazy">
-                    <p class="screenshot-caption">Alt+click a line → pick a target file → click to connect</p>
-                </div>
+            <div class="product-screenshot">
+                <img src="img-connections.png"
+                    alt="Connection file picker overlay showing how to link lines across files" loading="lazy">
+                <p class="screenshot-caption">Alt+click a line → pick a target file → click to connect</p>
             </div>
-
             <div class="connections-explain">
                 <div class="conn-step">
                     <span class="conn-step-num">1</span>
@@ -231,73 +193,27 @@
                     <p>Click a line in the target — connection saved</p>
                 </div>
             </div>
-
-            <div class="connections-usecases">
-                <h3>Works for</h3>
-                <div class="usecase-grid">
-                    <div class="usecase">
-                        <span class="usecase-icon">🔀</span>
-                        <strong>Data flow</strong>
-                        <p>Trace how data moves from API → service → database</p>
-                    </div>
-                    <div class="usecase">
-                        <span class="usecase-icon">🧩</span>
-                        <strong>Dependencies</strong>
-                        <p>Which functions call which? Which modules depend on what?</p>
-                    </div>
-                    <div class="usecase">
-                        <span class="usecase-icon">🐛</span>
-                        <strong>Bug hunting</strong>
-                        <p>Mark the path from symptom → cause across files</p>
-                    </div>
-                    <div class="usecase">
-                        <span class="usecase-icon">🧠</span>
-                        <strong>Onboarding</strong>
-                        <p>Leave annotated connections for new team members</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- ─── Tech Stack ──────────────────────────────────── -->
-    <section id="stack">
+    <!-- ─── Canvas Section ──────────────────────────────── -->
+    <section id="canvas">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">Built With</span>
-                <h2>The stack</h2>
+                <span class="section-tag">The Canvas</span>
+                <h2>Every file. All at once.</h2>
+                <p>Not one file at a time in tabs. All of them, spatially, with their relationships visible.</p>
             </div>
-            <div class="stack-grid">
-                <div class="stack-item">
-                    <div class="stack-icon">🥟</div>
-                    <h4>Bun</h4>
-                    <p>Runtime + bundler + package manager</p>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-icon">🦊</div>
-                    <h4>Melina.js</h4>
-                    <p>Bun-native web framework with file routing</p>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-icon">🗄️</div>
-                    <h4>SQLite + Zod</h4>
-                    <p>Type-safe ORM for positions and connections</p>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-icon">📊</div>
-                    <h4>simple-git</h4>
-                    <p>Git operations without shelling out</p>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-icon">📏</div>
-                    <h4>measure-fn</h4>
-                    <p>Hierarchical performance instrumentation</p>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-icon">🎨</div>
-                    <h4>Pure CSS</h4>
-                    <p>Custom design system, no frameworks</p>
-                </div>
+            <div class="product-screenshot">
+                <img src="img-canvas.png" alt="Galaxy Canvas showing multiple file cards arranged on an infinite canvas"
+                    loading="lazy">
+            </div>
+            <div class="product-screenshot product-screenshot--detail">
+                <img src="img-detail.png"
+                    alt="Zoomed-in file card showing inline diff with green additions, hunk navigation, and line numbers"
+                    loading="lazy">
+                <p class="screenshot-caption">Inline diff with hunk navigation — green markers on the scrollbar show
+                    where changes are</p>
             </div>
         </div>
     </section>
@@ -307,8 +223,7 @@
         <div class="section-inner">
             <div class="cta-card">
                 <div class="cta-glow"></div>
-                <h2>Try it</h2>
-                <p>Clone, install, open any git repo on the canvas.</p>
+                <h2>Try it on your own repo</h2>
                 <div class="cta-install">
                     <div class="install-step">
                         <code>git clone https://github.com/7flash/git-on-canvas</code>
@@ -341,7 +256,7 @@
                 <a href="https://github.com/7flash/git-on-canvas/issues" target="_blank" rel="noopener">Issues</a>
                 <a href="https://github.com/7flash" target="_blank" rel="noopener">@7flash</a>
             </div>
-            <p class="footer-copy">Open source under ISC license.</p>
+            <p class="footer-copy">Inspired by Ted Nelson's vision of intertwingularity. Open source under ISC.</p>
         </div>
     </footer>
 

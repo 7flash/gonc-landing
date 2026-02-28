@@ -425,6 +425,157 @@ section {
 }
 
 
+/* ─── Ted Nelson Quotes ──────────────────────────────── */
+#nelson {
+    padding: 100px 32px 80px;
+    background: var(--bg-secondary);
+}
+
+.nelson-inner {
+    max-width: 780px;
+}
+
+.nelson-quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.nelson-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-primary);
+    opacity: 0.92;
+    position: relative;
+    padding-left: 28px;
+    border-left: 3px solid;
+    border-image: linear-gradient(180deg, var(--accent-light), var(--accent-blue)) 1;
+    margin: 0;
+}
+
+.nelson-quote--secondary {
+    opacity: 0.7;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+}
+
+.quote-mark {
+    font-size: 4rem;
+    line-height: 0.5;
+    color: var(--accent-light);
+    opacity: 0.25;
+    position: absolute;
+    top: 10px;
+    left: -4px;
+    font-family: var(--font-serif);
+}
+
+.nelson-quote cite {
+    display: block;
+    margin-top: 16px;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.nelson-quote cite em {
+    color: var(--accent-light);
+    font-style: italic;
+}
+
+/* ─── Dimensions Grid ────────────────────────────────── */
+.dimensions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.dimension-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 32px 28px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dimension-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.04), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dimension-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.dimension-card:hover::before {
+    opacity: 1;
+}
+
+.dimension-card--wide {
+    grid-column: span 3;
+}
+
+.dimension-label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+
+.dimension-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+}
+
+.dimension-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.dimension-card strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.dimension-card kbd {
+    font-family: var(--font-mono);
+    font-size: 0.78em;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 2px 6px;
+    color: var(--text-secondary);
+}
+
+.dimension-keys {
+    margin-top: 16px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
 /* ─── Product Screenshots ────────────────────────────── */
 .product-screenshot {
     margin: 40px 0;
@@ -896,16 +1047,12 @@ footer {
 
 /* Section reveal on scroll */
 .section-header,
+.nelson-quote,
+.dimension-card,
 .feature-card,
-.stack-item,
 .cta-card,
-.connections-demo,
 .connections-explain,
-.connections-usecases,
 .conn-step,
-.usecase,
-.layers-visual,
-.layer-explain,
 .product-screenshot {
     opacity: 0;
     transform: translateY(24px);
@@ -913,16 +1060,12 @@ footer {
 }
 
 .section-header.visible,
+.nelson-quote.visible,
+.dimension-card.visible,
 .feature-card.visible,
-.stack-item.visible,
 .cta-card.visible,
-.connections-demo.visible,
 .connections-explain.visible,
-.connections-usecases.visible,
 .conn-step.visible,
-.usecase.visible,
-.layers-visual.visible,
-.layer-explain.visible,
 .product-screenshot.visible {
     opacity: 1;
     transform: translateY(0);
