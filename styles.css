@@ -424,153 +424,7 @@ section {
     margin: 0 auto;
 }
 
-/* ─── Manifesto ───────────────────────────────────────── */
-#manifesto {
-    background: var(--bg-secondary);
-    padding: 120px 32px;
-}
 
-.manifesto-inner {
-    max-width: 900px;
-}
-
-.manifesto-quote {
-    margin-bottom: 64px;
-    text-align: center;
-}
-
-.manifesto-quote blockquote {
-    font-family: var(--font-serif);
-    font-size: clamp(1.3rem, 3vw, 1.9rem);
-    font-style: italic;
-    line-height: 1.5;
-    color: var(--text-primary);
-    opacity: 0.9;
-    max-width: 720px;
-    margin: 0 auto 16px;
-    position: relative;
-}
-
-.manifesto-quote blockquote::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-light), var(--accent-blue));
-    margin: 0 auto 24px;
-    border-radius: 2px;
-}
-
-.manifesto-quote cite {
-    font-family: var(--font-sans);
-    font-style: normal;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-.manifesto-quote cite em {
-    color: var(--accent-light);
-    font-style: italic;
-}
-
-.manifesto-body {
-    margin-bottom: 72px;
-}
-
-.manifesto-body h2 {
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-    text-align: center;
-}
-
-.manifesto-body p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.manifesto-body strong {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-.manifesto-body em {
-    color: var(--accent-light);
-    font-style: italic;
-}
-
-.manifesto-body code {
-    font-family: var(--font-mono);
-    font-size: 0.88em;
-    color: var(--accent-light);
-    background: rgba(124, 58, 237, 0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-/* ─── Pillars ─────────────────────────────────────────── */
-.manifesto-pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.pillar {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 32px 24px;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.pillar::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 20%;
-    right: 20%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.pillar:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
-
-.pillar:hover::after {
-    opacity: 1;
-}
-
-.pillar-icon {
-    color: var(--accent-light);
-    margin-bottom: 16px;
-    opacity: 0.8;
-}
-
-.pillar h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.pillar p {
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: var(--text-secondary);
-}
 
 /* ─── Features Grid ───────────────────────────────────── */
 .features-grid {
@@ -830,97 +684,7 @@ kbd {
     line-height: 1.5;
 }
 
-/* ─── Philosophy Section ──────────────────────────────── */
-#philosophy {
-    padding: 120px 32px;
-}
 
-.philosophy-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-}
-
-.philosophy-left h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.philosophy-left p {
-    font-size: 0.98rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-}
-
-.philosophy-left strong {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-.philosophy-left em {
-    color: var(--accent-light);
-    font-style: italic;
-}
-
-.philosophy-quote-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.pq {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 28px 28px 20px;
-    position: relative;
-    transition: all 0.3s ease;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--text-secondary);
-}
-
-.pq:hover {
-    border-color: var(--border-hover);
-}
-
-.pq-mark {
-    font-size: 3rem;
-    position: absolute;
-    top: 8px;
-    left: 16px;
-    color: var(--accent-light);
-    opacity: 0.3;
-    font-family: var(--font-serif);
-    line-height: 1;
-}
-
-.pq-attr {
-    display: block;
-    margin-top: 12px;
-    font-family: var(--font-sans);
-    font-style: normal;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-.pq--secondary {
-    opacity: 0.7;
-    transform: scale(0.97);
-}
-
-.pq--secondary:hover {
-    opacity: 1;
-    transform: scale(1);
-}
 
 /* ─── Tech Stack ──────────────────────────────────────── */
 .stack-grid {
@@ -1095,18 +859,15 @@ footer {
 /* Section reveal on scroll */
 .section-header,
 .feature-card,
-.pillar,
 .stack-item,
 .cta-card,
-.manifesto-quote,
-.manifesto-body,
-.manifesto-pillars,
-.philosophy-card,
 .connections-demo,
 .connections-explain,
 .connections-usecases,
 .conn-step,
-.usecase {
+.usecase,
+.layers-visual,
+.layer-explain {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
@@ -1114,29 +875,21 @@ footer {
 
 .section-header.visible,
 .feature-card.visible,
-.pillar.visible,
 .stack-item.visible,
 .cta-card.visible,
-.manifesto-quote.visible,
-.manifesto-body.visible,
-.manifesto-pillars.visible,
-.philosophy-card.visible,
 .connections-demo.visible,
 .connections-explain.visible,
 .connections-usecases.visible,
 .conn-step.visible,
-.usecase.visible {
+.usecase.visible,
+.layers-visual.visible,
+.layer-explain.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
-@media (max-width: 900px) {
-    .philosophy-card {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-}
+
 
 @media (max-width: 768px) {
     .features-grid {
@@ -1147,9 +900,7 @@ footer {
         grid-column: span 1;
     }
 
-    .manifesto-pillars {
-        grid-template-columns: 1fr;
-    }
+
 
     .stack-grid {
         grid-template-columns: repeat(2, 1fr);
