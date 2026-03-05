@@ -4,9 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git on Canvas — Everything is Deeply Intertwingled</title>
+    <title>GitMaps — Five Dimensions of Knowledge</title>
     <meta name="description"
-        content="Your code is not a tree of files. It's a web of connections. Git on Canvas renders every file on an infinite canvas — with connections, layers, and time.">
+        content="Transcend the file tree. GitMaps renders knowledge on an infinite canvas — with layers, time-travel, and a minimap to never lose context. The universal formula for effective knowledge exploration.">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GitMaps — Five Dimensions of Knowledge">
+    <meta property="og:description" content="Your knowledge isn't a tree of files. It's a web of connections. GitMaps renders it on an infinite canvas — with layers, time-travel, and a minimap.">
+    <meta property="og:image" content="https://gitmaps.dev/hero-demo.webp">
+    <meta property="og:url" content="https://gitmaps.dev">
+    <meta property="og:site_name" content="GitMaps">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GitMaps — Five Dimensions of Knowledge">
+    <meta name="twitter:description" content="Transcend the file tree. Infinite canvas + layers + time-travel + minimap. The universal formula for knowledge exploration.">
+    <meta name="twitter:image" content="https://gitmaps.dev/hero-demo.webp">
+    <!-- Theme -->
+    <meta name="theme-color" content="#0a0e1a">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,14 +34,14 @@
     <!-- ─── Navigation ──────────────────────────────────── -->
     <nav id="navbar">
         <div class="nav-inner">
-            <a href="#" class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <span class="logo-icon">◈</span>
-                <span class="logo-text">Git on Canvas</span>
+                <span class="logo-text">GitMaps</span>
             </a>
             <div class="nav-links">
                 <a href="#dimensions">Dimensions</a>
-                <a href="#connections">Connections</a>
                 <a href="#canvas">Canvas</a>
+                <a href="#usecases">Use Cases</a>
                 <a href="https://github.com/7flash/git-on-canvas" class="nav-cta" target="_blank" rel="noopener">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path
@@ -44,19 +59,94 @@
             <div class="hero-gradient"></div>
             <div class="hero-grid"></div>
             <div class="hero-glow"></div>
+            <div class="hero-orb hero-orb--1"></div>
+            <div class="hero-orb hero-orb--2"></div>
         </div>
+
+        <!-- Animated floating containers in background -->
+        <div class="hero-canvas-demo" aria-hidden="true">
+            <div class="floating-card floating-card--1">
+                <div class="floating-card-header">
+                    <span class="floating-card-dot" style="background:#ef4444"></span>
+                    <span class="floating-card-dot" style="background:#f59e0b"></span>
+                    <span class="floating-card-dot" style="background:#22c55e"></span>
+                    <span class="floating-card-title">index.ts</span>
+                </div>
+                <div class="floating-card-lines">
+                    <div class="code-line"><span class="ck">import</span> { Canvas } <span class="ck">from</span> <span
+                            class="cs">'./engine'</span></div>
+                    <div class="code-line"><span class="ck">import</span> { Minimap } <span class="ck">from</span> <span
+                            class="cs">'./minimap'</span></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="ck">const</span> app = <span class="cf">createApp</span>()</div>
+                </div>
+            </div>
+            <div class="floating-card floating-card--2">
+                <div class="floating-card-header">
+                    <span class="floating-card-dot" style="background:#ef4444"></span>
+                    <span class="floating-card-dot" style="background:#f59e0b"></span>
+                    <span class="floating-card-dot" style="background:#22c55e"></span>
+                    <span class="floating-card-title">layers.ts</span>
+                </div>
+                <div class="floating-card-lines">
+                    <div class="code-line"><span class="ck">export</span> <span class="ck">type</span> Layer = {</div>
+                    <div class="code-line">&nbsp;&nbsp;name: <span class="ct">string</span></div>
+                    <div class="code-line">&nbsp;&nbsp;projection: <span class="ct">Projection</span></div>
+                    <div class="code-line">}</div>
+                </div>
+            </div>
+            <div class="floating-card floating-card--3">
+                <div class="floating-card-header">
+                    <span class="floating-card-dot" style="background:#ef4444"></span>
+                    <span class="floating-card-dot" style="background:#f59e0b"></span>
+                    <span class="floating-card-dot" style="background:#22c55e"></span>
+                    <span class="floating-card-title">minimap.ts</span>
+                </div>
+                <div class="floating-card-lines">
+                    <div class="code-line"><span class="ck">export class</span> <span class="ct">Minimap</span> {</div>
+                    <div class="code-line">&nbsp;&nbsp;<span class="cf">render</span>() { ... }</div>
+                    <div class="code-line">}</div>
+                </div>
+            </div>
+            <!-- Minimap indicator -->
+            <div class="hero-minimap">
+                <div class="minimap-dot minimap-dot--1"></div>
+                <div class="minimap-dot minimap-dot--2"></div>
+                <div class="minimap-dot minimap-dot--3"></div>
+                <div class="minimap-viewport"></div>
+            </div>
+            <!-- Connection lines -->
+            <svg class="hero-connections" viewBox="0 0 400 300" aria-hidden="true">
+                <line x1="120" y1="80" x2="280" y2="150" stroke="url(#connGrad)" stroke-width="1.5" opacity="0.3"
+                    stroke-dasharray="4 4">
+                    <animate attributeName="stroke-dashoffset" values="0;8" dur="1.5s" repeatCount="indefinite" />
+                </line>
+                <line x1="280" y1="150" x2="100" y2="240" stroke="url(#connGrad)" stroke-width="1.5" opacity="0.2"
+                    stroke-dasharray="4 4">
+                    <animate attributeName="stroke-dashoffset" values="0;8" dur="2s" repeatCount="indefinite" />
+                </line>
+                <defs>
+                    <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#a78bfa" />
+                        <stop offset="100%" stop-color="#22d3ee" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
-                Open Source · Built with Bun
+                The Universal Formula for Knowledge
             </div>
             <h1>
                 Everything is deeply<br>
                 <span class="hero-accent">intertwingled.</span>
             </h1>
             <p class="hero-sub">
-                Multiple files on one canvas. Connections between lines.<br>
-                Time as a dimension you navigate. Layers to filter the noise.
+                Your knowledge isn't a tree of files. It's a web of connections.<br>
+                GitMaps renders it on an infinite canvas — with layers,<br>
+                time-travel, and a minimap to never lose context.
             </p>
             <div class="hero-actions">
                 <a href="https://github.com/7flash/git-on-canvas" class="btn btn-primary" target="_blank"
@@ -65,10 +155,10 @@
                         <path
                             d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                     </svg>
-                    View on GitHub
+                    Try It Now
                 </a>
                 <a href="#dimensions" class="btn btn-ghost">
-                    The four dimensions
+                    The five dimensions
                     <span class="btn-arrow">→</span>
                 </a>
             </div>
@@ -76,7 +166,7 @@
         <div class="hero-image-wrap">
             <div class="hero-image-glow"></div>
             <img src="hero-demo.webp"
-                alt="Git on Canvas — files laid out on an infinite canvas with inline diffs and connections"
+                alt="GitMaps — files laid out on an infinite canvas with minimap, inline diffs, layers, and connections"
                 class="hero-image" loading="eager">
             <div class="hero-image-border"></div>
         </div>
@@ -102,22 +192,41 @@
         </div>
     </section>
 
-    <!-- ─── Four Dimensions ──────────────────────────────── -->
+    <!-- ─── Five Dimensions ──────────────────────────────── -->
     <section id="dimensions">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">The Idea</span>
-                <h2>Four dimensions of code</h2>
-                <p>Your file system gives you one dimension — a tree. Here are four.</p>
+                <span class="section-tag">The Formula</span>
+                <h2>Five dimensions of <span class="text-gradient">knowledge</span></h2>
+                <p>The default reading experience is one-dimensional — you scroll a page top to bottom. We give you
+                    five.</p>
             </div>
             <div class="dimensions-grid">
                 <div class="dimension-card">
-                    <div class="dimension-label">X · Y</div>
-                    <h3>Spatial canvas</h3>
+                    <div class="dimension-label">1D · Scroll</div>
+                    <h3>The Page</h3>
                     <p>
-                        Every file is a card you can place anywhere on an infinite canvas.
-                        Multiple files visible at once — <strong>transclusion</strong>, not tabs.
-                        Arrange them the way you think, not the way the filesystem dictates.
+                        You read a book, a file, an article — one direction, top to bottom.
+                        This is where everyone starts. <strong>One dimension.</strong>
+                    </p>
+                </div>
+                <div class="dimension-card">
+                    <div class="dimension-label">2D-3D · Tree</div>
+                    <h3>Files & Folders</h3>
+                    <p>
+                        Files sit in folders, websites link to each other, books sit on shelves.
+                        Both your filesystem and the internet are derived from the physical library
+                        — books you jump between, shelves you climb up and down.
+                        <strong>Three dimensions, same since the printing press.</strong>
+                    </p>
+                </div>
+                <div class="dimension-card">
+                    <div class="dimension-label">∞ · Canvas</div>
+                    <h3>Spatial Freedom</h3>
+                    <p>
+                        We break through the tree. Every file becomes a card on an <strong>infinite canvas</strong>.
+                        Arrange them the way you think. A minimap gives you context — see everything at a glance,
+                        jump to interact.
                     </p>
                     <div class="dimension-keys">
                         <kbd>Space</kbd> Pan
@@ -125,72 +234,35 @@
                         <kbd>G</kbd> Grid
                     </div>
                 </div>
+                <div class="dimension-card dimension-card--highlight">
+                    <div class="dimension-label">4th · Layers</div>
+                    <h3>Multiple Perspectives</h3>
+                    <p>
+                        Do you organize fruits by color or by taste? Hierarchies force one perspective.
+                        <strong>Layers let you see the same files from different angles</strong> — each layer is a
+                        projection,
+                        a different way the pieces relate. <em>This is our key breakthrough.</em>
+                    </p>
+                </div>
                 <div class="dimension-card">
-                    <div class="dimension-label">Z</div>
-                    <h3>Time</h3>
+                    <div class="dimension-label">5th · Time</div>
+                    <h3>Navigate History</h3>
                     <p>
                         Git commits are snapshots in time. Navigate them with arrow keys
-                        like frames in a film. See how code evolves, not just where it is now.
-                        Inline diffs show what changed — green additions, red deletions.
+                        like frames in a film. See how code evolves — inline diffs show what changed.
                     </p>
                     <div class="dimension-keys">
                         <kbd>←</kbd><kbd>→</kbd> Navigate commits
                     </div>
                 </div>
-                <div class="dimension-card">
-                    <div class="dimension-label">W</div>
-                    <h3>Layers</h3>
-                    <p>
-                        A commit touches 30 files but you're only reviewing the auth flow.
-                        Create a layer, add the 4 files that matter, switch to it.
-                        Each layer is a filtered view with its own viewport position.
-                    </p>
-                    <div class="dimension-keys">
-                        Right-click → Add to layer
-                    </div>
-                </div>
                 <div class="dimension-card dimension-card--wide">
-                    <div class="dimension-label">∞</div>
-                    <h3>Connections</h3>
+                    <div class="dimension-label">∞ · Connections</div>
+                    <h3>The Cross-Connections Made Visible</h3>
                     <p>
                         <kbd>Alt</kbd>+click a line. Pick a target file. Click a target line.
                         Now there's a permanent, visible link between those two points.
-                        This is intertwingularity — the cross-connections your file tree hides.
-                        Navigate between connected points with <kbd>◀</kbd> <kbd>▶</kbd> buttons in the file header.
+                        This is intertwingularity — the relationships your file tree hides.
                     </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ─── Connections Screenshot ──────────────────────── -->
-    <section id="connections">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-tag">Connections</span>
-                <h2>The cross-connections <span class="text-gradient">made visible</span></h2>
-                <p>A function calls another function in another file. That relationship is knowledge. Make it explicit.
-                </p>
-            </div>
-            <div class="product-screenshot">
-                <img src="img-connections.png"
-                    alt="Connection file picker overlay showing how to link lines across files" loading="lazy">
-                <p class="screenshot-caption">Alt+click a line → pick a target file → click to connect</p>
-            </div>
-            <div class="connections-explain">
-                <div class="conn-step">
-                    <span class="conn-step-num">1</span>
-                    <p><kbd>Alt</kbd>+click a line in any file</p>
-                </div>
-                <div class="conn-step-arrow">→</div>
-                <div class="conn-step">
-                    <span class="conn-step-num">2</span>
-                    <p>Pick the target file from the search overlay</p>
-                </div>
-                <div class="conn-step-arrow">→</div>
-                <div class="conn-step">
-                    <span class="conn-step-num">3</span>
-                    <p>Click a line in the target — connection saved</p>
                 </div>
             </div>
         </div>
@@ -205,30 +277,56 @@
                 <p>Not one file at a time in tabs. All of them, spatially, with their relationships visible.</p>
             </div>
             <div class="product-screenshot">
-                <img src="img-detail.png"
-                    alt="Galaxy Canvas showing cards.tsx with inline diff, hunk navigation, and commit sidebar"
+                <img src="img-canvas.png"
+                    alt="Galaxy Canvas showing multiple files on an infinite canvas with minimap navigation"
                     loading="lazy">
-                <p class="screenshot-caption">cards.tsx with hunk navigation — <code>MODIFIED +12 -9</code> badge,
-                    scrollbar diff markers, and full commit history sidebar</p>
+                <p class="screenshot-caption">Multiple files visible simultaneously — minimap for context, spatial
+                    arrangement for understanding</p>
             </div>
         </div>
     </section>
 
-    <!-- ─── The Diff ────────────────────────────────────── -->
-    <section id="diff">
+    <!-- ─── Use Cases ─────────────────────────────────────── -->
+    <section id="usecases">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">The Diff</span>
-                <h2>See what <span class="text-gradient">actually changed</span></h2>
-                <p>Green lines are additions. Red lines are deletions. Expand any card, scroll to the change, navigate
-                    between hunks.</p>
+                <span class="section-tag">The Engine</span>
+                <h2>Two faces of <span class="text-gradient">GalaxyDraw</span></h2>
+                <p>The same five-dimensional engine powers vastly different knowledge domains.</p>
             </div>
-            <div class="product-screenshot">
-                <img src="img-diff.png"
-                    alt="Expanded file card showing inline diff with green highlighted additions for connection navigation code"
-                    loading="lazy">
-                <p class="screenshot-caption">connections.tsx expanded — 73 new lines adding connection navigation,
-                    every addition highlighted green</p>
+            <div class="usecases-grid">
+                <div class="usecase-card">
+                    <div class="usecase-icon">🗺️</div>
+                    <div class="usecase-label">Knowledge Engineering</div>
+                    <h3>GitMaps</h3>
+                    <p>
+                        Navigate your codebase spatially. Git commits become time-travel frames.
+                        Layers reveal different architectural perspectives of the same code —
+                        dependency view, module view, change frequency heat.
+                    </p>
+                    <div class="usecase-tags">
+                        <span>Git</span>
+                        <span>Code</span>
+                        <span>Layers</span>
+                        <span>Time-travel</span>
+                    </div>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon">⚔️</div>
+                    <div class="usecase-label">Real-time Intelligence</div>
+                    <h3>WARMAPS</h3>
+                    <p>
+                        Geopolitical data on an infinite canvas — not a finite globe. Each
+                        war or country is a layer with its own components: maps, news feeds, flight data.
+                        Timeline scrubs through events minute by minute.
+                    </p>
+                    <div class="usecase-tags">
+                        <span>OSINT</span>
+                        <span>Real-time</span>
+                        <span>Layers</span>
+                        <span>Timeline</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -264,11 +362,10 @@
         <div class="footer-inner">
             <div class="footer-logo">
                 <span class="logo-icon">◈</span>
-                <span>Git on Canvas</span>
+                <span>GitMaps</span>
             </div>
             <div class="footer-links">
                 <a href="https://github.com/7flash/git-on-canvas" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://github.com/7flash/git-on-canvas/issues" target="_blank" rel="noopener">Issues</a>
                 <a href="https://github.com/7flash" target="_blank" rel="noopener">@7flash</a>
             </div>
             <p class="footer-copy">Inspired by Ted Nelson's vision of intertwingularity. Open source under ISC.</p>

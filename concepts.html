@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitMaps — Deep Dive: The Five Dimensions</title>
+    <meta name="description"
+        content="A comprehensive exploration of the five-dimensional knowledge model behind GitMaps. From flat pages to infinite canvases, layers, and time-travel.">
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="GitMaps — Deep Dive: The Five Dimensions">
+    <meta property="og:description"
+        content="A comprehensive exploration of the five-dimensional knowledge model. From flat pages to infinite canvases, layers, and time-travel.">
+    <meta property="og:image" content="https://gitmaps.dev/hero-demo.webp">
+    <meta property="og:url" content="https://gitmaps.dev/concepts">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GitMaps — The Five Dimensions of Knowledge">
+    <meta name="twitter:description"
+        content="Deep dive into the universal formula behind GitMaps. How we transcend hierarchies with five degrees of navigational freedom.">
+    <meta name="twitter:image" content="https://gitmaps.dev/hero-demo.webp">
+    <!-- Theme -->
+    <meta name="theme-color" content="#0a0e1a">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ─── Navigation ──────────────────────────────────── -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">◈</span>
+                <span class="logo-text">GitMaps</span>
+            </a>
+            <div class="nav-links">
+                <a href="#problem">Problem</a>
+                <a href="#canvas-section">Canvas</a>
+                <a href="#layers-section">Layers</a>
+                <a href="#engine-section">Engine</a>
+                <a href="https://github.com/7flash/git-on-canvas" class="nav-cta" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ─── Hero ─────────────────────────────────────────── -->
+    <section class="concepts-hero">
+        <div class="concepts-hero-bg"></div>
+        <div class="concepts-hero-content">
+            <div class="hero-badge" style="margin-bottom:24px">
+                <span class="badge-dot"></span>
+                Internal Document · Investor Edition
+            </div>
+            <h1>The Five Dimensions of <span class="text-gradient">Knowledge</span></h1>
+            <p>A deep dive into the universal formula behind GitMaps. How we transcend hierarchies and give
+                every knowledge domain — from code to geopolitics — five degrees of navigational freedom.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 01 · THE PROBLEM                                   -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="problem" class="concept-block">
+        <div class="concept-block-inner">
+            <div class="concept-number">01 · The Problem</div>
+            <h2>The Tyranny of Hierarchy</h2>
+
+            <p class="concept-text">
+                For fifty years we've lived inside the same information structure. A <strong>page</strong> you scroll
+                top to bottom. <strong>Files</strong> nested in <strong>folders</strong>. Hyperlinks jumping between
+                documents. Whether it's your local filesystem, a website, or a library — the skeleton is identical:
+                a tree.
+            </p>
+
+            <div class="analogy-card">
+                <span class="analogy-emoji">📚</span>
+                <p>
+                    Think of a physical library. <strong>Books</strong> (files) sit on <strong>shelves</strong>
+                    (folders). You walk between sections (navigate the hierarchy). You open a book and scroll
+                    page by page (1D). The internet is the same library — websites are buildings,
+                    links are corridors between rooms, pages are pages. <strong>We never left the metaphor.</strong>
+                </p>
+            </div>
+
+            <p class="concept-text">
+                This works, but it's limited. Trees force <strong>one organisational perspective</strong>.
+                A file can only live in one folder. A book sits on one shelf. But knowledge is
+                <strong>intertwingled</strong> — every concept connects to every other in ways that
+                hierarchies cannot express.
+            </p>
+
+            <blockquote class="nelson-quote" style="margin: 36px 0;">
+                <span class="quote-mark">"</span>
+                Intertwingularity is not generally acknowledged — people keep pretending they can make things
+                deeply hierarchical, categorizable and sequential when they can't.
+                <cite>— Ted Nelson, <em>Computer Lib/Dream Machines</em>, 1974</cite>
+            </blockquote>
+
+            <div class="dimension-visual">
+                <div class="dim-chip dim-chip--1d">
+                    <div class="dim-chip-icon">1</div>
+                    Scroll a page
+                </div>
+                <div class="dim-chip dim-chip--2d">
+                    <div class="dim-chip-icon">2</div>
+                    Files ↔ neighbors
+                </div>
+                <div class="dim-chip dim-chip--3d">
+                    <div class="dim-chip-icon">3</div>
+                    Folders ↕ hierarchy
+                </div>
+            </div>
+
+            <p class="concept-text">
+                These three dimensions — scroll, lateral navigation between files, vertical navigation through
+                the folder hierarchy — are the default. The same for local filesystems, the web, and physical
+                libraries. Both are derived from the physical world. <strong>We start here and break
+                    through.</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 02 · THE CANVAS                                     -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="canvas-section" class="concept-block">
+        <div class="concept-block-inner">
+            <div class="concept-number">02 · The Canvas</div>
+            <h2>Breaking Free: Infinite Spatial Freedom</h2>
+
+            <p class="concept-text">
+                The first breakthrough is simple but radical: <strong>remove the tree</strong>.
+                Every file becomes a <strong>media container</strong> — a card that can hold source code,
+                images, documents, interactive components — placed on an <strong>infinite canvas</strong>.
+            </p>
+
+            <p class="concept-text">
+                You can move them anywhere. Arrange them by topic, by urgency, by team, by whatever pattern
+                makes sense to <em>you</em>. There is no enforced structure — unless you choose to enter a
+                read-only view where positions are locked for a shared perspective.
+            </p>
+
+            <div class="insight-callout">
+                <h4>The Minimap</h4>
+                <p>
+                    An infinite canvas without orientation is chaos. The <strong>minimap</strong> solves this.
+                    It's a bird's-eye view showing the relative position of every container. Click to jump,
+                    see the big picture in the corner, interact at the detail level — just like scrolling a
+                    file, but in two dimensions. <strong>The minimap gives you back the context that
+                        the tree used to provide, without the constraints.</strong>
+                </p>
+            </div>
+
+            <div class="product-screenshot" style="margin:44px 0">
+                <img src="img-canvas.png" alt="GitMaps canvas with minimap showing spatial file arrangement"
+                    loading="lazy">
+                <p class="screenshot-caption">Files as spatial containers — the minimap preserves global
+                    context</p>
+            </div>
+
+            <h3>Media Containers</h3>
+            <p class="concept-text">
+                Each card on the canvas is a <strong>media container</strong>. It can render:
+            </p>
+            <ul class="concept-list">
+                <li>Source code files with syntax highlighting and inline diffs</li>
+                <li>Images, diagrams, and visual assets at any resolution</li>
+                <li>Interactive components — embeds, charts, live previews</li>
+                <li>Markdown documents with rendered formatting</li>
+            </ul>
+            <p class="concept-text">
+                Containers can be resized, collapsed, or expanded. Each user can arrange and resize them
+                as they wish, and in collaborative mode, changes propagate in real time.
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 03 · LAYERS (KEY BREAKTHROUGH)                      -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="layers-section" class="concept-block">
+        <div class="concept-block-inner">
+            <div class="concept-number">03 · Layers — The Key Breakthrough</div>
+            <h2>The Fourth Dimension: Multiple Perspectives</h2>
+
+            <div class="analogy-card">
+                <span class="analogy-emoji">🍎</span>
+                <p>
+                    <strong>Do you organize fruits by color or by taste?</strong> In a hierarchy, you must
+                    choose one. The apple goes in "red" or "sweet" — never both. A file goes in
+                    <code>src/auth/</code> or <code>src/api/</code> — never both. Every hierarchy is a
+                    single, frozen perspective.
+                </p>
+            </div>
+
+            <p class="concept-text">
+                Layers are our answer. Each <strong>layer</strong> is a different <strong>projection</strong>
+                of the same underlying files. The files don't move — they exist once. But each layer defines
+                a different spatial arrangement, a different way the pieces relate to each other.
+            </p>
+
+            <p class="concept-text">
+                Think of it like a prism splitting white light. One codebase. Multiple angles:
+            </p>
+
+            <div class="use-case-grid">
+                <div class="use-case-card">
+                    <h4>🏗️ Architecture Layer</h4>
+                    <p>Files grouped by module boundaries, showing how subsystems isolate and connect.</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🔗 Dependency Layer</h4>
+                    <p>Files arranged by import chains — who depends on whom, what's tightly coupled.</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🔥 Churn Layer</h4>
+                    <p>Files sized by how often they change. Hotspots become obvious at a glance.</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>👥 Team Layer</h4>
+                    <p>Files grouped by who owns them — code ownership becomes spatial territory.</p>
+                </div>
+            </div>
+
+            <div class="insight-callout">
+                <h4>Why this is a breakthrough</h4>
+                <p>
+                    Hierarchies enforce a single organisational axis. Layers give you <strong>N
+                        axes simultaneously</strong>. Switch between them instantly. The same file appears
+                    in every layer — only its spatial context changes. You're no longer asking
+                    "where does this file live?" but <strong>"how does this file relate from <em>this</em>
+                        perspective?"</strong>
+                </p>
+            </div>
+
+            <h3>Layers in WARMAPS</h3>
+            <p class="concept-text">
+                In WARMAPS, layers are not code perspectives — they're <strong>geopolitical contexts</strong>.
+                Each war, each country is a different layer. Instead of scrolling into a finite globe to find
+                Ukraine, you <em>select the Ukraine layer</em> and see all its information components laid out
+                on the infinite canvas: the map (with plane flights, troop positions) is just one container.
+                Next to it are news feeds from Reuters, Al Jazeera, Telegram channels — each a resizable
+                container. The user can reorganize them all, and it updates in real-time.
+            </p>
+            <p class="concept-text">
+                <strong>The key insight:</strong> a globe is a finite space. You're constrained. An infinite
+                canvas with layers is unbounded. Each layer is a complete, spatial intelligence dashboard.
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 04 · TIME                                           -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="concept-block">
+        <div class="concept-block-inner">
+            <div class="concept-number">04 · Time Navigation</div>
+            <h2>The Fifth Dimension: History as a Filmstrip</h2>
+
+            <p class="concept-text">
+                Knowledge evolves. Code changes. Geopolitics shifts. The fifth dimension lets you
+                <strong>navigate through time</strong> — scrubbing backward and forward through snapshots
+                of your canvas.
+            </p>
+
+            <h3>In GitMaps: Git Commits</h3>
+            <p class="concept-text">
+                Every Git commit is a frame. Use <kbd>←</kbd> <kbd>→</kbd> arrow keys to step through
+                history. The canvas updates — files appear, disappear, change. Inline diffs show exactly
+                what changed between frames. <strong>You're watching your codebase evolve as a film.</strong>
+            </p>
+
+            <div class="product-screenshot" style="margin:36px 0">
+                <img src="img-diff.png" alt="Inline diff view showing code changes between commits" loading="lazy">
+                <p class="screenshot-caption">Inline diffs — see exactly what changed between time frames
+                </p>
+            </div>
+
+            <h3>In WARMAPS: Timeline Ticks</h3>
+            <p class="concept-text">
+                Instead of Git commits, WARMAPS uses <strong>interval ticks</strong> — minutes, hours, days.
+                Scrub the timeline to see the state of any monitored region at any point in the past.
+                Troop movements, flight paths, news headlines — all rewound or fast-forwarded.
+            </p>
+
+            <div class="analogy-card">
+                <span class="analogy-emoji">🎬</span>
+                <p>
+                    Think of a security camera system. Each camera is a container. The timeline is a
+                    VCR scrubber. You can review any moment, from any angle. <strong>That's what the
+                        fifth dimension gives every knowledge domain.</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 05 · CONNECTIONS                                    -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="concept-block">
+        <div class="concept-block-inner">
+            <div class="concept-number">05 · Connections</div>
+            <h2>The Intertwingularity Made Visible</h2>
+
+            <p class="concept-text">
+                Ted Nelson's core idea was that knowledge is a web, not a tree. Our connections feature
+                makes this literal. <kbd>Alt</kbd>+click a line in one file, pick a target file, click
+                a target line — and a <strong>permanent, visible link</strong> is drawn between them.
+            </p>
+
+            <div class="product-screenshot" style="margin:36px 0">
+                <img src="img-connections.png" alt="Visible connections between files on the canvas" loading="lazy">
+                <p class="screenshot-caption">Cross-connections between files — the relationships your file
+                    tree hides</p>
+            </div>
+
+            <p class="concept-text">
+                These connections persist across layers and time. They are the cross-references that
+                hierarchies cannot express — the "see also" that exists in your head but never on your
+                screen. Until now.
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 06 · THE ENGINE                                     -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="engine-section" class="concept-block">
+        <div class="concept-block-inner">
+            <div class="concept-number">06 · The Engine</div>
+            <h2>GalaxyDraw: The Universal Renderer</h2>
+
+            <p class="concept-text">
+                Behind both GitMaps and WARMAPS is a single rendering engine: <strong>GalaxyDraw</strong>
+                (internally "galaxy-canvas"). It provides:
+            </p>
+
+            <ul class="concept-list">
+                <li><strong>Infinite canvas</strong> with hardware-accelerated pan/zoom</li>
+                <li><strong>Minimap</strong> with real-time container position tracking</li>
+                <li><strong>Media containers</strong> — pluggable renderers for any content type</li>
+                <li><strong>Layer system</strong> — N projections of the same data set</li>
+                <li><strong>Timeline</strong> — frame-by-frame navigation with pluggable time sources</li>
+                <li><strong>Connection graph</strong> — line-level cross-references between containers</li>
+                <li><strong>Grid & snap</strong> — optional structural enforcement for shared views</li>
+            </ul>
+
+            <p class="concept-text">
+                The engine is domain-agnostic. GitMaps feeds it files, diffs, and Git history. WARMAPS
+                feeds it maps, news, and OSINT data. Any knowledge domain can be plugged in — research papers,
+                legal documents, medical records, design systems.
+            </p>
+
+            <div class="insight-callout">
+                <h4>The Universal Formula</h4>
+                <p>
+                    <strong>Canvas + Containers + Minimap + Layers + Timeline + Connections = Five-dimensional
+                        knowledge exploration.</strong> This is the formula. GalaxyDraw implements it.
+                    GitMaps and WARMAPS are merely the first two instantiations.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 07 · USE CASES                                      -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="concept-block">
+        <div class="concept-block-inner">
+            <div class="concept-number">07 · Use Cases</div>
+            <h2>GitMaps & WARMAPS</h2>
+
+            <div class="use-case-grid">
+                <div class="use-case-card">
+                    <h4>🗺️ GitMaps</h4>
+                    <p>Spatial code exploration for developers.</p>
+                    <ul>
+                        <li>Containers = source files, images, configs</li>
+                        <li>Layers = architectural perspectives</li>
+                        <li>Time = Git commit history</li>
+                        <li>Connections = cross-file references</li>
+                        <li>Minimap = codebase-at-a-glance</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h4>⚔️ WARMAPS</h4>
+                    <p>Real-time geopolitical intelligence dashboard.</p>
+                    <ul>
+                        <li>Containers = maps, news feeds, flight data</li>
+                        <li>Layers = countries, wars, conflict contexts</li>
+                        <li>Time = interval ticks (minutes/hours)</li>
+                        <li>Connections = event correlations</li>
+                        <li>Canvas = unbounded (not a finite globe)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Why Not Just a Map?</h3>
+            <p class="concept-text">
+                A traditional map application gives you a finite globe. You scroll to a country,
+                you zoom in. You're constrained by geography. WARMAPS breaks this by using the
+                infinite canvas model: instead of scrolling to Ukraine on a globe, you <strong>select
+                    the Ukraine layer</strong>. Now you see all its components — the geographic map is
+                just one container. News feeds from different sources are other containers. Flight data
+                is another. Telegram OSINT channels are another. <strong>Each user can resize and
+                    reorganize them, and everything updates in real-time.</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- ─── Footer ──────────────────────────────────────── -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <span class="logo-icon">◈</span>
+                <span>GitMaps</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/7flash/git-on-canvas" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://github.com/7flash" target="_blank" rel="noopener">@7flash</a>
+            </div>
+            <p class="footer-copy">Inspired by Ted Nelson's vision of intertwingularity. Open source under ISC.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
