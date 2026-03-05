@@ -1915,7 +1915,311 @@ footer {
     }
 }
 
+/* ─── Interactive Canvas Demo ────────────────────────── */
+.live-demo-wrap {
+    margin: 44px 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+    background: var(--bg-secondary);
+}
+
+.cd-container {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+    cursor: grab;
+    background: var(--bg-primary);
+    background-image:
+        radial-gradient(ellipse 60% 50% at 30% 40%, rgba(124, 58, 237, 0.04), transparent),
+        radial-gradient(ellipse 40% 60% at 70% 60%, rgba(34, 211, 238, 0.03), transparent);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+
+.cd-container:active {
+    cursor: grabbing;
+}
+
+/* ─── File Cards ─────────────────────────────────────── */
+.cd-card {
+    background: rgba(10, 10, 28, 0.92);
+    border: 1px solid rgba(128, 128, 200, 0.15);
+    border-radius: 10px;
+    cursor: grab;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+}
+
+.cd-card:hover {
+    border-color: rgba(167, 139, 250, 0.35);
+    box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(124, 58, 237, 0.1);
+    z-index: 5 !important;
+}
+
+.cd-card--dragging {
+    cursor: grabbing;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 40px rgba(124, 58, 237, 0.15);
+    border-color: rgba(167, 139, 250, 0.5);
+    transform: scale(1.03);
+    z-index: 100 !important;
+}
+
+/* Connection-aware hover highlighting */
+.cd-card--dimmed {
+    opacity: 0.35;
+    filter: saturate(0.3);
+    transform: scale(0.98);
+}
+
+.cd-card--highlighted {
+    border-color: rgba(167, 139, 250, 0.6);
+    box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5), 0 0 30px rgba(124, 58, 237, 0.2), 0 0 60px rgba(124, 58, 237, 0.08);
+    transform: scale(1.02);
+    z-index: 8 !important;
+}
+
+.cd-card--connected {
+    border-color: rgba(167, 139, 250, 0.35);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(124, 58, 237, 0.12);
+    z-index: 6 !important;
+}
+
+.cd-card-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(128, 128, 200, 0.08);
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px 10px 0 0;
+}
+
+.cd-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.cd-card-name {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    margin-left: 5px;
+    letter-spacing: 0.02em;
+}
+
+.cd-card-body {
+    padding: 6px 0;
+}
+
+.cd-line {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    padding: 0 10px;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: background 0.15s ease;
+}
+
+.cd-line:hover {
+    background: rgba(128, 128, 200, 0.06);
+}
+
+.cd-line-num {
+    width: 18px;
+    text-align: right;
+    color: rgba(128, 128, 180, 0.25);
+    margin-right: 8px;
+    font-size: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* Syntax tokens */
+.cd-tok-kw {
+    color: #c084fc;
+}
+
+.cd-tok-str {
+    color: #34d399;
+}
+
+.cd-tok-fn {
+    color: #60a5fa;
+}
+
+.cd-tok-type {
+    color: #fbbf24;
+}
+
+.cd-tok-num {
+    color: #fb923c;
+}
+
+/* ─── Minimap ────────────────────────────────────────── */
+.cd-minimap {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 120px;
+    height: 80px;
+    background: rgba(10, 10, 28, 0.85);
+    border: 1px solid rgba(128, 128, 200, 0.15);
+    border-radius: 8px;
+    z-index: 20;
+    cursor: pointer;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cd-minimap:hover {
+    border-color: rgba(34, 211, 238, 0.4);
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.1);
+}
+
+/* ─── Hint overlay ───────────────────────────────────── */
+.cd-hint {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 18px;
+    background: rgba(10, 10, 28, 0.8);
+    border: 1px solid rgba(128, 128, 200, 0.12);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    z-index: 20;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+    transition: opacity 0.4s ease;
+    animation: hintPulse 3s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ─── Entrance animation ─────────────────────────────── */
+.cd-card {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.cd-ready .cd-card {
+    animation: cardEntrance 0.6s ease-out forwards;
+}
+
+.cd-ready .cd-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.cd-ready .cd-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.cd-ready .cd-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.cd-ready .cd-card:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.cd-ready .cd-card:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.cd-minimap {
+    opacity: 0;
+}
+
+.cd-ready .cd-minimap {
+    animation: cardEntrance 0.5s ease-out 0.6s forwards;
+}
+
+.cd-hint {
+    opacity: 0;
+}
+
+.cd-ready .cd-hint {
+    animation: cardEntrance 0.5s ease-out 0.8s forwards, hintPulse 3s ease-in-out 1.3s infinite;
+}
+
+/* Live demo wrap caption */
+.live-demo-wrap .screenshot-caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--accent-light);
+    padding: 10px 16px;
+    background: rgba(124, 58, 237, 0.06);
+    margin: 0;
+    border-top: 1px solid var(--border);
+    font-weight: 500;
+}
+
+/* ─── Mobile: Canvas demo responsive ─────────────────── */
+@media (max-width: 768px) {
+    .cd-container {
+        height: 360px;
+    }
+
+    .cd-minimap {
+        width: 80px;
+        height: 50px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .cd-hint {
+        font-size: 0.65rem;
+        padding: 5px 12px;
+        gap: 6px;
+    }
+}
+
 @media (max-width: 480px) {
+    .cd-container {
+        height: 280px;
+    }
+
+    .cd-hint {
+        font-size: 0.6rem;
+    }
+
     .hero-actions {
         flex-direction: column;
         align-items: center;
