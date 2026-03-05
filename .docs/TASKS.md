@@ -7,7 +7,7 @@
 - [x] ~~**Landing page SEO**~~ — ✅ DONE. Added OG meta, Twitter Card, theme-color, SVG favicon to all 3 pages (index, pitch, concepts).
 - [x] ~~**Mobile responsive**~~ — ✅ Already has breakpoints at 768px (grid→1col, hide floating cards, collapse nav) and 480px (stack CTAs, single-col features). No action needed.
 - [ ] **Page load performance** — hero-demo.webp is 1.5MB. Add lazy loading, consider generating multiple sizes for srcset.
-- [ ] **Cross-link the three pages** — Currently index, concepts, and pitch are deliberately unlinked. Consider adding subtle navigation between them for internal use.
+- [x] ~~**Cross-link the three pages**~~ — ✅ DONE. Added Deep Dive + Pitch to landing nav, Home + Pitch to concepts nav, Home + Deep Dive to pitch footer.
 
 ## 🟢 Priority: Features
 - [ ] **Live canvas embed** — Add an interactive mini-canvas demo on the landing page to prove the "infinite canvas" concept in-browser.
