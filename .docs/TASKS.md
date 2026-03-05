@@ -4,7 +4,7 @@
 - [ ] **GitHub link destination** — Verify `https://github.com/7flash/git-on-canvas` is the correct public repo URL. If it's private, update or hide the link.
 
 ## 🟡 Priority: Improve
-- [ ] **Landing page SEO** — Add Open Graph meta tags, Twitter card, and a proper favicon for link previews.
+- [x] ~~**Landing page SEO**~~ — ✅ DONE. Added OG meta, Twitter Card, theme-color, SVG favicon to all 3 pages (index, pitch, concepts).
 - [ ] **Mobile responsive** — Large gradient text and floating code cards may render poorly on narrow viewports. Test and fix breakpoints.
 - [ ] **Page load performance** — hero-demo.webp is 1.5MB. Add lazy loading, consider generating multiple sizes for srcset.
 - [ ] **Cross-link the three pages** — Currently index, concepts, and pitch are deliberately unlinked. Consider adding subtle navigation between them for internal use.
