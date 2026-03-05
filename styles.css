@@ -1765,6 +1765,33 @@ footer {
     box-shadow: 0 0 12px rgba(124, 58, 237, 0.4);
 }
 
+.pitch-counter {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1001;
+    background: rgba(10, 14, 26, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.pitch-body {
+    scroll-snap-type: y proximity;
+}
+
+.pitch-body .pitch-slide {
+    scroll-snap-align: start;
+}
+
 /* ─── Concept List ────────────────────────────────────── */
 .concept-list {
     list-style: none;

@@ -78,3 +78,71 @@ if (pitchProgress) {
         pitchProgress.style.width = `${pct}%`;
     }, { passive: true });
 }
+
+// ─── Pitch keyboard navigation ──────────────────────────
+const pitchSlides = document.querySelectorAll('.pitch-slide');
+if (pitchSlides.length > 0) {
+    let currentSlide = 0;
+
+    // Create slide counter badge
+    const counter = document.createElement('div');
+    counter.className = 'pitch-counter';
+    counter.textContent = `1 / ${pitchSlides.length}`;
+    document.body.appendChild(counter);
+
+    function updateCounter() {
+        counter.textContent = `${currentSlide + 1} / ${pitchSlides.length}`;
+    }
+
+    function goToSlide(idx) {
+        if (idx < 0 || idx >= pitchSlides.length) return;
+        currentSlide = idx;
+        pitchSlides[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        updateCounter();
+    }
+
+    // Track current slide from scroll position
+    const slideObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+                const idx = Array.from(pitchSlides).indexOf(entry.target);
+                if (idx >= 0) {
+                    currentSlide = idx;
+                    updateCounter();
+                }
+            }
+        });
+    }, { threshold: 0.5 });
+
+    pitchSlides.forEach(s => slideObserver.observe(s));
+
+    // Keyboard handler
+    document.addEventListener('keydown', (e) => {
+        // Don't intercept if typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        switch (e.key) {
+            case 'ArrowRight':
+            case 'ArrowDown':
+            case ' ':
+            case 'PageDown':
+                e.preventDefault();
+                goToSlide(currentSlide + 1);
+                break;
+            case 'ArrowLeft':
+            case 'ArrowUp':
+            case 'PageUp':
+                e.preventDefault();
+                goToSlide(currentSlide - 1);
+                break;
+            case 'Home':
+                e.preventDefault();
+                goToSlide(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                goToSlide(pitchSlides.length - 1);
+                break;
+        }
+    });
+}
