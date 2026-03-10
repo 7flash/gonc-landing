@@ -15,7 +15,7 @@
 ## 🟢 Priority: Features
 - [x] ~~**Live canvas embed**~~ — ✅ DONE. Interactive mini-canvas demo on the landing page with 5 draggable file cards (app.ts, router.ts, canvas.ts, minimap.ts, types.ts), syntax-highlighted code, animated SVG connection lines between imports, live minimap with viewport indicator, grid background, pan/zoom via mouse/touch, pinch-zoom support, minimap click-to-navigate, staggered entrance animations, and responsive sizing (480/360/280px). Replaces the static img-canvas.png screenshot. `canvas-demo.js` (self-contained IIFE, ~350 lines).
 - [ ] **Video walkthrough** — Record a 30-second screen capture of the actual GitMaps app in action and embed as hero background.
-- [ ] **Deploy to production** — Set up hosting (Vercel/Netlify/Caddy) for the static site. Currently only accessible on localhost:3456.
+- [x] ~~**Deploy to production**~~ — ✅ DONE. Cloned to `/root/gonc-web` on `202.155.132.139`. Caddy configured with `file_server`, `try_files`, gzip, and 1h cache headers. Auto-TLS enabled. **DNS required**: Add A record `gitmaps.dev → 202.155.132.139` in domain registrar.
 
 ## 📝 Architecture Notes
 - **Stack**: Pure HTML/CSS/JS — no framework, no build step
