@@ -182,6 +182,24 @@ img {
     box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
 }
 
+.nav-hamburger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 6px;
+    border-radius: 6px;
+    transition: all var(--transition);
+}
+
+.nav-hamburger:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
 /* ─── Buttons ─────────────────────────────────────────── */
 .btn {
     display: inline-flex;
@@ -1011,6 +1029,7 @@ section {
     gap: 24px;
     max-width: 800px;
     margin: 0 auto;
+    align-items: stretch;
 }
 
 .install-card {
@@ -1019,6 +1038,16 @@ section {
     border-radius: var(--radius-md);
     padding: 28px;
     transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.install-card--online .install-desc {
+    flex: 1;
+}
+
+.install-card--online .btn {
+    justify-content: center;
 }
 
 .install-card:hover {
@@ -1259,6 +1288,39 @@ footer {
     }
 }
 
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(6, 6, 14, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 16px 32px;
+        gap: 4px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-hamburger {
+        display: flex;
+    }
+}
+
 @media (max-width: 600px) {
     section {
         padding: 60px 20px;
@@ -1266,14 +1328,6 @@ footer {
 
     #hero {
         padding: 100px 20px 60px;
-    }
-
-    .nav-links {
-        gap: 14px;
-    }
-
-    .nav-links a {
-        font-size: 0.78rem;
     }
 
     .engine-features {
