@@ -9,18 +9,18 @@
         content="Transcend the file tree. GitMaps renders knowledge on an infinite canvas — with layers, time-travel, and a minimap to never lose context. The universal formula for effective knowledge exploration.">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="GitMaps — Five Dimensions of Knowledge">
+    <meta property="og:title" content="GitMaps — Four Dimensions of Code">
     <meta property="og:description"
         content="Your knowledge isn't a tree of files. It's a web of connections. GitMaps renders it on an infinite canvas — with layers, time-travel, and a minimap.">
-    <meta property="og:image" content="https://gitmaps.dev/hero-demo.webp">
+    <meta property="og:image" content="https://gitmaps.dev/hero.png">
     <meta property="og:url" content="https://gitmaps.dev">
     <meta property="og:site_name" content="GitMaps">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GitMaps — Five Dimensions of Knowledge">
+    <meta name="twitter:title" content="GitMaps — Four Dimensions of Code">
     <meta name="twitter:description"
-        content="Transcend the file tree. Infinite canvas + layers + time-travel + minimap. The universal formula for knowledge exploration.">
-    <meta name="twitter:image" content="https://gitmaps.dev/hero-demo.webp">
+        content="Transcend the file tree. Infinite canvas + layers + connections + time-travel. The universal formula for knowledge exploration.">
+    <meta name="twitter:image" content="https://gitmaps.dev/hero.png">
     <!-- Theme -->
     <meta name="theme-color" content="#0a0e1a">
     <link rel="icon"
@@ -42,9 +42,9 @@
                 <span class="logo-text">GitMaps</span>
             </a>
             <div class="nav-links">
-                <a href="#dimensions">Dimensions</a>
-                <a href="#canvas">Canvas</a>
-                <a href="#usecases">Use Cases</a>
+                <a href="#dimensions">How it works</a>
+                <a href="#engine">Engine</a>
+                <a href="#install">Install</a>
                 <a href="concepts.html">Deep Dive</a>
                 <a href="pitch.html">Pitch</a>
                 <a href="https://github.com/7flash/git-on-canvas" class="nav-cta" target="_blank" rel="noopener">
@@ -68,97 +68,27 @@
             <div class="hero-orb hero-orb--2"></div>
         </div>
 
-        <!-- Animated floating containers in background -->
-        <div class="hero-canvas-demo" aria-hidden="true">
-            <div class="floating-card floating-card--1">
-                <div class="floating-card-header">
-                    <span class="floating-card-dot" style="background:#ef4444"></span>
-                    <span class="floating-card-dot" style="background:#f59e0b"></span>
-                    <span class="floating-card-dot" style="background:#22c55e"></span>
-                    <span class="floating-card-title">index.ts</span>
-                </div>
-                <div class="floating-card-lines">
-                    <div class="code-line"><span class="ck">import</span> { Canvas } <span class="ck">from</span> <span
-                            class="cs">'./engine'</span></div>
-                    <div class="code-line"><span class="ck">import</span> { Minimap } <span class="ck">from</span> <span
-                            class="cs">'./minimap'</span></div>
-                    <div class="code-line"></div>
-                    <div class="code-line"><span class="ck">const</span> app = <span class="cf">createApp</span>()</div>
-                </div>
-            </div>
-            <div class="floating-card floating-card--2">
-                <div class="floating-card-header">
-                    <span class="floating-card-dot" style="background:#ef4444"></span>
-                    <span class="floating-card-dot" style="background:#f59e0b"></span>
-                    <span class="floating-card-dot" style="background:#22c55e"></span>
-                    <span class="floating-card-title">layers.ts</span>
-                </div>
-                <div class="floating-card-lines">
-                    <div class="code-line"><span class="ck">export</span> <span class="ck">type</span> Layer = {</div>
-                    <div class="code-line">&nbsp;&nbsp;name: <span class="ct">string</span></div>
-                    <div class="code-line">&nbsp;&nbsp;projection: <span class="ct">Projection</span></div>
-                    <div class="code-line">}</div>
-                </div>
-            </div>
-            <div class="floating-card floating-card--3">
-                <div class="floating-card-header">
-                    <span class="floating-card-dot" style="background:#ef4444"></span>
-                    <span class="floating-card-dot" style="background:#f59e0b"></span>
-                    <span class="floating-card-dot" style="background:#22c55e"></span>
-                    <span class="floating-card-title">minimap.ts</span>
-                </div>
-                <div class="floating-card-lines">
-                    <div class="code-line"><span class="ck">export class</span> <span class="ct">Minimap</span> {</div>
-                    <div class="code-line">&nbsp;&nbsp;<span class="cf">render</span>() { ... }</div>
-                    <div class="code-line">}</div>
-                </div>
-            </div>
-            <!-- Minimap indicator -->
-            <div class="hero-minimap">
-                <div class="minimap-dot minimap-dot--1"></div>
-                <div class="minimap-dot minimap-dot--2"></div>
-                <div class="minimap-dot minimap-dot--3"></div>
-                <div class="minimap-viewport"></div>
-            </div>
-            <!-- Connection lines -->
-            <svg class="hero-connections" viewBox="0 0 400 300" aria-hidden="true">
-                <line x1="120" y1="80" x2="280" y2="150" stroke="url(#connGrad)" stroke-width="1.5" opacity="0.3"
-                    stroke-dasharray="4 4">
-                    <animate attributeName="stroke-dashoffset" values="0;8" dur="1.5s" repeatCount="indefinite" />
-                </line>
-                <line x1="280" y1="150" x2="100" y2="240" stroke="url(#connGrad)" stroke-width="1.5" opacity="0.2"
-                    stroke-dasharray="4 4">
-                    <animate attributeName="stroke-dashoffset" values="0;8" dur="2s" repeatCount="indefinite" />
-                </line>
-                <defs>
-                    <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#a78bfa" />
-                        <stop offset="100%" stop-color="#22d3ee" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
                 Open Source · Spatial Code Explorer
             </div>
             <h1>
-                Everything is deeply<br>
-                <span class="hero-accent">intertwingled.</span>
+                Your code has<br>
+                <span class="hero-accent">four dimensions.</span>
             </h1>
             <p class="hero-sub">
-                Your knowledge isn't a tree of files. It's a web of connections.<br>
-                GitMaps renders it on an infinite canvas — with layers,<br>
-                time-travel, and a minimap to never lose context.
+                Files are one-dimensional. Folders give you three.<br>
+                GitMaps adds <strong>layers</strong>, <strong>connections</strong>, and <strong>time-travel</strong> —
+                on an infinite canvas.<br>
+                <em>Built for reviewing AI-generated code at scale.</em>
             </p>
             <div class="hero-actions">
-                <a href="https://gitmaps.xyz" class="btn btn-primary">
+                <a href="#install" class="btn btn-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="5 3 19 12 5 21 5 3" />
                     </svg>
-                    Try GitMaps Online
+                    Get Started
                 </a>
                 <a href="https://github.com/7flash/git-on-canvas" class="btn btn-ghost" target="_blank" rel="noopener">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -172,195 +102,503 @@
         </div>
         <div class="hero-image-wrap">
             <div class="hero-image-glow"></div>
-            <img src="hero-demo.webp"
-                alt="GitMaps — files laid out on an infinite canvas with minimap, inline diffs, layers, and connections"
-                class="hero-image" loading="eager" fetchpriority="high" decoding="async" width="1200" height="750">
+            <img src="hero.png"
+                alt="GitMaps — React repository loaded on an infinite canvas with commit history, changed files, and code cards"
+                class="hero-image" loading="eager" fetchpriority="high" decoding="async" width="1400" height="900">
             <div class="hero-image-border"></div>
         </div>
     </section>
 
-    <!-- ─── Ted Nelson ────────────────────────────────────── -->
-    <section id="nelson">
-        <div class="section-inner nelson-inner">
-            <div class="nelson-quotes">
-                <blockquote class="nelson-quote">
-                    <span class="quote-mark">"</span>
-                    Intertwingularity is not generally acknowledged — people keep pretending they can make things
-                    deeply hierarchical, categorizable and sequential when they can't.
-                    <cite>— Ted Nelson, <em>Computer Lib/Dream Machines</em>, 1974</cite>
-                </blockquote>
-                <blockquote class="nelson-quote nelson-quote--secondary">
-                    <span class="quote-mark">"</span>
-                    There are no 'subjects' at all; there is only all knowledge, since the cross-connections
-                    among the myriad topics of this world simply cannot be divided up neatly.
-                    <cite>— Ted Nelson</cite>
-                </blockquote>
+    <!-- ─── The Problem ──────────────────────────────────── -->
+    <section id="problem">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">The Problem</span>
+                <h2>Your IDE shows <span class="text-gradient">one file at a time.</span></h2>
+                <p>AI agents generate thousands of lines across dozens of files. Traditional file trees can't keep
+                    up.<br>
+                    You need to see the full picture — not one tab at a time.</p>
             </div>
         </div>
     </section>
 
-    <!-- ─── Five Dimensions ──────────────────────────────── -->
+    <!-- ─── Four Dimensions ──────────────────────────────── -->
     <section id="dimensions">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">How It Works</span>
-                <h2>Five dimensions of <span class="text-gradient">code understanding</span></h2>
-                <p>Your IDE shows one file at a time. GitMaps shows your entire codebase spatially — with connections,
-                    layers, and time-travel.</p>
+                <span class="section-tag">The Solution</span>
+                <h2>Four dimensions of <span class="text-gradient">code understanding</span></h2>
+                <p>GitMaps transcends hierarchical file systems with a spatial model that matches how you actually think
+                    about code.</p>
             </div>
-            <div class="dimensions-grid">
-                <div class="dimension-card">
-                    <div class="dimension-label">1D · Scroll</div>
-                    <h3>The Page</h3>
-                    <p>
-                        You read a book, a file, an article — one direction, top to bottom.
-                        This is where everyone starts. <strong>One dimension.</strong>
-                    </p>
-                </div>
-                <div class="dimension-card">
-                    <div class="dimension-label">2D-3D · Tree</div>
-                    <h3>Files & Folders</h3>
-                    <p>
-                        Files sit in folders, websites link to each other, books sit on shelves.
-                        Both your filesystem and the internet are derived from the physical library
-                        — books you jump between, shelves you climb up and down.
-                        <strong>Three dimensions, same since the printing press.</strong>
-                    </p>
-                </div>
-                <div class="dimension-card">
-                    <div class="dimension-label">∞ · Canvas</div>
-                    <h3>Spatial Freedom</h3>
-                    <p>
-                        We break through the tree. Every file becomes a card on an <strong>infinite canvas</strong>.
-                        Arrange them the way you think. A minimap gives you context — see everything at a glance,
-                        jump to interact.
-                    </p>
-                    <div class="dimension-keys">
-                        <kbd>Space</kbd> Pan
-                        <kbd>Scroll</kbd> Zoom
-                        <kbd>G</kbd> Grid
+
+            <!-- Dimension Flow: Visual vertical progression -->
+            <div class="dimension-flow">
+
+                <!-- 1D: The Problem (files are lines) -->
+                <div class="dim-step dim-step--1d">
+                    <div class="dim-step-visual">
+                        <svg viewBox="0 0 320 120" fill="none" class="dim-svg-lg">
+                            <!-- Single file rendered as lines -->
+                            <rect x="10" y="8" width="300" height="104" rx="6" fill="#0d1117" stroke="#30363d"
+                                stroke-width="1" />
+                            <rect x="10" y="8" width="300" height="20" rx="6" fill="#161b22" />
+                            <circle cx="24" cy="18" r="4" fill="#f85149" opacity="0.8" />
+                            <circle cx="36" cy="18" r="4" fill="#d29922" opacity="0.8" />
+                            <circle cx="48" cy="18" r="4" fill="#3fb950" opacity="0.8" />
+                            <text x="64" y="22" fill="#8b949e" font-size="10"
+                                font-family="JetBrains Mono, monospace">server.ts</text>
+                            <!-- Code lines -->
+                            <text x="20" y="46" fill="#484f58" font-size="9" font-family="monospace">1</text>
+                            <text x="36" y="46" fill="#ff7b72" font-size="9"
+                                font-family="JetBrains Mono, monospace">import</text>
+                            <text x="74" y="46" fill="#c9d1d9" font-size="9" font-family="JetBrains Mono, monospace">{
+                                serve }</text>
+                            <text x="138" y="46" fill="#ff7b72" font-size="9"
+                                font-family="JetBrains Mono, monospace">from</text>
+                            <text x="168" y="46" fill="#a5d6ff" font-size="9"
+                                font-family="JetBrains Mono, monospace">'bun'</text>
+                            <text x="20" y="60" fill="#484f58" font-size="9" font-family="monospace">2</text>
+                            <text x="36" y="60" fill="#ff7b72" font-size="9"
+                                font-family="JetBrains Mono, monospace">import</text>
+                            <text x="74" y="60" fill="#c9d1d9" font-size="9" font-family="JetBrains Mono, monospace">{
+                                router }</text>
+                            <text x="142" y="60" fill="#ff7b72" font-size="9"
+                                font-family="JetBrains Mono, monospace">from</text>
+                            <text x="172" y="60" fill="#a5d6ff" font-size="9"
+                                font-family="JetBrains Mono, monospace">'./router'</text>
+                            <text x="20" y="74" fill="#484f58" font-size="9" font-family="monospace">3</text>
+                            <text x="20" y="88" fill="#484f58" font-size="9" font-family="monospace">4</text>
+                            <text x="36" y="88" fill="#d2a8ff" font-size="9"
+                                font-family="JetBrains Mono, monospace">serve</text>
+                            <text x="72" y="88" fill="#c9d1d9" font-size="9" font-family="JetBrains Mono, monospace">({
+                                port: 3000, fetch: router })</text>
+                            <!-- Scroll indicator -->
+                            <rect x="302" y="32" width="4" height="40" rx="2" fill="#30363d" />
+                            <rect x="302" y="32" width="4" height="16" rx="2" fill="#484f58" />
+                            <!-- Arrow: you scroll ↕ -->
+                            <text x="240" y="104" fill="#484f58" font-size="9" font-family="Inter, sans-serif">scroll
+                                ↕</text>
+                        </svg>
+                    </div>
+                    <div class="dim-step-content">
+                        <div class="dim-badge-inline">
+                            <span class="dim-num">1D</span>
+                            <span class="dim-axis">Lines</span>
+                        </div>
+                        <h3>Files are one-dimensional</h3>
+                        <p>Lines of code, read top to bottom. The atomic unit. Every file is fully rendered as a card
+                            you can read, edit, and scroll. <em>This is where everyone starts.</em></p>
                     </div>
                 </div>
-                <div class="dimension-card dimension-card--highlight">
-                    <div class="dimension-label">4th · Layers</div>
-                    <h3>Multiple Perspectives</h3>
-                    <p>
-                        Do you organize fruits by color or by taste? Hierarchies force one perspective.
-                        <strong>Layers let you see the same files from different angles</strong> — each layer is a
-                        projection,
-                        a different way the pieces relate. <em>This is our key breakthrough.</em>
-                    </p>
+
+                <!-- Connector arrow -->
+                <div class="dim-connector">
+                    <svg viewBox="0 0 40 40" width="32" height="32">
+                        <path d="M20 4 L20 32" stroke="#a78bfa" stroke-width="1.5" opacity="0.4" />
+                        <polygon points="20,36 15,28 25,28" fill="#a78bfa" opacity="0.5" />
+                    </svg>
+                    <span class="dim-connector-label">break free</span>
                 </div>
-                <div class="dimension-card">
-                    <div class="dimension-label">5th · Time</div>
-                    <h3>Navigate History</h3>
-                    <p>
-                        Git commits are snapshots in time. Navigate them with arrow keys
-                        like frames in a film. See how code evolves — inline diffs show what changed.
-                    </p>
-                    <div class="dimension-keys">
-                        <kbd>←</kbd><kbd>→</kbd> Navigate commits
+
+                <!-- 2D: Canvas -->
+                <div class="dim-step dim-step--2d">
+                    <div class="dim-step-visual">
+                        <svg viewBox="0 0 320 160" fill="none" class="dim-svg-lg">
+                            <!-- Grid background -->
+                            <defs>
+                                <pattern id="canvasGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e2430" stroke-width="0.5" />
+                                </pattern>
+                            </defs>
+                            <rect width="320" height="160" fill="url(#canvasGrid)" rx="8" />
+                            <rect width="320" height="160" fill="none" stroke="#30363d" stroke-width="1" rx="8" />
+                            <!-- File cards scattered spatially -->
+                            <g class="card-float-1">
+                                <rect x="15" y="15" width="85" height="55" rx="4" fill="#0d1117" stroke="#a78bfa"
+                                    stroke-width="1.2" />
+                                <rect x="15" y="15" width="85" height="14" rx="4" fill="#1a1028" />
+                                <text x="24" y="25" fill="#a78bfa" font-size="8"
+                                    font-family="JetBrains Mono, monospace">server.ts</text>
+                                <rect x="20" y="35" width="55" height="3" rx="1" fill="#30363d" />
+                                <rect x="20" y="41" width="40" height="3" rx="1" fill="#30363d" />
+                                <rect x="20" y="47" width="60" height="3" rx="1" fill="#30363d" />
+                                <rect x="20" y="53" width="30" height="3" rx="1" fill="#30363d" />
+                                <!-- Diff marker -->
+                                <rect x="94" y="35" width="3" height="8" rx="1" fill="#3fb950" opacity="0.8" />
+                            </g>
+                            <g class="card-float-2">
+                                <rect x="120" y="8" width="85" height="55" rx="4" fill="#0d1117" stroke="#60a5fa"
+                                    stroke-width="1.2" />
+                                <rect x="120" y="8" width="85" height="14" rx="4" fill="#0d1a2e" />
+                                <text x="129" y="18" fill="#60a5fa" font-size="8"
+                                    font-family="JetBrains Mono, monospace">router.ts</text>
+                                <rect x="125" y="28" width="50" height="3" rx="1" fill="#30363d" />
+                                <rect x="125" y="34" width="65" height="3" rx="1" fill="#30363d" />
+                                <rect x="125" y="40" width="35" height="3" rx="1" fill="#30363d" />
+                                <rect x="125" y="46" width="55" height="3" rx="1" fill="#30363d" />
+                            </g>
+                            <g class="card-float-3">
+                                <rect x="225" y="20" width="80" height="50" rx="4" fill="#0d1117" stroke="#34d399"
+                                    stroke-width="1.2" />
+                                <rect x="225" y="20" width="80" height="14" rx="4" fill="#0d1e17" />
+                                <text x="234" y="30" fill="#34d399" font-size="8"
+                                    font-family="JetBrains Mono, monospace">db.ts</text>
+                                <rect x="230" y="40" width="60" height="3" rx="1" fill="#30363d" />
+                                <rect x="230" y="46" width="45" height="3" rx="1" fill="#30363d" />
+                                <rect x="230" y="52" width="55" height="3" rx="1" fill="#30363d" />
+                            </g>
+                            <g class="card-float-4">
+                                <rect x="40" y="85" width="90" height="55" rx="4" fill="#0d1117" stroke="#f472b6"
+                                    stroke-width="1.2" />
+                                <rect x="40" y="85" width="90" height="14" rx="4" fill="#1e0d1a" />
+                                <text x="49" y="95" fill="#f472b6" font-size="8"
+                                    font-family="JetBrains Mono, monospace">auth.ts</text>
+                                <rect x="45" y="105" width="55" height="3" rx="1" fill="#30363d" />
+                                <rect x="45" y="111" width="70" height="3" rx="1" fill="#30363d" />
+                                <rect x="45" y="117" width="40" height="3" rx="1" fill="#30363d" />
+                                <rect x="45" y="123" width="60" height="3" rx="1" fill="#30363d" />
+                                <!-- Diff markers -->
+                                <rect x="124" y="111" width="3" height="8" rx="1" fill="#f85149" opacity="0.8" />
+                            </g>
+                            <g class="card-float-5">
+                                <rect x="160" y="90" width="85" height="50" rx="4" fill="#0d1117" stroke="#fbbf24"
+                                    stroke-width="1.2" />
+                                <rect x="160" y="90" width="85" height="14" rx="4" fill="#1e1a0d" />
+                                <text x="169" y="100" fill="#fbbf24" font-size="8"
+                                    font-family="JetBrains Mono, monospace">schema.ts</text>
+                                <rect x="165" y="110" width="65" height="3" rx="1" fill="#30363d" />
+                                <rect x="165" y="116" width="45" height="3" rx="1" fill="#30363d" />
+                                <rect x="165" y="122" width="55" height="3" rx="1" fill="#30363d" />
+                                <!-- Diff marker -->
+                                <rect x="239" y="110" width="3" height="6" rx="1" fill="#d29922" opacity="0.8" />
+                            </g>
+                            <!-- Mini minimap in corner -->
+                            <rect x="268" y="112" width="44" height="38" rx="3" fill="#0d1117" stroke="#30363d"
+                                stroke-width="0.8" opacity="0.9" />
+                            <rect x="272" y="116" width="6" height="4" rx="0.5" fill="#a78bfa" opacity="0.5" />
+                            <rect x="282" y="114" width="6" height="4" rx="0.5" fill="#60a5fa" opacity="0.5" />
+                            <rect x="293" y="116" width="5" height="3" rx="0.5" fill="#34d399" opacity="0.5" />
+                            <rect x="275" y="126" width="7" height="4" rx="0.5" fill="#f472b6" opacity="0.5" />
+                            <rect x="287" y="127" width="6" height="3" rx="0.5" fill="#fbbf24" opacity="0.5" />
+                            <rect x="271" y="114" width="18" height="12" rx="1" fill="none" stroke="#a78bfa"
+                                stroke-width="0.6" opacity="0.6" />
+                        </svg>
+                    </div>
+                    <div class="dim-step-content">
+                        <div class="dim-badge-inline">
+                            <span class="dim-num">2D</span>
+                            <span class="dim-axis">Canvas</span>
+                        </div>
+                        <h3>Canvas breaks hierarchy</h3>
+                        <p>Files escape their folders. Arrange them spatially — group related code side by side
+                            regardless of directory structure. <strong>A minimap gives you overview at a
+                                glance.</strong> Diff markers on the right edge show what changed.</p>
                     </div>
                 </div>
-                <div class="dimension-card dimension-card--wide">
-                    <div class="dimension-label">∞ · Connections</div>
-                    <h3>The Cross-Connections Made Visible</h3>
-                    <p>
-                        <kbd>Alt</kbd>+click a line. Pick a target file. Click a target line.
-                        Now there's a permanent, visible link between those two points.
-                        This is intertwingularity — the relationships your file tree hides.
-                    </p>
+
+                <!-- Connector arrow -->
+                <div class="dim-connector">
+                    <svg viewBox="0 0 40 40" width="32" height="32">
+                        <path d="M20 4 L20 32" stroke="#60a5fa" stroke-width="1.5" opacity="0.4" />
+                        <polygon points="20,36 15,28 25,28" fill="#60a5fa" opacity="0.5" />
+                    </svg>
+                    <span class="dim-connector-label">add depth</span>
+                </div>
+
+                <!-- 3D: Layers -->
+                <div class="dim-step dim-step--3d">
+                    <div class="dim-step-visual">
+                        <svg viewBox="0 0 320 180" fill="none" class="dim-svg-lg">
+                            <!-- Layer stack with perspective -->
+                            <!-- Back layer: All Files (faded) -->
+                            <g opacity="0.25" transform="translate(0, 0)">
+                                <rect x="30" y="10" width="260" height="40" rx="4" fill="#0d1117" stroke="#484f58"
+                                    stroke-width="0.8" />
+                                <text x="120" y="34" fill="#8b949e" font-size="10" font-family="Inter, sans-serif">All
+                                    Files</text>
+                            </g>
+                            <!-- Mid layer: Auth -->
+                            <g opacity="0.5" transform="translate(10, 20)">
+                                <rect x="30" y="30" width="240" height="40" rx="4" fill="#0d1117" stroke="#60a5fa"
+                                    stroke-width="1" />
+                                <text x="50" y="54" fill="#60a5fa" font-size="10" font-family="Inter, sans-serif"
+                                    font-weight="500">Auth Layer</text>
+                                <rect x="170" y="42" width="40" height="16" rx="3" fill="#0d1a2e" stroke="#60a5fa"
+                                    stroke-width="0.6" />
+                                <text x="178" y="53" fill="#60a5fa" font-size="7"
+                                    font-family="JetBrains Mono, monospace">auth.ts</text>
+                                <rect x="220" y="44" width="35" height="14" rx="3" fill="#0d1a2e" stroke="#60a5fa"
+                                    stroke-width="0.6" />
+                                <text x="224" y="54" fill="#60a5fa" font-size="6"
+                                    font-family="JetBrains Mono, monospace">jwt.ts</text>
+                            </g>
+                            <!-- Front layer: API (bright) -->
+                            <g opacity="0.95" transform="translate(20, 40)">
+                                <rect x="30" y="50" width="220" height="40" rx="4" fill="#0d1117" stroke="#a78bfa"
+                                    stroke-width="1.4" />
+                                <text x="50" y="74" fill="#a78bfa" font-size="10" font-family="Inter, sans-serif"
+                                    font-weight="600">API Layer</text>
+                                <rect x="150" y="62" width="42" height="16" rx="3" fill="#1a1028" stroke="#a78bfa"
+                                    stroke-width="0.8" />
+                                <text x="155" y="73" fill="#a78bfa" font-size="7"
+                                    font-family="JetBrains Mono, monospace">router.ts</text>
+                                <rect x="198" y="64" width="32" height="14" rx="3" fill="#1a1028" stroke="#a78bfa"
+                                    stroke-width="0.6" />
+                                <text x="202" y="74" fill="#a78bfa" font-size="6"
+                                    font-family="JetBrains Mono, monospace">api.ts</text>
+                            </g>
+                            <!-- Z-axis arrow -->
+                            <line x1="18" y1="14" x2="38" y2="130" stroke="#c084fc" stroke-width="1.2" opacity="0.3" />
+                            <polygon points="40,134 35,126 43,128" fill="#c084fc" opacity="0.4" />
+                            <text x="4" y="70" fill="#c084fc" font-size="8" font-family="Inter, sans-serif"
+                                opacity="0.4" transform="rotate(-80, 10, 70)">Z-axis</text>
+                            <!-- Connection dot between layers -->
+                            <circle cx="210" cy="108" r="5" fill="#a78bfa" opacity="0.2" class="conn-pulse" />
+                            <circle cx="210" cy="108" r="2.5" fill="#a78bfa" opacity="0.9" />
+                            <line x1="210" y1="78" x2="210" y2="105" stroke="#a78bfa" stroke-width="0.8" opacity="0.3"
+                                stroke-dasharray="3 2" />
+                            <!-- Layer tab bar at bottom -->
+                            <g transform="translate(60, 145)">
+                                <rect x="0" y="0" width="200" height="26" rx="13" fill="#161b22" stroke="#30363d"
+                                    stroke-width="0.8" />
+                                <rect x="4" y="3" width="56" height="20" rx="10" fill="#7c3aed" opacity="0.2"
+                                    stroke="#a78bfa" stroke-width="0.8" />
+                                <text x="14" y="16" fill="#a78bfa" font-size="8" font-family="Inter, sans-serif"
+                                    font-weight="500">All Files</text>
+                                <text x="76" y="16" fill="#60a5fa" font-size="8" font-family="Inter, sans-serif"
+                                    opacity="0.6">Auth</text>
+                                <text x="110" y="16" fill="#a78bfa" font-size="8" font-family="Inter, sans-serif"
+                                    opacity="0.6">API</text>
+                                <text x="140" y="16" fill="#8b949e" font-size="8" font-family="Inter, sans-serif"
+                                    opacity="0.5">+ New Layer</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="dim-step-content">
+                        <div class="dim-badge-inline">
+                            <span class="dim-num">3D</span>
+                            <span class="dim-axis">Layers</span>
+                        </div>
+                        <h3>Layers add depth</h3>
+                        <p>Extract files into focus layers — independently from their folder. Auth, API, UI —
+                            <strong>each layer is a different plane in 3D space.</strong> Switch context without losing
+                            position. Connections tie files across layers.</p>
+                    </div>
+                </div>
+
+                <!-- Connector arrow -->
+                <div class="dim-connector">
+                    <svg viewBox="0 0 40 40" width="32" height="32">
+                        <path d="M20 4 L20 32" stroke="#34d399" stroke-width="1.5" opacity="0.4" />
+                        <polygon points="20,36 15,28 25,28" fill="#34d399" opacity="0.5" />
+                    </svg>
+                    <span class="dim-connector-label">travel through time</span>
+                </div>
+
+                <!-- 4D: Time / Git -->
+                <div class="dim-step dim-step--4d">
+                    <div class="dim-step-visual">
+                        <svg viewBox="0 0 320 100" fill="none" class="dim-svg-lg">
+                            <!-- Git timeline -->
+                            <line x1="30" y1="50" x2="290" y2="50" stroke="#30363d" stroke-width="1.5" />
+                            <!-- Commit dots -->
+                            <circle cx="50" cy="50" r="5" fill="#484f58" opacity="0.5" />
+                            <circle cx="90" cy="50" r="5" fill="#484f58" opacity="0.6" />
+                            <circle cx="130" cy="50" r="6" fill="#7c3aed" opacity="0.7" />
+                            <circle cx="170" cy="50" r="5" fill="#484f58" opacity="0.6" />
+                            <circle cx="210" cy="50" r="6" fill="#7c3aed" opacity="0.8" />
+                            <!-- HEAD (bright) -->
+                            <circle cx="260" cy="50" r="8" fill="#a78bfa" opacity="0.2" />
+                            <circle cx="260" cy="50" r="6" fill="#a78bfa" />
+                            <circle cx="260" cy="50" r="2.5" fill="#fff" opacity="0.8" />
+                            <!-- Branch line -->
+                            <path d="M130 44 Q155 18 210 44" stroke="#60a5fa" stroke-width="1.2" fill="none"
+                                opacity="0.5" stroke-dasharray="4 3" />
+                            <circle cx="170" cy="24" r="4" fill="#60a5fa" opacity="0.5" />
+                            <text x="176" y="20" fill="#60a5fa" font-size="7" font-family="JetBrains Mono, monospace"
+                                opacity="0.6">feature</text>
+                            <!-- Labels -->
+                            <text x="40" y="72" fill="#484f58" font-size="8"
+                                font-family="JetBrains Mono, monospace">v1.0</text>
+                            <text x="120" y="72" fill="#6e7681" font-size="8"
+                                font-family="JetBrains Mono, monospace">v2.0</text>
+                            <text x="248" y="72" fill="#a78bfa" font-size="8" font-family="JetBrains Mono, monospace"
+                                font-weight="500">HEAD</text>
+                            <!-- Arrow keys hint -->
+                            <g transform="translate(80, 82)">
+                                <rect x="0" y="0" width="16" height="14" rx="2" fill="#161b22" stroke="#30363d"
+                                    stroke-width="0.6" />
+                                <text x="5" y="10" fill="#8b949e" font-size="7" font-family="Inter, sans-serif">←</text>
+                                <rect x="20" y="0" width="16" height="14" rx="2" fill="#161b22" stroke="#30363d"
+                                    stroke-width="0.6" />
+                                <text x="25" y="10" fill="#8b949e" font-size="7"
+                                    font-family="Inter, sans-serif">→</text>
+                                <text x="42" y="10" fill="#484f58" font-size="7"
+                                    font-family="Inter, sans-serif">navigate commits</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="dim-step-content">
+                        <div class="dim-badge-inline">
+                            <span class="dim-num">4D</span>
+                            <span class="dim-axis">Time</span>
+                        </div>
+                        <h3>Git is the fourth dimension</h3>
+                        <p>Move through commits while your spatial layout persists. See what changed, where it changed.
+                            <strong>Inline diffs show additions, deletions, and modifications</strong> — review changes
+                            spatially instead of one-file-at-a-time.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ─── Canvas Section ──────────────────────────────── -->
-    <section id="canvas">
+    <!-- ─── Engine Section ──────────────────────────────── -->
+    <section id="engine">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">The Canvas</span>
-                <h2>Every file. All at once.</h2>
-                <p>Not one file at a time in tabs. All of them, spatially, with their relationships visible.</p>
+                <span class="section-tag">Powered by xydraw</span>
+                <h2>High-performance <span class="text-gradient">rendering engine</span></h2>
+                <p>Three rendering modes — Canvas for speed, DOM for interaction, CodeMirror for editing.<br>
+                    Handles thousands of files without breaking a sweat.</p>
             </div>
-            <div class="live-demo-wrap">
-                <div id="live-canvas-demo" class="cd-container"></div>
-                <p class="screenshot-caption">⬆ This is live — drag the cards, pan the canvas, scroll to zoom.
-                    Connections update in real-time.</p>
+
+            <div class="engine-features">
+                <div class="engine-card">
+                    <div class="engine-icon">🗺️</div>
+                    <h3>Minimap</h3>
+                    <p>Always-on bird's eye view of your entire workspace. Click to navigate. Viewport indicator tracks
+                        your position in real-time.</p>
+                </div>
+                <div class="engine-card">
+                    <div class="engine-icon">⚡</div>
+                    <h3>Canvas Text</h3>
+                    <p>Hardware-accelerated text rendering directly on canvas. Thousands of lines rendered at 60fps with
+                        LOD transitions — zoomed-out files become compact pills.</p>
+                </div>
+                <div class="engine-card">
+                    <div class="engine-icon">📝</div>
+                    <h3>CodeMirror Editor</h3>
+                    <p>Double-click any card to open the full editor. Syntax highlighting, auto-complete, save, and
+                        commit — directly from the canvas.</p>
+                </div>
+                <div class="engine-card">
+                    <div class="engine-icon">🔍</div>
+                    <h3>Diff Markers</h3>
+                    <p>Colored indicators on card edges — green for added, red for deleted, yellow for modified.
+                        Navigate between changed hunks with ▲/▼.</p>
+                </div>
+                <div class="engine-card">
+                    <div class="engine-icon">🔗</div>
+                    <h3>Cross-Layer Connections</h3>
+                    <p>Alt+click to draw permanent links between specific lines across files and layers. Connections are
+                        the knots that bind your mental model.</p>
+                </div>
+                <div class="engine-card">
+                    <div class="engine-icon">📊</div>
+                    <h3>Force-Directed Graph</h3>
+                    <p>Toggle dependency view (Ctrl+G) to see import relationships as a force-directed layout. Files
+                        cluster by coupling.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ─── Use Cases ─────────────────────────────────────── -->
-    <section id="usecases">
+    <!-- ─── Install Section ── ──────────────────────────── -->
+    <section id="install">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-tag">Use Cases</span>
-                <h2>Built for <span class="text-gradient">real workflows</span></h2>
-                <p>See how developers and researchers use spatial code exploration.</p>
+                <span class="section-tag">Get Started</span>
+                <h2>Try it <span class="text-gradient">in seconds</span></h2>
+                <p>No account required. Runs locally on your machine.</p>
             </div>
-            <div class="usecases-grid">
-                <div class="usecase-card">
-                    <div class="usecase-icon">🗺️</div>
-                    <div class="usecase-label">Knowledge Engineering</div>
-                    <h3>GitMaps</h3>
-                    <p>
-                        Navigate your codebase spatially. Git commits become time-travel frames.
-                        Layers reveal different architectural perspectives of the same code —
-                        dependency view, module view, change frequency heat.
-                    </p>
-                    <div class="usecase-tags">
-                        <span>Git</span>
-                        <span>Code</span>
-                        <span>Layers</span>
-                        <span>Time-travel</span>
-                    </div>
-                </div>
-                <div class="usecase-card">
-                    <div class="usecase-icon">⚔️</div>
-                    <div class="usecase-label">Real-time Intelligence</div>
-                    <h3>WARMAPS</h3>
-                    <p>
-                        Geopolitical data on an infinite canvas — not a finite globe. Each
-                        war or country is a layer with its own components: maps, news feeds, flight data.
-                        Timeline scrubs through events minute by minute.
-                    </p>
-                    <div class="usecase-tags">
-                        <span>OSINT</span>
-                        <span>Real-time</span>
-                        <span>Layers</span>
-                        <span>Timeline</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ─── CTA Section ─────────────────────────────────── -->
-    <section id="cta">
-        <div class="section-inner">
-            <div class="cta-card">
-                <div class="cta-glow"></div>
-                <h2>Try it now</h2>
-                <div class="cta-install">
-                    <div class="install-step">
-                        <span style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Online — no install required</span>
-                        <a href="https://gitmaps.xyz" class="btn btn-primary btn-lg" style="margin-top:12px;">
-                            Try GitMaps at gitmaps.xyz →
-                        </a>
+            <div class="install-methods">
+                <!-- Online (always shown) -->
+                <div class="install-card install-card--online">
+                    <div class="install-card-header">
+                        <span class="install-label">☁️ Online</span>
+                        <span class="install-badge">No install</span>
                     </div>
-                    <div style="display:flex;align-items:center;gap:16px;margin:16px 0;">
-                        <div style="flex:1;height:1px;background:rgba(124,58,237,0.2);"></div>
-                        <span style="color:rgba(255,255,255,0.3);font-size:12px;">or</span>
-                        <div style="flex:1;height:1px;background:rgba(124,58,237,0.2);"></div>
+                    <p class="install-desc">Try GitMaps instantly in your browser — no setup required.</p>
+                    <a href="https://gitmaps.xyz" class="btn btn-primary btn-lg" style="width:100%;text-align:center;">
+                        Try GitMaps at gitmaps.xyz →
+                    </a>
+                </div>
+
+                <!-- Platform tabs -->
+                <div class="install-card install-card--local">
+                    <div class="install-card-header">
+                        <span class="install-label">💻 Local</span>
+                        <span class="install-badge">Full power</span>
                     </div>
-                    <div class="install-step">
-                        <span style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Local — full editing + git commit</span>
-                        <code style="margin-top:12px;">npx gitmaps</code>
+                    <p class="install-desc">Edit files, save changes, commit — the full experience.</p>
+
+                    <div class="install-tabs" id="installTabs">
+                        <button class="install-tab active" data-tab="npx">npx</button>
+                        <button class="install-tab" data-tab="linux">Linux/Mac</button>
+                        <button class="install-tab" data-tab="windows">Windows</button>
+                    </div>
+
+                    <div class="install-panels">
+                        <div class="install-panel active" id="panel-npx">
+                            <div class="install-prereq">Requires <a href="https://bun.sh" target="_blank"
+                                    rel="noopener">Bun</a> or <a href="https://nodejs.org" target="_blank"
+                                    rel="noopener">Node.js 18+</a></div>
+                            <div class="install-code">
+                                <code>npx gitmaps</code>
+                                <button class="copy-btn" data-copy="npx gitmaps" title="Copy to clipboard">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="install-note">Opens current directory. Use <code>npx gitmaps /path/to/repo</code>
+                                for a specific repo.</p>
+                        </div>
+                        <div class="install-panel" id="panel-linux">
+                            <div class="install-prereq">One-liner — installs Bun if needed</div>
+                            <div class="install-code">
+                                <code>curl -fsSL https://gitmaps.dev/install.sh | bash</code>
+                                <button class="copy-btn" data-copy="curl -fsSL https://gitmaps.dev/install.sh | bash"
+                                    title="Copy to clipboard">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="install-note">Or install manually: <code>bun install -g gitmaps && gitmaps</code>
+                            </p>
+                        </div>
+                        <div class="install-panel" id="panel-windows">
+                            <div class="install-prereq">PowerShell — installs Bun if needed</div>
+                            <div class="install-code">
+                                <code>irm https://gitmaps.dev/install.ps1 | iex</code>
+                                <button class="copy-btn" data-copy="irm https://gitmaps.dev/install.ps1 | iex"
+                                    title="Copy to clipboard">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="install-note">Or install manually: <code>bun install -g gitmaps; gitmaps</code>
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- GitHub star CTA -->
+            <div class="install-github">
                 <a href="https://github.com/7flash/git-on-canvas" class="btn btn-ghost btn-lg" target="_blank"
-                    rel="noopener" style="margin-top:16px;">
+                    rel="noopener">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -380,6 +618,8 @@
             </div>
             <div class="footer-links">
                 <a href="https://github.com/7flash/git-on-canvas" target="_blank" rel="noopener">GitHub</a>
+                <a href="concepts.html">Deep Dive</a>
+                <a href="pitch.html">Pitch Deck</a>
                 <a href="https://github.com/7flash" target="_blank" rel="noopener">@7flash</a>
             </div>
             <p class="footer-copy">Inspired by Ted Nelson's vision of intertwingularity. Open source under ISC.</p>
@@ -387,7 +627,51 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="canvas-demo.js"></script>
+    <script>
+        // Platform auto-detect for install tabs
+        (function () {
+            const tabs = document.querySelectorAll('.install-tab');
+            const panels = document.querySelectorAll('.install-panel');
+            if (!tabs.length) return;
+
+            // Auto-detect platform
+            const ua = navigator.userAgent.toLowerCase();
+            let defaultTab = 'npx'; // universal default
+            if (ua.includes('win')) defaultTab = 'windows';
+            else if (ua.includes('linux') || ua.includes('mac') || ua.includes('darwin')) defaultTab = 'linux';
+
+            function switchTab(tabName) {
+                tabs.forEach(t => {
+                    t.classList.toggle('active', t.dataset.tab === tabName);
+                });
+                panels.forEach(p => {
+                    p.classList.toggle('active', p.id === 'panel-' + tabName);
+                });
+            }
+
+            // Set detected platform as default
+            switchTab(defaultTab);
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+            });
+
+            // Copy buttons
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const text = btn.dataset.copy;
+                    navigator.clipboard.writeText(text).then(() => {
+                        btn.innerHTML = '✓';
+                        btn.style.color = '#3fb950';
+                        setTimeout(() => {
+                            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+                            btn.style.color = '';
+                        }, 1500);
+                    });
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>

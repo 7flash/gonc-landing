@@ -17,10 +17,9 @@ const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             // Stagger animations within grid groups
-            const parent = entry.target.closest('.dimensions-grid, .connections-explain, .usecases-grid');
+            const parent = entry.target.closest('.engine-features, .install-methods');
             if (parent) {
-                const selector = '.dimension-card, .conn-step, .usecase-card';
-                const siblings = Array.from(parent.querySelectorAll(selector));
+                const siblings = Array.from(parent.querySelectorAll('.engine-card, .install-card'));
                 const idx = siblings.indexOf(entry.target);
                 if (idx >= 0) {
                     entry.target.style.transitionDelay = `${idx * 0.08}s`;
@@ -34,13 +33,10 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 const revealSelectors = [
     '.section-header',
-    '.nelson-quote',
-    '.dimension-card',
-    '.cta-card',
-    '.connections-explain',
-    '.conn-step',
-    '.product-screenshot',
-    '.usecase-card',
+    '.dim-step',
+    '.dim-connector',
+    '.engine-card',
+    '.install-card',
 ].join(', ');
 
 document.querySelectorAll(revealSelectors).forEach(el => {
@@ -66,83 +62,4 @@ if (heroGlow) {
         const y = (e.clientY / window.innerHeight - 0.5) * 20;
         heroGlow.style.transform = `translate(calc(-50% + ${x}px), ${y}px)`;
     }, { passive: true });
-}
-
-// ─── Pitch progress bar ─────────────────────────────────
-const pitchProgress = document.getElementById('pitch-progress');
-if (pitchProgress) {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const total = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = total > 0 ? Math.min((scrolled / total) * 100, 100) : 0;
-        pitchProgress.style.width = `${pct}%`;
-    }, { passive: true });
-}
-
-// ─── Pitch keyboard navigation ──────────────────────────
-const pitchSlides = document.querySelectorAll('.pitch-slide');
-if (pitchSlides.length > 0) {
-    let currentSlide = 0;
-
-    // Create slide counter badge
-    const counter = document.createElement('div');
-    counter.className = 'pitch-counter';
-    counter.textContent = `1 / ${pitchSlides.length}`;
-    document.body.appendChild(counter);
-
-    function updateCounter() {
-        counter.textContent = `${currentSlide + 1} / ${pitchSlides.length}`;
-    }
-
-    function goToSlide(idx) {
-        if (idx < 0 || idx >= pitchSlides.length) return;
-        currentSlide = idx;
-        pitchSlides[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
-        updateCounter();
-    }
-
-    // Track current slide from scroll position
-    const slideObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
-                const idx = Array.from(pitchSlides).indexOf(entry.target);
-                if (idx >= 0) {
-                    currentSlide = idx;
-                    updateCounter();
-                }
-            }
-        });
-    }, { threshold: 0.5 });
-
-    pitchSlides.forEach(s => slideObserver.observe(s));
-
-    // Keyboard handler
-    document.addEventListener('keydown', (e) => {
-        // Don't intercept if typing in an input
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-
-        switch (e.key) {
-            case 'ArrowRight':
-            case 'ArrowDown':
-            case ' ':
-            case 'PageDown':
-                e.preventDefault();
-                goToSlide(currentSlide + 1);
-                break;
-            case 'ArrowLeft':
-            case 'ArrowUp':
-            case 'PageUp':
-                e.preventDefault();
-                goToSlide(currentSlide - 1);
-                break;
-            case 'Home':
-                e.preventDefault();
-                goToSlide(0);
-                break;
-            case 'End':
-                e.preventDefault();
-                goToSlide(pitchSlides.length - 1);
-                break;
-        }
-    });
 }
