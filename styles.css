@@ -768,6 +768,157 @@ section {
 }
 
 
+/* ─── Explore Section ────────────────────────────────── */
+#explore {
+    background: var(--bg-primary);
+    position: relative;
+}
+
+#explore::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(124, 58, 237, 0.04), transparent);
+    pointer-events: none;
+}
+
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.explore-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.explore-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-light), var(--accent-cyan));
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.explore-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.explore-card:hover::before {
+    opacity: 1;
+}
+
+.explore-card--self {
+    border-color: rgba(124, 58, 237, 0.25);
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.06), var(--bg-card));
+}
+
+.explore-card-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    width: 42px;
+    text-align: center;
+}
+
+.explore-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.explore-card-body h3 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    letter-spacing: -0.01em;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.explore-card-body p {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.explore-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.explore-lang {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.explore-lang::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--lang-color, #8b949e);
+}
+
+.explore-stars {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}
+
+.explore-arrow {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    transition: transform var(--transition), color var(--transition);
+    flex-shrink: 0;
+}
+
+.explore-card:hover .explore-arrow {
+    transform: translateX(4px);
+    color: var(--accent-light);
+}
+
+@media (max-width: 900px) {
+    .explore-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .explore-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 /* ─── Engine Section ─────────────────────────────────── */
 #engine {
     background: var(--bg-primary);
