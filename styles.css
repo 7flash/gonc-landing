@@ -495,6 +495,7 @@ img {
 /* ─── Section Shared ──────────────────────────────────── */
 section {
     padding: 110px 32px;
+    scroll-margin-top: 80px;
 }
 
 .section-inner {
@@ -1323,11 +1324,12 @@ footer {
 
 @media (max-width: 600px) {
     section {
-        padding: 60px 20px;
+        padding: 80px 20px 60px;
+        scroll-margin-top: 60px;
     }
 
     #hero {
-        padding: 100px 20px 60px;
+        padding: 110px 20px 60px;
     }
 
     .engine-features {
