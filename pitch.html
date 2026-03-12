@@ -437,6 +437,45 @@
     </section>
 
     <script src="script.js"></script>
+    <script>
+        // Pitch progress bar + keyboard navigation
+        (function () {
+            const body = document.querySelector('.pitch-body');
+            const bar = document.getElementById('pitch-progress');
+            const slides = document.querySelectorAll('.pitch-slide');
+            if (!body || !bar || !slides.length) return;
+
+            // Progress bar
+            body.addEventListener('scroll', () => {
+                const pct = body.scrollTop / (body.scrollHeight - body.clientHeight);
+                bar.style.width = Math.min(pct * 100, 100) + '%';
+            }, { passive: true });
+
+            // Keyboard navigation
+            let currentSlide = 0;
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                    e.preventDefault();
+                    currentSlide = Math.min(currentSlide + 1, slides.length - 1);
+                    slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    currentSlide = Math.max(currentSlide - 1, 0);
+                    slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            // Track current slide on scroll
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        currentSlide = Array.from(slides).indexOf(e.target);
+                    }
+                });
+            }, { threshold: 0.5, root: body });
+            slides.forEach(s => obs.observe(s));
+        })();
+    </script>
 </body>
 
 </html>
