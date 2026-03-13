@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitMaps — Pitch Deck</title>
+    <meta name="description" content="GitMaps pitch presentation — Five Dimensions of Knowledge.">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GitMaps — Pitch Deck">
+    <meta property="og:description"
+        content="Five Dimensions of Knowledge. Canvas + Containers + Minimap + Layers + Timeline + Connections.">
+    <meta property="og:image" content="https://gitmaps.dev/hero-demo.webp">
+    <meta property="og:url" content="https://gitmaps.dev/pitch">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GitMaps — Pitch Deck">
+    <meta name="twitter:description"
+        content="Five Dimensions of Knowledge. The universal formula for effective knowledge exploration.">
+    <meta name="twitter:image" content="https://gitmaps.dev/hero-demo.webp">
+    <!-- Theme -->
+    <meta name="theme-color" content="#0a0e1a">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="pitch-body">
+    <div class="pitch-progress" id="pitch-progress"></div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 1 — TITLE                                     -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-bg pitch-slide-bg--glow"></div>
+        <div class="hero-grid"
+            style="position:absolute;inset:0;pointer-events:none;mask-image:radial-gradient(ellipse 70% 55% at 50% 50%, black, transparent);">
+        </div>
+        <div class="pitch-slide-inner" style="text-align:center;">
+            <div class="hero-badge" style="margin-bottom:32px">
+                <span class="badge-dot"></span>
+                Live Presentation
+            </div>
+            <h1>
+                Five Dimensions of<br>
+                <span class="hero-accent" style="font-size:1.1em;">Knowledge</span>
+            </h1>
+            <p class="pitch-subtitle" style="margin:24px auto 0;">
+                The universal formula for effective knowledge exploration.<br>
+                From flat pages to infinite spatial canvases.
+            </p>
+            <div style="margin-top:40px;display:flex;align-items:center;justify-content:center;gap:10px;">
+                <span class="logo-icon" style="font-size:2rem;">◈</span>
+                <span
+                    style="font-weight:800;font-size:1.4rem;letter-spacing:-0.02em;color:var(--text-primary);">GitMaps</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 2 — AGENDA                                    -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-inner">
+            <div class="pitch-num">Agenda</div>
+            <h2>What we'll cover</h2>
+            <ol class="pitch-agenda">
+                <li>
+                    The Problem — 3D information in a 1D world
+                    <span class="agenda-tag">Context</span>
+                </li>
+                <li>
+                    The Canvas — Infinite spatial freedom
+                    <span class="agenda-tag">Product</span>
+                </li>
+                <li>
+                    Layers — Our key breakthrough
+                    <span class="agenda-tag">Innovation</span>
+                </li>
+                <li>
+                    Time Navigation — History as a filmstrip
+                    <span class="agenda-tag">Feature</span>
+                </li>
+                <li>
+                    The Engine — GalaxyDraw
+                    <span class="agenda-tag">Architecture</span>
+                </li>
+                <li>
+                    Use Case: GitMaps — Knowledge engineering
+                    <span class="agenda-tag">Product</span>
+                </li>
+                <li>
+                    Use Case: WARMAPS — Real-time intelligence
+                    <span class="agenda-tag">Product</span>
+                </li>
+                <li>
+                    BONUS: Holders Lottery & Giveaway
+                    <span class="agenda-tag">Community</span>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 3 — THE PROBLEM                               -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-bg pitch-slide-bg--glow"></div>
+        <div class="pitch-slide-inner">
+            <div class="pitch-num">01 / The Problem</div>
+            <h2>We live in a <span class="text-gradient">3D information structure</span><br>trapped in 1D scrolling
+            </h2>
+            <p style="margin-bottom:36px;">
+                For 50 years, both your local filesystem and the internet share the same skeleton:
+                a hierarchy of pages you scroll one-by-one. Books on shelves in a library.
+                Same metaphor, same limitations.
+            </p>
+            <div class="pitch-features">
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">📄</span>
+                    <h4>1D — The Page</h4>
+                    <p>Scroll top to bottom. One direction. Where everyone starts.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">📁</span>
+                    <h4>2D-3D — The Tree</h4>
+                    <p>Files ↔ neighbors, folders ↕ hierarchy. Same structure for filesystem and the web.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🔒</span>
+                    <h4>The Lock-in</h4>
+                    <p>A file can only live in one folder. A book on one shelf. One perspective, forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 4 — THE CANVAS                                -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-inner">
+            <div class="pitch-num">02 / The Canvas</div>
+            <h2>Breaking free to <span class="text-gradient">infinite space</span></h2>
+            <p style="margin-bottom:24px;">
+                Every file becomes a media container on an infinite canvas. Arrange them the way you think.
+                The minimap gives you context — see everything at a glance, jump to interact.
+            </p>
+            <div class="product-screenshot" style="margin:24px 0;">
+                <img src="img-canvas.webp" alt="GitMaps infinite canvas with minimap" loading="lazy" decoding="async"
+                    width="1200" height="750">
+                <p class="screenshot-caption">All files visible simultaneously — spatial arrangement for
+                    understanding</p>
+            </div>
+            <div class="pitch-stats">
+                <div class="pitch-stat">
+                    <div class="pitch-stat-value">∞</div>
+                    <div class="pitch-stat-label">Canvas Size</div>
+                </div>
+                <div class="pitch-stat">
+                    <div class="pitch-stat-value">2D</div>
+                    <div class="pitch-stat-label">Navigation Freedom</div>
+                </div>
+                <div class="pitch-stat">
+                    <div class="pitch-stat-value">1</div>
+                    <div class="pitch-stat-label">Minimap for Context</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 5 — LAYERS (KEY BREAKTHROUGH)                 -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-bg pitch-slide-bg--cyan"></div>
+        <div class="pitch-slide-inner">
+            <div class="pitch-num">03 / Layers — The Key Breakthrough</div>
+            <h2>Do you organize fruits by<br><span class="text-gradient">color or taste?</span></h2>
+            <p style="margin-bottom:36px;">
+                Hierarchies force one perspective. A file lives in one folder — forever.
+                <strong>Layers give you N perspectives simultaneously.</strong> Each layer is a different
+                projection of the same files. Switch instantly.
+            </p>
+            <div class="pitch-features">
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🏗️</span>
+                    <h4>Architecture View</h4>
+                    <p>Files grouped by module boundaries and subsystem isolation.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🔗</span>
+                    <h4>Dependency View</h4>
+                    <p>Files arranged by import chains — who depends on whom.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🔥</span>
+                    <h4>Churn View</h4>
+                    <p>Files sized by change frequency. Hotspots are obvious at a glance.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🌍</span>
+                    <h4>Context View</h4>
+                    <p>In WARMAPS: each country is a layer with maps, news, OSINT data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 6 — TIME NAVIGATION                           -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-inner">
+            <div class="pitch-num">04 / Time Navigation</div>
+            <h2>History as a <span class="text-gradient">filmstrip</span></h2>
+            <p style="margin-bottom:24px;">
+                Navigate through snapshots in time. In GitMaps, every Git commit is a frame.
+                In WARMAPS, timeline ticks through events minute by minute.
+            </p>
+            <div class="product-screenshot" style="margin:24px 0;">
+                <img src="img-diff.webp" alt="Inline diff view between commits" loading="lazy" decoding="async"
+                    width="1200" height="750">
+                <p class="screenshot-caption">Inline diffs show what changed between time frames</p>
+            </div>
+            <div class="pitch-stats">
+                <div class="pitch-stat">
+                    <div class="pitch-stat-value">←→</div>
+                    <div class="pitch-stat-label">Arrow Keys</div>
+                </div>
+                <div class="pitch-stat">
+                    <div class="pitch-stat-value">Δ</div>
+                    <div class="pitch-stat-label">Inline Diffs</div>
+                </div>
+                <div class="pitch-stat">
+                    <div class="pitch-stat-value">∞</div>
+                    <div class="pitch-stat-label">History Depth</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 7 — THE ENGINE                                -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-bg pitch-slide-bg--glow"></div>
+        <div class="pitch-slide-inner">
+            <div class="pitch-num">05 / The Engine</div>
+            <h2><span class="text-gradient">GalaxyDraw</span></h2>
+            <p style="margin-bottom:36px;">
+                A single, domain-agnostic rendering engine that implements the five-dimensional formula.
+                Feed it any knowledge domain — it gives you canvas, containers, minimap, layers, timeline,
+                and connections.
+            </p>
+            <div class="pitch-features">
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🖼️</span>
+                    <h4>Canvas Core</h4>
+                    <p>Hardware-accelerated infinite pan & zoom with grid snapping.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">📦</span>
+                    <h4>Media Containers</h4>
+                    <p>Pluggable renderers for code, images, maps, interactive components.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🗺️</span>
+                    <h4>Minimap</h4>
+                    <p>Real-time bird's-eye view with click-to-jump navigation.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🧬</span>
+                    <h4>Layer System</h4>
+                    <p>N projections of the same data — switch perspectives instantly.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">⏱️</span>
+                    <h4>Timeline</h4>
+                    <p>Pluggable time sources — Git commits, interval ticks, event streams.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🔗</span>
+                    <h4>Connections</h4>
+                    <p>Line-level cross-references between any two containers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 8 — GITMAPS                                   -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-inner">
+            <div class="pitch-num">06 / Use Case</div>
+            <h2>🗺️ <span class="text-gradient">GitMaps</span></h2>
+            <p class="pitch-subtitle">Knowledge engineering for developers</p>
+            <p style="margin-bottom:32px;">
+                Navigate your codebase spatially. Git commits become time-travel frames.
+                Layers reveal different architectural perspectives of the same code.
+                The minimap is your codebase-at-a-glance.
+            </p>
+            <div class="pitch-features" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">📂</span>
+                    <h4>Spatial Code Browsing</h4>
+                    <p>All files on one canvas. No more tabs. See everything, zoom to interact.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">⏳</span>
+                    <h4>Git Time-Travel</h4>
+                    <p>Arrow keys step through commits. Inline diffs show what changed.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🔍</span>
+                    <h4>Architecture Layers</h4>
+                    <p>Dependency view, module view, churn view — switch perspectives instantly.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🧵</span>
+                    <h4>Cross-References</h4>
+                    <p>Visible connections between related code — the links your IDE hides.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 9 — WARMAPS                                   -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-bg pitch-slide-bg--cyan"></div>
+        <div class="pitch-slide-inner">
+            <div class="pitch-num">07 / Use Case</div>
+            <h2>⚔️ <span class="text-gradient">WARMAPS</span></h2>
+            <p class="pitch-subtitle">Real-time geopolitical intelligence</p>
+            <p style="margin-bottom:32px;">
+                Not a finite globe — an infinite canvas. Each country is a layer with its own
+                components: maps, news feeds, flight data, Telegram OSINT. Users resize and
+                reorganize containers. Everything updates in real-time.
+            </p>
+            <div class="pitch-features" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🌍</span>
+                    <h4>Infinite Intelligence Canvas</h4>
+                    <p>Not limited to a globe. Every data source is a spatial container.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">📡</span>
+                    <h4>Multi-Source OSINT</h4>
+                    <p>23+ Telegram channels, GDELT, ACLED, news agencies — all as containers.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">⏱️</span>
+                    <h4>Timeline Scrubbing</h4>
+                    <p>Review any moment. Troop movements, flights, headlines — rewound or fast-forwarded.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🛡️</span>
+                    <h4>Layer-per-Context</h4>
+                    <p>Each war, country, or conflict is a layer — a complete spatial dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 10 — BONUS                                    -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide pitch-bonus">
+        <div class="pitch-slide-bg pitch-slide-bg--amber"></div>
+        <div class="pitch-slide-inner" style="text-align:center;">
+            <div class="bonus-badge">✨ Bonus</div>
+            <h2>Holders Lottery &<br>Giveaway</h2>
+            <p class="pitch-subtitle" style="margin:20px auto 36px;">
+                A reward mechanism for our community of early believers and token holders.
+            </p>
+            <div class="pitch-features" style="max-width:680px; margin:0 auto;">
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🎟️</span>
+                    <h4>Token Holder Lottery</h4>
+                    <p>Active holders are automatically entered into periodic draws. The longer you hold,
+                        the more entries you accumulate.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🎁</span>
+                    <h4>Community Giveaways</h4>
+                    <p>Exclusive access, early features, merch drops, and partner rewards
+                        distributed to our most engaged community members.</p>
+                </div>
+                <div class="pitch-feature">
+                    <span class="pitch-feature-icon">🚀</span>
+                    <h4>Engagement Rewards</h4>
+                    <p>Contributors, testers, and active community participants earn bonus
+                        entries and recognition in the ecosystem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SLIDE 11 — CLOSE                                    -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section class="pitch-slide">
+        <div class="pitch-slide-bg pitch-slide-bg--glow"></div>
+        <div class="pitch-slide-inner" style="text-align:center;">
+            <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px;">
+                <span class="logo-icon" style="font-size:2.5rem;">◈</span>
+                <span
+                    style="font-weight:800;font-size:1.8rem;letter-spacing:-0.02em;color:var(--text-primary);">GitMaps</span>
+            </div>
+            <h2>Five dimensions.<br><span class="text-gradient">One engine.</span><br>Infinite knowledge.</h2>
+            <p style="margin:24px auto 40px; max-width:500px;">
+                Canvas + Containers + Minimap + Layers + Timeline + Connections
+            </p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://github.com/7flash/git-on-canvas" class="btn btn-primary" target="_blank"
+                    rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://github.com/7flash/git-on-canvas" class="btn btn-ghost" target="_blank" rel="noopener">
+                    Try It Now <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -4,28 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitMaps — Deep Dive: The Five Dimensions</title>
-    <meta name="description"
-        content="A comprehensive exploration of the five-dimensional knowledge model behind GitMaps.">
+    <title>GitMaps — Pitch Deck</title>
+    <meta name="description" content="GitMaps pitch presentation. Five Dimensions of Knowledge.">
+    <meta name="theme-color" content="#020205">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
-            --bg: #050508;
-            --surface: rgba(255, 255, 255, 0.02);
-            --surface-hover: rgba(255, 255, 255, 0.04);
-            --border: rgba(255, 255, 255, 0.08);
+            --bg: #020205;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-hover: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --cyan: #00f2fe;
-            --cyan-glow: rgba(0, 242, 254, 0.15);
+            --glow: rgba(0, 242, 254, 0.2);
             --amber: #f59e0b;
-            --red: #ff2a4d;
             --font-sans: 'Inter', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             --font-serif: 'Instrument Serif', serif;
@@ -42,8 +41,8 @@
             color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+            /* Hide main scrollbar, we will use snap container */
         }
 
         ::selection {
@@ -51,1111 +50,862 @@
             color: #000;
         }
 
-        /* --- Ambient Backgrounds --- */
-        .spatial-grid {
+        /* --- Ambient Animated Background --- */
+        .ambient-bg {
             position: fixed;
-            inset: 0;
+            inset: -50%;
             z-index: -2;
             pointer-events: none;
             background-image:
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
-            transform: perspective(1000px) rotateX(60deg) translateY(-100px) translateZ(-200px);
-            transform-origin: top;
-            opacity: 0.6;
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 80px 80px;
+            transform: perspective(1000px) rotateX(45deg) scale(1.5) translateZ(-200px);
+            animation: panGrid 60s linear infinite;
+            mask-image: radial-gradient(circle at center, black 0%, transparent 60%);
+            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 60%);
         }
 
-        .cursor-glow {
+        .ambient-glow {
             position: fixed;
-            width: 600px;
-            height: 600px;
+            width: 80vw;
+            height: 80vh;
             border-radius: 50%;
-            background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 50%);
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(50px);
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.5s;
+            z-index: -1;
+            filter: blur(80px);
+            pointer-events: none;
+            opacity: 0.6;
+            transition: background 1s ease;
         }
 
-        /* --- Typography --- */
-        h1,
-        h2,
-        h3,
-        h4 {
-            line-height: 1.1;
-            letter-spacing: -0.02em;
+        @keyframes panGrid {
+            0% {
+                transform: perspective(1000px) rotateX(60deg) translateY(0) translateZ(-200px);
+            }
+
+            100% {
+                transform: perspective(1000px) rotateX(60deg) translateY(80px) translateZ(-200px);
+            }
         }
 
-        .serif {
-            font-family: var(--font-serif);
-            font-weight: 400;
-            font-style: italic;
+        /* --- Deck Container --- */
+        .deck {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
-        .mono {
-            font-family: var(--font-mono);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.85rem;
+        .deck::-webkit-scrollbar {
+            display: none;
         }
 
-        .huge-text {
-            font-size: clamp(3.5rem, 8vw, 6.5rem);
-            font-weight: 700;
-            background: linear-gradient(180deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.05;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-        }
-
-        .text-cyan {
-            color: var(--cyan);
-            -webkit-text-fill-color: var(--cyan);
-        }
-
-        .text-amber {
-            color: var(--amber);
-            -webkit-text-fill-color: var(--amber);
-        }
-
-        p.lead {
-            font-size: clamp(1.2rem, 1.5vw, 1.4rem);
-            line-height: 1.6;
-            color: var(--text-muted);
-            font-weight: 300;
-            max-width: 800px;
-            margin-bottom: 2rem;
-        }
-
-        p.body {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        p.body strong {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .tag {
-            display: inline-flex;
+        /* --- Slide Base --- */
+        .slide {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
             align-items: center;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--cyan);
-            font-weight: 700;
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            background: rgba(0, 242, 254, 0.05);
-            margin-bottom: 2rem;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+            justify-content: center;
+            position: relative;
+            padding: 4rem 10vw;
+            perspective: 1000px;
         }
 
-        /* --- Layout --- */
-        .container {
-            max-width: 1250px;
-            margin: 0 auto;
-            padding: 0 5vw;
+        .slide-inner {
+            max-width: 1200px;
+            width: 100%;
             position: relative;
             z-index: 10;
         }
 
-        section {
-            padding: 12vh 0;
-            position: relative;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* --- Revealer Logic (Glassmorphic Fade) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-bottom: none;
-            padding-top: 15vh;
+        .slide.is-visible .reveal {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 5vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: rgba(5, 5, 8, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+        .slide.is-visible .reveal.d-1 {
+            transition-delay: 0.1s;
         }
 
-        .logo {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
+        .slide.is-visible .reveal.d-2 {
+            transition-delay: 0.2s;
         }
 
-        .logo span {
-            color: var(--cyan);
-            font-size: 1.4rem;
-            line-height: 1;
+        .slide.is-visible .reveal.d-3 {
+            transition-delay: 0.3s;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
+        .slide.is-visible .reveal.d-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* --- Typography --- */
+        .slide-num {
             font-family: var(--font-mono);
             font-size: 0.85rem;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            display: inline-flex;
             align-items: center;
-            margin-top: 2rem;
+            gap: 12px;
         }
 
-        /* --- Components --- */
-        .analogy-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            gap: 1.25rem;
-            margin: 2rem 0;
-            backdrop-filter: blur(10px);
+        .slide-num::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--cyan);
         }
 
-        .analogy-card.amber {
-            border-left: 3px solid var(--amber);
-        }
-
-        .analogy-card.cyan {
-            border-left: 3px solid var(--cyan);
-        }
-
-        .analogy-card.red {
-            border-left: 3px solid var(--red);
-        }
-
-        .analogy-card .emoji {
-            font-size: 2rem;
-            line-height: 1;
-            margin-top: 2px;
-        }
-
-        .analogy-card h4 {
+        h1 {
+            font-size: clamp(4rem, 8vw, 7rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
             color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
         }
 
-        .analogy-card p {
-            margin: 0;
-            font-size: 1.05rem;
-            color: #d1d5db;
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .serif {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #718096 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-cyan {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 800px;
+            margin-bottom: 3rem;
             line-height: 1.5;
         }
 
-        .concept-list {
-            list-style: none;
-            margin: 1.5rem 0;
+        /* --- Glassmorphic Cards Grid --- */
+        .glass-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
-        .concept-list li {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-            color: var(--text-muted);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .concept-list li::before {
-            content: "◈";
-            color: var(--cyan);
-            font-size: 1rem;
-            margin-top: 2px;
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0.3;
         }
 
-        .concept-list strong {
-            color: #fff;
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px var(--glow);
         }
 
-        .nelson-quote {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 3vw, 2.8rem);
-            line-height: 1.2;
-            color: #fff;
-            font-style: italic;
-            border-left: 2px solid var(--cyan);
-            padding-left: 2rem;
-            margin: 4rem 0;
-            max-width: 900px;
-        }
-
-        .nelson-quote cite {
+        .glass-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
             display: block;
-            font-family: var(--font-sans);
+        }
+
+        .glass-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .glass-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            background: rgba(0, 242, 254, 0.05);
+            color: var(--cyan);
+            margin-top: 1rem;
+        }
+
+        /* --- Agenda List --- */
+        .agenda {
+            counter-reset: agenda-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 700px;
+        }
+
+        .agenda-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            font-size: 1.2rem;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .agenda-item::before {
+            counter-increment: agenda-counter;
+            content: "0" counter(agenda-counter);
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .agenda-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateX(10px);
+            border-color: rgba(0, 242, 254, 0.3);
+        }
+
+        .agenda-tag {
+            margin-left: auto;
+            font-size: 0.8rem;
+            color: var(--cyan);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+        }
+
+        /* --- Navigation Dots --- */
+        .nav-dots {
+            position: fixed;
+            right: 3vw;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--cyan);
+            height: 24px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px var(--cyan);
+        }
+
+        /* --- Interactive Stats --- */
+        .stats-bar {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-val {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .stat-label {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 1.5rem;
-            font-style: normal;
-            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
-        kbd {
-            background: rgba(255, 255, 255, 0.1);
+        /* --- Image Wrapper --- */
+        .img-wrap {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
             border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 2px 6px;
-            font-family: var(--font-mono);
-            font-size: 0.9em;
-            color: #fff;
-            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        /* --- Interactive Visuals --- */
-        .vis-box {
-            height: 400px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            margin-top: 2rem;
+            background: #000;
+            aspect-ratio: 16/9;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
         }
 
-        .terminal {
-            background: #050505;
-            border: 1px solid #222;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-            width: 100%;
-        }
-
-        .term-header {
-            background: #111;
-            padding: 12px 16px;
-            display: flex;
-            gap: 8px;
-            border-bottom: 1px solid #222;
-            align-items: center;
-        }
-
-        .term-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .term-dot:nth-child(1) {
-            background: #ff5f56;
-        }
-
-        .term-dot:nth-child(2) {
-            background: #ffbd2e;
-        }
-
-        .term-dot:nth-child(3) {
-            background: #27c93f;
-        }
-
-        .term-title {
-            margin-left: auto;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #666;
-        }
-
-        .term-body {
-            padding: 2rem;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: #a1a1aa;
-            line-height: 1.8;
-            white-space: pre-wrap;
-        }
-
-        .term-body .error {
-            color: var(--red);
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 42, 77, 0.3);
-        }
-
-        /* 2. Canvas Vis */
-        .vis-canvas .node {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #888;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s;
-        }
-
-        .vis-canvas .c-1 {
-            width: 140px;
-            height: 100px;
-            top: 15%;
-            left: 15%;
-            transform: rotate(-4deg);
-            border-color: rgba(0, 242, 254, 0.4);
-            color: var(--cyan);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
-        }
-
-        .vis-canvas .c-2 {
-            width: 110px;
-            height: 150px;
-            bottom: 15%;
-            right: 15%;
-            transform: rotate(6deg);
-        }
-
-        .vis-canvas .c-3 {
-            width: 130px;
-            height: 90px;
-            top: 40%;
-            left: 40%;
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            z-index: 5;
-        }
-
-        .split:hover .vis-canvas .node {
-            transform: scale(1.05) translate(5px, -5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .minimap {
-            position: absolute;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            border: 1px solid var(--cyan);
-            padding: 6px 10px;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--cyan);
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        /* 3. Layers Vis */
-        .vis-layers {
-            perspective: 1000px;
-        }
-
-        .iso-stack {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            transform-style: preserve-3d;
-            transform: rotateX(60deg) rotateZ(-45deg);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .iso-layer {
+        .img-wrap::after {
+            content: '';
             position: absolute;
             inset: 0;
-            border: 2px solid var(--cyan);
-            border-radius: 12px;
-            background: rgba(0, 242, 254, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            color: var(--cyan);
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s, background 0.8s, color 0.8s;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            pointer-events: none;
         }
 
-        .iso-layer.l-1 {
-            transform: translateZ(0px);
-            border-color: #333;
-            color: #555;
-            background: transparent;
-        }
-
-        .iso-layer.l-2 {
-            transform: translateZ(30px);
-            border-color: rgba(0, 242, 254, 0.4);
-            color: rgba(0, 242, 254, 0.6);
-        }
-
-        .iso-layer.l-3 {
-            transform: translateZ(60px);
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.1);
-        }
-
-        .split:hover .iso-stack {
-            transform: rotateX(55deg) rotateZ(-20deg) scale(1.1);
-        }
-
-        .split:hover .iso-layer.l-1 {
-            transform: translateZ(-20px);
-        }
-
-        .split:hover .iso-layer.l-2 {
-            transform: translateZ(40px);
-        }
-
-        .split:hover .iso-layer.l-3 {
-            transform: translateZ(100px);
-            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2);
-            background: rgba(0, 242, 254, 0.15);
-            color: #fff;
-        }
-
-        /* 4. Time Vis */
-        .vis-time {
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .timeline {
-            width: 70%;
-            height: 2px;
-            background: #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .t-dot {
-            width: 12px;
-            height: 12px;
-            background: #555;
-            border-radius: 50%;
-            transition: 0.4s;
-        }
-
-        .t-dot.active {
-            background: var(--amber);
-            box-shadow: 0 0 15px var(--amber);
-            transform: scale(1.3);
-        }
-
-        .split:hover .t-dot.active {
-            transform: scale(1.6);
-            box-shadow: 0 0 25px var(--amber);
-        }
-
-        .diff-box {
-            width: 70%;
-            background: #0a0a0a;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-        }
-
-        .diff-line.del {
-            color: var(--red);
-            margin-bottom: 0.5rem;
-        }
-
-        .diff-line.add {
-            color: #00ff66;
-        }
-
-        /* 5. Conn Vis */
-        .vis-conn {
-            position: relative;
-        }
-
-        .c-node {
-            position: absolute;
-            padding: 8px 16px;
-            background: #111;
-            border: 1px solid #444;
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #fff;
-            z-index: 2;
-            transition: 0.4s;
-        }
-
-        .c-node.n-1 {
-            top: 20%;
-            left: 20%;
-        }
-
-        .c-node.n-2 {
-            bottom: 25%;
-            right: 20%;
-        }
-
-        .c-node.n-3 {
-            top: 35%;
-            right: 25%;
-        }
-
-        .c-lines {
-            position: absolute;
-            inset: 0;
+        .mock-img {
             width: 100%;
             height: 100%;
-            z-index: 1;
+            object-fit: cover;
+            opacity: 0.8;
+            filter: saturate(1.2);
         }
 
-        .c-lines path {
-            fill: none;
-            stroke: rgba(255, 255, 255, 0.1);
-            stroke-width: 2;
-            stroke-dasharray: 600;
-            stroke-dashoffset: 600;
-            transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.5s;
+        .mock-placeholder {
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
         }
 
-        .split:hover .c-lines path {
-            stroke-dashoffset: 0;
-            stroke: var(--cyan);
-        }
-
-        .split:hover .c-node {
-            border-color: var(--cyan);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
-        }
-
-        /* --- Engine & Use Cases --- */
-        .engine-box {
-            text-align: center;
-            padding: 4rem 2rem;
-            border-radius: 24px;
-            background: radial-gradient(ellipse at center, rgba(0, 242, 254, 0.05) 0%, transparent 70%);
-            border: 1px solid var(--border);
-            margin: 4rem 0;
-        }
-
-        .use-cases {
+        /* Split layouts */
+        .split {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 4vw;
+            align-items: center;
         }
 
-        .uc-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 3rem;
-            border-radius: 16px;
-            transition: transform 0.3s, background 0.3s;
+        .split.reverse {
+            grid-template-columns: 1.2fr 0.8fr;
         }
 
-        .uc-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.04);
+        @media (max-width: 900px) {
+            .split {
+                grid-template-columns: 1fr !important;
+            }
         }
 
-        .uc-card h3 {
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .uc-cyan {
-            border-top: 4px solid var(--cyan);
-        }
-
-        .uc-red {
-            border-top: 4px solid var(--red);
-        }
-
-        /* Buttons & Animations */
-        .btn {
+        /* Action Buttons */
+        .btn-glow {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 1rem 2.5rem;
+            justify-content: center;
+            padding: 1.2rem 2.5rem;
             background: #fff;
             color: #000;
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-transform: uppercase;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
             border-radius: 100px;
-            transition: 0.3s;
-            cursor: pointer;
-            border: 1px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            isolation: isolate;
         }
 
-        .btn:hover {
-            background: var(--cyan);
-            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
-            transform: translateY(-3px);
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe, #00f2fe);
+            z-index: -1;
+            border-radius: inherit;
+            filter: blur(15px);
+            opacity: 0.5;
+            transition: opacity 0.3s;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-            filter: blur(5px);
+        .btn-glow:hover {
+            transform: translateY(-2px);
         }
 
-        .reveal.active {
+        .btn-glow:hover::after {
             opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-
-        .delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        @media (max-width: 1024px) {
-            .split {
-                display: flex;
-                flex-direction: column;
-                gap: 3rem;
-            }
-
-            .vis-col {
-                order: -1;
-                width: 100%;
-            }
-
-            .vis-box {
-                height: 300px;
-            }
-
-            .use-cases {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="spatial-grid" id="grid"></div>
-    <div class="cursor-glow" id="glow"></div>
+    <div class="ambient-bg"></div>
+    <div class="ambient-glow" id="glowLight"></div>
 
-    <nav>
-        <a href="#" class="logo"><span>◈</span> GITMAPS</a>
-        <div class="nav-links">
-            <a href="#problem">Problem</a>
-            <a href="#canvas">Canvas</a>
-            <a href="#layers">Layers</a>
-            <a href="#time">Time</a>
-            <a href="#engine">Engine</a>
-        </div>
-    </nav>
+    <div class="nav-dots" id="navDots">
+        <!-- JS fills dots here -->
+    </div>
 
-    <section class="hero container">
-        <div class="reveal">
-            <div class="badge">Internal Document · Investor Edition</div>
-            <h1 class="huge-text">The Five Dimensions <br>of <span class="serif text-cyan">Knowledge</span></h1>
-            <p class="lead">
-                A deep dive into the universal formula behind GitMaps. How we transcend hierarchies and give every
-                knowledge domain — from code to geopolitics — five degrees of navigational freedom.
-            </p>
-        </div>
-    </section>
+    <main class="deck" id="deck">
 
-    <section id="problem" class="container">
-        <div class="tag">01 · The Problem</div>
-        <h2 style="font-size: clamp(2.5rem, 4vw, 4rem); color: #fff;">The Tyranny of Hierarchy</h2>
-
-        <div class="split">
-            <div class="text-col reveal">
-                <p class="body">For fifty years we've lived inside the same information structure. A
-                    <strong>page</strong> you scroll top to bottom. <strong>Files</strong> nested in
-                    <strong>folders</strong>. Hyperlinks jumping between documents. Whether it's your local filesystem,
-                    a website, or a library — the skeleton is identical: a tree.</p>
-
-                <div class="analogy-card amber">
-                    <span class="emoji">📚</span>
-                    <div>
-                        <h4>The Library Metaphor</h4>
-                        <p>Think of a physical library. <strong>Books</strong> (files) sit on <strong>shelves</strong>
-                            (folders). You walk between sections. You open a book and scroll page by page (1D). The
-                            internet is the same library — websites are buildings, links are corridors. <strong>We never
-                                left the metaphor.</strong></p>
-                    </div>
-                </div>
-
-                <p class="body">Trees force <strong>one organizational perspective</strong>. A file can only live in one
-                    folder. A book sits on one shelf. But knowledge is intertwingled — every concept connects to every
-                    other in ways that hierarchies cannot express.</p>
-
-                <div style="display: flex; gap: 10px; margin-top: 1rem;">
-                    <span class="badge"
-                        style="background:transparent; border-color:var(--border); color:var(--text-muted);">1D: Page
-                        Scroll</span>
-                    <span class="badge"
-                        style="background:transparent; border-color:var(--border); color:var(--text-muted);">2D:
-                        Files</span>
-                    <span class="badge"
-                        style="background:transparent; border-color:var(--border); color:var(--text-muted);">3D:
-                        Folders</span>
-                </div>
-            </div>
-
-            <div class="vis-col reveal delay-1">
-                <div class="terminal">
-                    <div class="term-header">
-                        <div class="term-dot"></div>
-                        <div class="term-dot"></div>
-                        <div class="term-dot"></div>
-                        <span class="term-title">/sys/hierarchy_error</span>
-                    </div>
-                    <div class="term-body">
-                        > mkdir /mind
-                        > touch concept_A.md
-                        > mv concept_A.md /category_1/
-
-                        <span style="color:#555;">// Attempting to cross-reference...</span>
-                        > ln -s /category_1/concept_A.md /category_2/
-                        <span class="error">FATAL: ITEM CANNOT NATIVELY EXIST IN MULTIPLE CONTEXTS.</span>
-
-                        <span style="color:#555;">// The folder tree forces a single perspective.</span>
-                        <span style="color:#555;">// Relationships are severed.</span>
-                        <span style="text-decoration: line-through; color: #555;">Knowledge is isolated.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="reveal delay-2">
-            <blockquote class="nelson-quote">
-                "Intertwingularity is not generally acknowledged — people keep pretending they can make things deeply
-                hierarchical, categorizable and sequential when they can't."
-                <cite>— Ted Nelson, Computer Lib/Dream Machines, 1974</cite>
-            </blockquote>
-        </div>
-    </section>
-
-    <section id="canvas" class="container">
-        <div class="tag">02 · The Canvas</div>
-        <h2 style="font-size: clamp(2.5rem, 4vw, 4rem); color: #fff;">Breaking Free: Infinite Space</h2>
-
-        <div class="split">
-            <div class="vis-col reveal">
-                <div class="vis-box vis-canvas">
-                    <div class="node c-1">auth_service.ts</div>
-                    <div class="node c-2" style="border-style: dashed;">/api/docs</div>
-                    <div class="node c-3">architecture.png</div>
-                    <div class="minimap">MINIMAP_ACTIVE</div>
-                </div>
-            </div>
-
-            <div class="text-col reveal delay-1">
-                <p class="body">The first breakthrough is simple but radical: <strong>remove the tree</strong>. Every
-                    file becomes a <strong>media container</strong> — a card that can hold source code, images,
-                    documents, interactive components — placed on an <strong>infinite canvas</strong>.</p>
-
-                <ul class="concept-list">
-                    <li><strong>Source code files</strong> with syntax highlighting & inline diffs</li>
-                    <li><strong>Images & diagrams</strong> at full resolution</li>
-                    <li><strong>Interactive components</strong> — embeds, charts, live previews</li>
-                    <li><strong>Markdown documents</strong> with rendered formatting</li>
-                </ul>
-
-                <p class="body">You can move them anywhere. Arrange them by topic, by urgency, by team, by whatever
-                    pattern makes sense to you.</p>
-
-                <div class="analogy-card cyan">
-                    <span class="emoji">🗺️</span>
-                    <div>
-                        <h4>The Minimap Context</h4>
-                        <p>An infinite canvas without orientation is chaos. The minimap solves this. It's a bird's-eye
-                            view showing relative positions. Click to jump. <strong>It gives you back the context that
-                                the tree used to provide, without the constraints.</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="layers" class="container">
-        <div class="tag">03 · Layers</div>
-        <h2 style="font-size: clamp(2.5rem, 4vw, 4rem); color: #fff;">The Fourth Dimension: Perspectives</h2>
-
-        <div class="split">
-            <div class="text-col reveal">
-                <div class="analogy-card red" style="margin-top: 0;">
-                    <span class="emoji">🍎</span>
-                    <div>
-                        <h4>Color or Taste?</h4>
-                        <p><strong>Do you organize fruits by color or by taste?</strong> In a hierarchy, you must choose
-                            one. The apple goes in "red" or "sweet" — never both. A file goes in <code>src/auth/</code>
-                            or <code>src/api/</code> — never both. Every hierarchy is a single, frozen perspective.</p>
-                    </div>
-                </div>
-
-                <p class="body">Layers are our answer. Each layer is a different <strong>projection</strong> of the same
-                    underlying files. The files don't move — they exist once. But each layer defines a different spatial
-                    arrangement. Think of it like a prism splitting white light:</p>
-
-                <ul class="concept-list">
-                    <li><strong>🏗️ Architecture Layer:</strong> Grouped by module boundaries.</li>
-                    <li><strong>🔗 Dependency Layer:</strong> Arranged by import chains.</li>
-                    <li><strong>🔥 Churn Layer:</strong> Sized dynamically by change frequency.</li>
-                    <li><strong>👥 Team Layer:</strong> Code ownership becomes spatial territory.</li>
-                </ul>
-
-                <p class="body">You're no longer asking "where does this file live?" but <strong>"how does this relate
-                        from <em>this</em> perspective?"</strong></p>
-            </div>
-
-            <div class="vis-col reveal delay-1">
-                <div class="vis-box vis-layers">
-                    <div class="iso-stack">
-                        <div class="iso-layer l-1">CHURN</div>
-                        <div class="iso-layer l-2">DEPENDENCY</div>
-                        <div class="iso-layer l-3">ARCHITECTURE</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="time" class="container">
-        <div class="tag">04 · Time Navigation</div>
-        <h2 style="font-size: clamp(2.5rem, 4vw, 4rem); color: #fff;">The Fifth Dimension: Filmstrip</h2>
-
-        <div class="split">
-            <div class="vis-col reveal">
-                <div class="vis-box vis-time">
-                    <div class="timeline">
-                        <div class="t-dot"></div>
-                        <div class="t-dot"></div>
-                        <div class="t-dot active"></div>
-                        <div class="t-dot"></div>
-                    </div>
-                    <div class="diff-box">
-                        <div class="diff-line del">- function flatWorld() {</div>
-                        <div class="diff-line add">+ function spatialEngine() {</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-col reveal delay-1">
-                <p class="body">Knowledge evolves. Code changes. Geopolitics shifts. The fifth dimension lets you
-                    <strong>navigate through time</strong> — scrubbing backward and forward through snapshots of your
-                    canvas.</p>
-
-                <p class="body"><strong>In GitMaps:</strong> Every Git commit is a frame. Use arrow keys to step through
-                    history. The canvas updates — files appear, disappear, change. Inline diffs show exactly what
-                    changed. <strong>You're watching your codebase evolve as a film.</strong></p>
-
-                <p class="body"><strong>In WARMAPS:</strong> Instead of Git commits, WARMAPS uses interval ticks
-                    (minutes, hours). Scrub the timeline to see the state of any monitored region in the past. Troop
-                    movements, flight paths, news headlines — all rewound or fast-forwarded.</p>
-
-                <div class="analogy-card amber">
-                    <span class="emoji">🎬</span>
-                    <div>
-                        <h4>The Security Camera</h4>
-                        <p>Think of a security camera system. Each camera is a container. The timeline is a VCR
-                            scrubber. You can review any moment, from any angle. That's what the fifth dimension gives
-                            every knowledge domain.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="connections" class="container">
-        <div class="tag">05 · Connections</div>
-        <h2 style="font-size: clamp(2.5rem, 4vw, 4rem); color: #fff;">Intertwingularity Made Visible</h2>
-
-        <div class="split">
-            <div class="text-col reveal">
-                <p class="body">Ted Nelson's core idea was that knowledge is a web, not a tree. Our connections feature
-                    makes this literal.</p>
-                <p class="body"><kbd>Alt</kbd> + click a line in one file, pick a target file, click a target line — and
-                    a <strong>permanent, visible link</strong> is drawn between them.</p>
-                <p class="body">These connections persist across layers and time. They are the cross-references that
-                    hierarchies cannot express — the "see also" that exists in your head but never on your screen. Until
-                    now.</p>
-            </div>
-
-            <div class="vis-col reveal delay-1">
-                <div class="vis-box vis-conn">
-                    <div class="c-node n-1">Frontend</div>
-                    <div class="c-node n-2">Database</div>
-                    <div class="c-node n-3">Gateway</div>
-                    <svg class="c-lines">
-                        <path d="M 120,80 Q 200,160 250,160" />
-                        <path d="M 250,160 Q 200,90 150,60" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="engine" class="container">
-
-        <div class="engine-box reveal">
-            <div class="tag">06 · The Engine</div>
-            <h2 style="font-size: 3rem; color: #fff; margin-bottom: 1rem;">GalaxyDraw: The Universal Renderer</h2>
-            <p class="body" style="max-width: 700px; margin: 0 auto 2rem;">Behind both GitMaps and WARMAPS is a single
-                rendering engine. It is domain-agnostic. Feed it files and Git history, or maps and OSINT data. Any
-                knowledge domain can be plugged in.</p>
-
-            <div
-                style="background: rgba(0,0,0,0.5); padding: 1.5rem; border-radius: 12px; border: 1px dashed rgba(0,242,254,0.3); display: inline-block;">
-                <p class="mono text-cyan" style="margin: 0; font-size: 1rem; font-weight: 700;">
-                    CANVAS + CONTAINERS + MINIMAP + LAYERS + TIMELINE + CONNECTIONS
+        <!-- SLIDE 1: Title -->
+        <section class="slide" data-theme="cyan">
+            <div class="slide-inner" style="text-align: center;">
+                <div class="slide-num reveal">Live Presentation</div>
+                <h1 class="reveal d-1">Five Dimensions of<br><span class="serif text-cyan">Knowledge</span></h1>
+                <p class="lead reveal d-2" style="margin: 0 auto 3rem;">
+                    From the tyranny of flat pages to the infinite, intertwingled spatial canvas.<br>
+                    The universal formula for effective knowledge exploration.
                 </p>
+                <div class="reveal d-3"
+                    style="font-family: var(--font-mono); font-weight: 700; font-size: 1.5rem; letter-spacing: 0.05em;">
+                    ◈ GITMAPS
+                </div>
             </div>
-            <p class="body" style="margin-top: 1rem;">This is the universal formula.</p>
-        </div>
+        </section>
 
-        <div style="text-align: center; margin-top: 8rem;" class="reveal">
-            <div class="tag">07 · Use Cases</div>
-            <h2 style="font-size: 3rem; color: #fff;">Instantiations</h2>
-        </div>
-
-        <div class="use-cases">
-            <div class="uc-card uc-cyan reveal delay-1">
-                <h3>🗺️ GitMaps</h3>
-                <p class="body" style="color: #fff; font-weight: 600;">Spatial code exploration for developers.</p>
-                <ul class="concept-list">
-                    <li><strong>Containers</strong> Source files, images, configs</li>
-                    <li><strong>Layers</strong> Architectural perspectives</li>
-                    <li><strong>Time</strong> Git commit history</li>
-                    <li><strong>Connections</strong> Cross-file references</li>
-                    <li><strong>Minimap</strong> Codebase-at-a-glance</li>
-                </ul>
-            </div>
-            <div class="uc-card uc-red reveal delay-2">
-                <h3>⚔️ WARMAPS</h3>
-                <p class="body" style="color: #fff; font-weight: 600;">Real-time geopolitical intelligence dashboard.
-                </p>
-                <ul class="concept-list">
-                    <li><strong>Containers</strong> Maps, news feeds, flight data</li>
-                    <li><strong>Layers</strong> Countries, wars, conflict contexts</li>
-                    <li><strong>Time</strong> Interval ticks (minutes/hours)</li>
-                    <li><strong>Connections</strong> Event correlations</li>
-                    <li><strong>Canvas</strong> Unbounded (not a finite globe)</li>
-                </ul>
-
-                <div class="analogy-card red"
-                    style="background: rgba(255,42,77,0.05); padding: 1rem; margin-top: 2rem;">
+        <!-- SLIDE 2: Agenda -->
+        <section class="slide" data-theme="dark">
+            <div class="slide-inner">
+                <div class="split">
                     <div>
-                        <h4 style="color: var(--red);">Why Not Just a Map?</h4>
-                        <p style="font-size: 0.9rem;">A globe is finite. You are constrained by geography. WARMAPS
-                            breaks this using the infinite canvas: instead of scrolling to Ukraine on a globe, you
-                            <strong>select the Ukraine layer</strong>. The geographic map is just one container
-                            alongside Telegram channels and news feeds. Everything updates in real-time.</p>
+                        <div class="slide-num reveal">Agenda</div>
+                        <h2 class="reveal d-1">The Journey<br><span class="serif text-gradient">Ahead</span></h2>
+                        <p class="lead reveal d-2">How we are tearing down 50 years of broken computing metaphors to
+                            rebuild
+                            the way humanity interacts with complex systems.</p>
+                    </div>
+                    <div class="reveal d-3">
+                        <div class="agenda">
+                            <div class="agenda-item">The Flatland Trap <span class="agenda-tag">01</span></div>
+                            <div class="agenda-item">The Lost Prophecy <span class="agenda-tag">02</span></div>
+                            <div class="agenda-item">The xydraw Canvas <span class="agenda-tag">03</span></div>
+                            <div class="agenda-item">4D: N-Perspectives <span class="agenda-tag">04</span></div>
+                            <div class="agenda-item">5D: Spatial AI <span class="agenda-tag">05</span></div>
+                            <div class="agenda-item">Infinite Domains <span class="agenda-tag">06</span></div>
+                            <div class="agenda-item">The $GM Economy <span class="agenda-tag">07</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="container" style="text-align: center; min-height: 50vh; padding-top: 10vh; border: none;">
-        <div class="reveal">
-            <h2 class="huge-text" style="font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 1rem;">Initialize.</h2>
-            <p class="body" style="font-size: 1.2rem;">The 5th dimension is open source. Come build the engine.</p>
+        <!-- SLIDE 3: 01. The Problem -->
+        <section class="slide" data-theme="dark">
+            <div class="slide-inner">
+                <div class="slide-num reveal">01. The Problem</div>
+                <h2 class="reveal d-1">Trapped in a <span class="serif text-gradient">1-Dimensional Illusion</span></h2>
+                <p class="lead reveal d-2">For half a century, the internet and local filesystems have been held hostage
+                    by
+                    a broken physical metaphor: a paper document on a desk, or a book on a shelf. We took the most
+                    dynamic
+                    machine ever created and forced it to act like a filing cabinet.</p>
 
-            <a href="https://github.com/7flash/gitmaps" class="btn" style="margin-top: 2rem;" target="_blank">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                Access Source
-            </a>
+                <div class="glass-grid reveal d-3">
+                    <div class="glass-card">
+                        <span class="glass-icon">📄</span>
+                        <h3>The Tyranny of 1D Pages</h3>
+                        <p>Scrolling forces a single linear perspective. We read complex, multi-threaded code and system
+                            architectures top-to-bottom, effectively blinding ourselves to the broader macro-network.
+                        </p>
+                    </div>
+                    <div class="glass-card">
+                        <span class="glass-icon">📁</span>
+                        <h3>The Fallacy of Rigid Trees</h3>
+                        <p>A file is jailed in exactly one folder. Concepts are shoved into brittle, isolated
+                            hierarchies
+                            when, in reality, human knowledge naturally forms dense, multidimensional graphs.</p>
+                    </div>
+                    <div class="glass-card">
+                        <span class="glass-icon">🔒</span>
+                        <h3>Cognitive Lock-in</h3>
+                        <p>Our tools dictate how we think. Cramming multi-dimensional system knowledge into 1D text
+                            editors
+                            and fragmented IDE tabs destroys our working memory. You spend 80% of your time finding
+                            context,
+                            and only 20% doing the work.</p>
+                    </div>
+                </div>
+                <div class="reveal d-4"
+                    style="margin-top: 3rem; text-align: center; font-size: 1.2rem; color: var(--text-muted); font-style: italic;">
+                    "We haven't been navigating knowledge; we've been looking at the universe through a keyhole."
+                </div>
+            </div>
+        </section>
 
-            <p class="mono" style="color: #444; margin-top: 4rem;">Inspired by Ted Nelson. Powered by GalaxyDraw.</p>
-        </div>
-    </section>
+        <!-- SLIDE 4: 02. The Philosophical Breakthrough -->
+        <section class="slide" data-theme="cyan">
+            <div class="slide-inner">
+                <div class="slide-num reveal">02. The Philosophical Breakthrough</div>
+                <h2 class="reveal d-1">"Everything is deeply <br><span class="serif text-cyan">intertwingled.</span>"
+                </h2>
+                <p class="lead reveal d-2">Long before the Web existed, computing pioneer Ted Nelson laid out a
+                    radically
+                    different vision for HCI in the 1960s.</p>
+
+                <div class="glass-card reveal d-3" style="border-left: 4px solid var(--cyan); margin-bottom: 2rem;">
+                    <p style="font-size: 1.2rem; font-style: italic; color: #fff;">
+                        "In an important sense there are no 'subjects' at all; there is only all knowledge, since the
+                        cross-connections among the myriad topics of this world simply cannot be divided up neatly.
+                        Hierarchical and sequential structures, especially popular since Gutenberg, are usually forced
+                        and
+                        artificial."
+                    </p>
+                    <p style="text-align: right; margin-top: 1rem; color: var(--cyan);">— Ted Nelson</p>
+                </div>
+
+                <div class="glass-card reveal d-4">
+                    <span class="glass-icon" style="color: var(--cyan);">🔗</span>
+                    <h3>The Missing Link: Transclusion</h3>
+                    <p>The modern web relies on broken, one-way hyperlinks and endless copy-pasting—duplicating data and
+                        destroying context. Transclusion is the ability to include a document, or a fragment of one,
+                        into
+                        another by direct, live reference. It is not a copy. It is a live portal to the original. If the
+                        source changes, every connected node reflects it instantly.</p>
+                    <p style="margin-top: 1rem; font-weight: bold; color: #fff;">For 60 years, true visual transclusion
+                        at
+                        scale was impossible. Until now.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: 03. The Core Tech -->
+        <section class="slide" data-theme="amber">
+            <div class="slide-inner">
+                <div class="slide-num reveal">03. The Core Tech</div>
+                <h2 class="reveal d-1">Transclusion Applied: <br>The <span class="serif"
+                        style="color:var(--amber)">xydraw
+                        Canvas</span></h2>
+                <p class="lead reveal d-2">How do we build an interface for Intertwingularity? Enter the xydraw canvas—a
+                    high-performance rendering engine that brings transclusion into spatial reality.</p>
+
+                <div class="glass-grid reveal d-3">
+                    <div class="glass-card" style="border-top-color: var(--amber)">
+                        <span class="glass-icon">♾️</span>
+                        <h3>Infinite Rendering</h3>
+                        <p>Visually render a mathematically infinite number of files, media containers, and code
+                            snippets
+                            natively on the exact same continuous surface without dropping frames.</p>
+                    </div>
+                    <div class="glass-card" style="border-top-color: var(--cyan)">
+                        <span class="glass-icon">🔍</span>
+                        <h3>Fluid Semantic Zoom</h3>
+                        <p>Zoom out to view the sprawling, macro-architectural galaxy of a 10,000-file system. Zoom in
+                            seamlessly until containers organically transition into fully editable, high-fidelity text
+                            and
+                            code blocks.</p>
+                    </div>
+                    <div class="glass-card" style="border-top-color: #ff2a4d">
+                        <span class="glass-icon">🗺️</span>
+                        <h3>Omniscient Minimap</h3>
+                        <p>Never lose your bearings. A persistent bird's-eye minimap acts as your spatial GPS, allowing
+                            you
+                            to instantly teleport across vast knowledge graphs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: 04. The 4th Dimension -->
+        <section class="slide" data-theme="cyan">
+            <div class="slide-inner">
+                <div class="slide-num reveal">04. The 4th Dimension</div>
+                <h2 class="reveal d-1">Escaping the Tyranny of <span class="serif text-cyan">Hierarchies</span></h2>
+                <p class="lead reveal d-2">Do you organize fruits by color or taste? Hierarchies force you to choose
+                    one.
+                    The xydraw layer system gives you N-perspectives simultaneously overlaid on the same transcluded
+                    canvas.
+                    Snap between architectural paradigms instantly without moving a single file.</p>
+
+                <div class="glass-grid reveal d-3">
+                    <div class="glass-card">
+                        <span class="glass-icon">🏗️</span>
+                        <h3>Architecture Layer</h3>
+                        <p>Files grouped perfectly by subsystem and microservice boundaries.</p>
+                    </div>
+                    <div class="glass-card">
+                        <span class="glass-icon">🔗</span>
+                        <h3>Dependency Layer</h3>
+                        <p>Nodes rearranged strictly by import graphs and execution chains.</p>
+                    </div>
+                    <div class="glass-card">
+                        <span class="glass-icon">🔥</span>
+                        <h3>Churn Layer</h3>
+                        <p>Visually scale entities by bug-fix frequency. Spot the systemic hotspots immediately.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card reveal d-4" style="margin-top: 2rem; border-color: rgba(0,255,150,0.3)">
+                    <span class="glass-icon" style="color:var(--cyan); display: inline;">⏪</span>
+                    <h3 style="display: inline; margin-left: 1rem;">History as a Spatial Filmstrip</h3>
+                    <p style="margin-top: 1rem;">Commit history shouldn't be a raw terminal log. With the xydraw engine,
+                        time becomes a spatial dimension. Use your arrow keys to scrub Git history frame-by-frame,
+                        watching
+                        the architecture morph, breathe, and diff across the infinite plane.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: 05. The 5th Dimension -->
+        <section class="slide" data-theme="dark">
+            <div class="slide-inner">
+                <div class="slide-num reveal">05. The 5th Dimension</div>
+                <h2 class="reveal d-1">Spatial AI: Intelligence that <span class="serif text-gradient">Works Along the
+                        Canvas</span></h2>
+                <p class="lead reveal d-2">Current AI coding assistants are blind. They operate in a claustrophobic chat
+                    sidebar, lacking the macro-context of your system's architecture. They only see the one flat file
+                    you
+                    have open. <strong>We are introducing Spatial AI.</strong> Because the canvas maps the exact spatial
+                    geometry and transcluded relationships of your data, the AI sees the whole board.</p>
+
+                <div class="glass-grid reveal d-3">
+                    <div class="glass-card">
+                        <span class="glass-icon">🪄</span>
+                        <h3>Lasso & Prompt</h3>
+                        <p>Use your cursor to draw a boundary over 15 transcluded files, microservices, and API docs
+                            spread
+                            across the canvas.</p>
+                    </div>
+                    <div class="glass-card">
+                        <span class="glass-icon">🧠</span>
+                        <h3>Graph-Aware Execution</h3>
+                        <p>Instruct the AI: "Refactor these transcluded nodes to adapt to the new OAuth2 protocol."</p>
+                    </div>
+                    <div class="glass-card">
+                        <span class="glass-icon">⚡</span>
+                        <h3>Live Multi-Agent Editing</h3>
+                        <p>The AI actively moves along the canvas, dynamically opening, rewriting, and wiring multiple
+                            selected files simultaneously in real-time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: 06. Infinite Domains -->
+        <section class="slide" data-theme="dark">
+            <div class="slide-inner">
+                <div class="slide-num reveal">06. Infinite Domains</div>
+                <h2 class="reveal d-1 text-gradient" style="font-size: clamp(3rem, 5vw, 4.5rem)">One Engine.
+                    <br>Boundless
+                    Applications.</h2>
+
+                <div class="split reveal d-2" style="margin-top: 3rem;">
+                    <div class="glass-card" style="border-top-color: var(--cyan)">
+                        <span class="glass-icon">🗺️</span>
+                        <h3>Product 1: GITMAPS <br><span
+                                style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">(For Code
+                                Intelligence)</span></h3>
+                        <p>Turning dense codebases into interactive, explorable cities.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem; color: var(--text-muted);">
+                            <li style="margin-bottom: 0.5rem;">Natively connect to GitHub APIs and map infinite
+                                repositories
+                                onto xydraw.</li>
+                            <li style="margin-bottom: 0.5rem;">Replace your IDE's fragmented tab system with a true
+                                spatial
+                                OS.</li>
+                            <li>Instantly onboard junior developers visually—show them the map, don't just tell them.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="glass-card" style="border-top-color: var(--amber)">
+                        <span class="glass-icon">⚔️</span>
+                        <h3>Product 2: WARMAPS <br><span
+                                style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">(For Geopolitical
+                                OSINT)</span></h3>
+                        <p>Real-time intelligence dashboard merging map data, Telegram OSINT signals, and live satellite
+                            imagery spatially.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem; color: var(--text-muted);">
+                            <li style="margin-bottom: 0.5rem;">Contextualize 25+ real-time news sources onto geographic
+                                coordinates via transclusion.</li>
+                            <li>Time-scrub global troop movements alongside localized social media feeds on a single,
+                                unified plane.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: 07. The Economy -->
+        <section class="slide" data-theme="cyan">
+            <div class="slide-inner">
+                <div class="slide-num reveal">07. The Economy of Believers</div>
+                <h2 class="reveal d-1">The $GM Token & <br><span class="serif text-cyan">The Gravity Protocol</span>
+                </h2>
+                <p class="lead reveal d-2">We aren't just revolutionizing software architecture; we are redefining
+                    platform
+                    ownership. We are abandoning static subscriptions and generic airdrops for a dynamic, mathematically
+                    relentless Web3 economy.</p>
+
+                <div class="split reveal d-3">
+                    <div class="glass-card">
+                        <span class="glass-icon">🌌</span>
+                        <h3>What is Gravity?</h3>
+                        <p>Every unique holder of the $GM token possesses a dynamic "Gravity" measure.</p>
+                        <p style="margin-top: 1rem; color: var(--cyan);">Your Gravity score increases every single
+                            minute by
+                            an amount exactly equal to the USD equivalent of the $GM tokens you hold.</p>
+                        <div
+                            style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+                            Gravity<sub>user</sub> = &int;<sub>t<sub>0</sub></sub><sup>t<sub>current</sub></sup>
+                            (Tokens<sub>held</sub> &times; Price<sub>USD</sub>) dt
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">This creates a robust
+                            economic moat based on patience and liquidity provision rather than high-frequency trading.
+                        </p>
+                    </div>
+                    <div class="glass-card" style="border-top-color: var(--amber);">
+                        <span class="glass-icon">🎰</span>
+                        <h3>The 60-Second Roulette Spin</h3>
+                        <p>100% of the platform's accumulated revenue (SaaS, enterprise) and creator fees generated
+                            across
+                            the ecosystem flow directly into a real-time treasury pool.</p>
+                        <p style="margin-top: 1rem; color: #fff;">Every minute, on the minute, the smart contract spins
+                            the
+                            algorithmic wheel. Your probability of winning the spin is weighted strictly by your
+                            accumulated
+                            Gravity score.</p>
+                        <p style="margin-top: 1rem; font-weight: bold; color: var(--amber);">Winner Takes The Minute:
+                            One
+                            unique holder wins the spin, instantly capturing the entire revenue pool generated during
+                            that
+                            exact 60-second window.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: CTA -->
+        <section class="slide" data-theme="cyan">
+            <div class="slide-inner" style="text-align: center;">
+                <div class="reveal d-1"
+                    style="font-family: var(--font-mono); font-weight: 700; font-size: 3rem; margin-bottom: 2rem;">◈
+                </div>
+                <h2 class="reveal d-2" style="font-size: clamp(3rem, 6vw, 5.5rem)">Ready to Map<br>the <span
+                        class="serif text-cyan">Unknown?</span></h2>
+                <p class="lead reveal d-3" style="margin: 0 auto 3rem;">Hierarchies are dead. The canvas is infinite.
+                    The
+                    network is intertwingled.</p>
+                <div class="reveal d-4"
+                    style="margin-top: 4rem; display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+                    <a href="https://github.com/7flash/gitmaps" target="_blank" class="btn-glow"
+                        style="border: 1px solid rgba(255,255,255,0.2);">
+                        Explore the xydraw Engine
+                    </a>
+                    <a href="#" class="btn-glow"
+                        style="background: rgba(0, 242, 254, 0.1); color: var(--cyan); border: 1px solid var(--cyan);">
+                        Acquire $GM & Build Gravity
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Mouse Glow Tracking
-            const glow = document.getElementById('glow');
-            document.addEventListener('mousemove', (e) => {
-                requestAnimationFrame(() => {
-                    glow.style.opacity = '1';
-                    glow.style.left = e.clientX + 'px';
-                    glow.style.top = e.clientY + 'px';
-                });
+        const deck = document.getElementById('deck');
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('navDots');
+        const glowLight = document.getElementById('glowLight');
+
+        // Setup dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                slides[i].scrollIntoView();
             });
+            dotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.dot');
 
-            // Parallax Grid
-            const grid = document.getElementById('grid');
-            window.addEventListener('scroll', () => {
-                const scrolled = window.scrollY;
-                grid.style.transform = `perspective(1000px) rotateX(60deg) translateY(${-100 + scrolled * 0.15}px) translateZ(-200px)`;
-            }, { passive: true });
+        // Intersection Observer for animations & dots
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animations setup
+                    entry.target.classList.add('is-visible');
 
-            // Intersection Observer for Animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.15 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+                    // Update dots
+                    const index = Array.from(slides).indexOf(entry.target);
+                    dots.forEach(d => d.classList.remove('active'));
+                    if (dots[index]) dots[index].classList.add('active');
 
-            // Smooth Scroll Nav
-            document.querySelectorAll('.nav-links a').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                });
+                    // Adjust Glow Theme
+                    const theme = entry.target.dataset.theme;
+                    if (theme === 'cyan') glowLight.style.background = 'radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%)';
+                    else if (theme === 'amber') glowLight.style.background = 'radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)';
+                    else glowLight.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%)';
+                }
             });
+        }, {
+            root: deck,
+            threshold: 0.6
+        });
 
-            // Trigger initial hero animation
-            setTimeout(() => {
-                document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
-            }, 100);
+        slides.forEach(slide => observer.observe(slide));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            // Find current active index
+            let activeIdx = Array.from(dots).findIndex(d => d.classList.contains('active'));
+            if (activeIdx === -1) activeIdx = 0;
+
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (activeIdx < slides.length - 1) slides[activeIdx + 1].scrollIntoView();
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (activeIdx > 0) slides[activeIdx - 1].scrollIntoView();
+            }
         });
     </script>
 </body>
