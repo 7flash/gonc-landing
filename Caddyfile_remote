@@ -1,0 +1,55 @@
+warmaps.xyz, starwar.xyz, airchars.fun {
+    reverse_proxy localhost:4444
+}
+
+bgrun.starwar.xyz {
+    reverse_proxy localhost:3000
+}
+
+genius.geeksy.xyz, geeksy.xyz {
+    reverse_proxy localhost:3737
+}
+
+gitmaps.dev, gitmaps.xyz {
+    # Landing page: root + known static assets
+    @landing {
+        path /
+        path /index.html
+        path /styles.css
+        path /script.js
+        path /canvas-demo.js
+        path /hero.png
+        path /hero-demo.webp
+        path /img-*
+        path /concepts.html
+        path /pitch.html
+        path /pitch
+        path /concepts
+    }
+    handle @landing {
+        root * /srv/landing
+        file_server
+        try_files {path} {path}.html /index.html
+    }
+
+    # All other routes -> GitMaps app (owner/repo patterns)
+    handle {
+        reverse_proxy localhost:3335 {
+            header_up Connection {>Connection}
+            header_up Upgrade {>Upgrade}
+        }
+    }
+
+    encode gzip zstd
+
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+}
+
+www.gitmaps.xyz {
+    redir https://gitmaps.xyz{uri} permanent
+}

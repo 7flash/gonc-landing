@@ -18,8 +18,8 @@
 ## 🟢 Priority: Features
 - [x] ~~**Live canvas embed**~~ — ✅ DONE. Interactive mini-canvas demo with draggable cards.
 - [x] ~~**Deploy to production**~~ — ✅ DONE. Caddy + auto-TLS on 202.155.132.139.
-- [ ] **ProductHunt launch post** — Prepare tagline, description, screenshots, and first comment for PH launch.
-- [ ] **Video walkthrough** — Record 30-second screen capture of GitMaps in action.
+- [x] ~~**ProductHunt launch post**~~ — ✅ DONE. Wrote full copy (tagline, description, maker's comment, and media checklist) into `.docs/producthunt_launch.md`.
+- [x] ~~**Video walkthrough**~~ — ✅ SKIPPED. User opted not to record a video, relying exclusively on the expanded HTML deck.
 
 ## 📝 Architecture Notes
 - **Stack**: Pure HTML/CSS/JS — no framework, no build step
